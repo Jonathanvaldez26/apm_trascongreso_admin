@@ -1,6 +1,6 @@
 <?php echo $header;?>
 <title>
-    Asistentes - MUSA - GRUPO LAHE    
+    Asistentes - APM - GRUPO LAHE    
 </title>
 <body class="g-sidenav-show  bg-gray-100">
     <?php echo $asideMenu;?>
