@@ -15,7 +15,7 @@ class Login implements Crud{
     public static function getById($usuario){
         $mysqli = Database::getInstance(true);
         $query =<<<sql
-        SELECT * FROM utilerias_administradores WHERE usuario LIKE :usuario AND contrasena LIKE :password 
+        SELECT * FROM utilerias_administradores_admin WHERE usuario LIKE :usuario AND contrasena LIKE :password 
 sql;
         $params = array(
             ':usuario'=> $usuario->_usuario,
@@ -28,7 +28,7 @@ sql;
     public static function getUser($usuario){
         $mysqli = Database::getInstance(true);
         $query =<<<sql
-        SELECT * FROM utilerias_administradores WHERE usuario = '$usuario' AND status = 1
+        SELECT * FROM utilerias_administradores_admin WHERE usuario = '$usuario' AND status = 1
 sql;
 
         return $mysqli->queryAll($query);
