@@ -10386,7 +10386,7 @@ fieldset:disabled .btn {
 }
 
 .morado-musa-text{
-  color: rgb(98 56 246);
+  color: #3BA988;
 }
 
 .bg-musa-morado{
@@ -22886,7 +22886,7 @@ z-index: 9999;
 
 .navbar-vertical .navbar-nav>.nav-item .nav-link.active .icon {
   /* background-image: linear-gradient(310deg, #ff0032 0%, #b10303 100%); */
-  background-image: linear-gradient(0deg, turquoise, pink 75%);
+  background-image:  linear-gradient(0deg, #02825b, #a5f2db 75%);
 }
 
 .navbar-vertical .navbar-nav>.nav-item .nav-link.active .icon svg .color-background,

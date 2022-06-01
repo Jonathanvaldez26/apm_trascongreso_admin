@@ -82,7 +82,7 @@
                 <div class="card card-body mt-n6 overflow-hidden">
                     <div class="row gx-4">
                         <div class="col-auto">
-                            <div class="bg-gradient-musa avatar avatar-xl position-relative">
+                            <div class="bg-gradient-pink avatar avatar-xl position-relative">
                                 <!-- <img src="../../assets/img/bruce-mars.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm"> -->
                                 <span class="fa fa-users" style="font-size: xx-large;"></span>
                             </div>
@@ -150,7 +150,7 @@
                                                 <input class="form-control mr-sm-2" style="font-size: 35px;" autofocus type="search" id="search" name="search" placeholder="Ej. Adrian Segura Becerra - XaS6cr" aria-label="Search">
                                             </div>
                                             <div class="col-12 col-md-12 mt-md-2">
-                                                <button class="btn max-btn-lg bg-gradient-pink-white text-gray my-2 my-sm-0" type="submit">Buscar</button>
+                                                <button class="btn max-btn-lg bg-gradient-pink-white text-white my-2 my-sm-0" type="submit">Buscar</button>
                                             </div>
                                         </div>
                                        

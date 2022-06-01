@@ -28,7 +28,8 @@ class Contenedor extends Controller{
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
 
             <a class="navbar-brand m-0" href="/Principal/" target="_blank">
-                <img src="/assets/img/favicon.png" class="navbar-brand-img h-100" alt="main_logo">
+                <img src="/assets/img/apm.png" class="navbar-brand-img h-100" alt="main_logo">
+                <img src="/assets/img/wadd.png" class="navbar-brand-img h-100" alt="main_logo">
                 <span class="ms-1 font-weight-bold"></span>
                 <p style="margin-top: 15px;"><span class="fa fa-user morado-musa-text"></span> {$_SESSION['nombre']}</p>
             </a>
@@ -66,14 +67,14 @@ class Contenedor extends Controller{
                         <span class="nav-link-text ms-1">Asistentes</span>
                     </a>
                 </li>
-                <li id="vuelos" class="nav-item" {$vuelosHidden};>
+                <!--<li id="vuelos" class="nav-item" {$vuelosHidden};>
                     <a href="/Vuelos/" class="nav-link " aria-controls="applicationsExamples" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                             <span class="fa fa-plane morado-musa-text"></span>
                         </div>
                         <span class="nav-link-text ms-1">Vuelos</span>
                     </a>
-                </li>
+                </li>-->
                 <!--<li id="pickup" class="nav-item" {$pickUpHidden};>
                     <a href="/PickUp/" class="nav-link " aria-controls="ecommerceExamples" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -99,7 +100,7 @@ class Contenedor extends Controller{
                         <span class="nav-link-text ms-1">Asistencias</span>
                     </a>
                 </li>
-                <li id="salud" class="nav-item" {$vacunacionHidden};>
+                <!--<li id="salud" class="nav-item" {$vacunacionHidden};>
                     <hr class="horizontal dark" />
                     <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">SALUD</h6>
                 </li>
@@ -118,7 +119,7 @@ class Contenedor extends Controller{
                         </div>
                         <span class="nav-link-text ms-1">Pruebas Covid Usuarios</span>
                     </a>
-                </li>
+                </li>-->
 
                 <!-- <li id="pruebas_sitio" class="nav-item" {$pruebasHidden};>
                     <a href="/PruebasCovidEnSitio/" class="nav-link" aria-controls="basicExamples" role="button" aria-expanded="false">

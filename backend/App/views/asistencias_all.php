@@ -142,7 +142,7 @@
                 <div class="card card-body mt-n6 overflow-hidden">
                     <div class="row gx-4">
                         <div class="col-auto">
-                            <div class="bg-gradient-musa avatar avatar-xl position-relative">
+                            <div class="bg-gradient-pink avatar avatar-xl position-relative">
                                 <!-- <img src="../../assets/img/bruce-mars.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm"> -->
                                 <span class="fa fa-bell" style="font-size: xx-large;"></span>
                             </div>
