@@ -10373,11 +10373,12 @@ fieldset:disabled .btn {
 }
 
 .bg-gradient-pink-white {
-  background-image: linear-gradient(0deg, pink, #f7e1ebcc 75%);
+  background-image:  linear-gradient(0deg, #02825b, #a5f2db 75%);
+ 
 }
 
 .bg-gradient-pink {
-  background-image: linear-gradient(0deg, pink, #f7e1ebcc 75%);
+  background-image:  linear-gradient(0deg, #02825b, #a5f2db 75%);
 }
 
 .bg-gradient-red {
