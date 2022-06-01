@@ -249,7 +249,7 @@
 
         $('#user_list_table').DataTable({
             "drawCallback": function(settings) {
-                $('.current').addClass("btn bg-gradient-musa morado-musa-text btn-rounded").removeClass("paginate_button");
+                $('.current').addClass("btn bg-gradient-pink text-white btn-rounded").removeClass("paginate_button");
                 $('.paginate_button').addClass("btn").removeClass("paginate_button");
                 $('.dataTables_length').addClass("m-4");
                 $('.dataTables_info').addClass("mx-4");
@@ -292,7 +292,7 @@
 
         $('#user_list_table_faltante').DataTable({
             "drawCallback": function(settings) {
-                $('.current').addClass("btn bg-gradient-musa morado-musa-text btn-rounded").removeClass("paginate_button");
+                $('.current').addClass("btn bg-gradient-pink text-white btn-rounded").removeClass("paginate_button");
                 $('.paginate_button').addClass("btn").removeClass("paginate_button");
                 $('.dataTables_length').addClass("m-4");
                 $('.dataTables_info').addClass("mx-4");

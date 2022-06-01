@@ -10394,7 +10394,8 @@ fieldset:disabled .btn {
 }
 
 .bg-pink{
-  background-color: pink;
+  background-color: #02825b;
+  color:#FFFFFF;
 }
 
 .bg-turquoise{
