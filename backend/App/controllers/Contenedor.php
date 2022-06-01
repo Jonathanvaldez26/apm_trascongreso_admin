@@ -223,10 +223,10 @@ html;
         <html lang="es">
         
           <head>
-            <meta charset="utf-8">
+            <!--<meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
             <link rel="apple-touch-icon" sizes="76x76" href="https://foromusa.com/assets/images/Musa0-01.png">
-            <link rel="icon" type="image/png" href="https://foromusa.com/assets/images/Musa0-01.png">
+            <link rel="icon" type="image/png" href="https://foromusa.com/assets/images/Musa0-01.png">-->
             
             <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
             <!-- Nucleo Icons -->
@@ -243,7 +243,8 @@ html;
 
             <meta charset="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <link rel="icon" type="image/png" href="../../assets/img/apmn.png">
+            <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicon.png">
+            <link rel="icon" type="image/png" href="/img/favicon.png">
 
             <!--     Fonts and icons     -->
             <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
