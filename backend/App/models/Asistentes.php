@@ -115,7 +115,7 @@ sql;
       $mysqli = Database::getInstance();
       $query=<<<sql
       SELECT CONCAT (name_user, ' ',surname, ' ',second_surname) AS nombre FROM `utilerias_administradores` 
-      WHERE nombre LIKE '$nombre%'
+      WHERE nombre LIKE '%$nombre%'
 sql;
       return $mysqli->queryAll($query);
         
