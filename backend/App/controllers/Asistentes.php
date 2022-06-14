@@ -238,185 +238,185 @@ html;
         }
 
         // var_dump($detalles_registro[0]['alergia']);
-        if ($detalles_registro[0]['alergia'] == '') {
-            $res_alimenticias = <<<html
-            <div class="col-md-4 col-sm-12">
-                <label class="form-label mt-4">Restricciones Alimentarias *</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_1" value="vegetariano">
-                    <label class="form-check-label" for="res_ali_1">
-                        Vegetariano
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_2" value="vegano">
-                    <label class="form-check-label" for="res_ali_2">
-                        Vegano
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_4" value="ninguna" checked>
-                    <label class="form-check-label" for="res_ali_4">
-                        Ninguna
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_5" value="otro">
-                    <label class="form-check-label" for="res_ali_5">
-                        Otro
-                    </label>
-                </div>
-                <div class="col-md-12 col-sm-12 restricciones_alimenticias" style="display: none!important;">
-                    <label class="form-label mt-4">¿Cual?</label>
-                    <input id="restricciones_alimenticias_cual" name="restricciones_alimenticias_cual" maxlength="45" class="form-control" type="text" placeholder="Escriba su restricción" value="">
-                </div>
-            </div>
-html;
-        } else {
-            if ($detalles_registro[0]['alergia'] == 'otro') {
-                $res_alimenticias = <<<html
-            <div class="col-md-4 col-sm-12">
-                <label class="form-label mt-4">Restricciones Alimentarias *</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_1" value="vegetariano">
-                    <label class="form-check-label" for="res_ali_1">
-                        Vegetariano
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_2" value="vegano">
-                    <label class="form-check-label" for="res_ali_2">
-                        Vegano
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_4" value="ninguna" >
-                    <label class="form-check-label" for="res_ali_4">
-                        Ninguna
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_5" value="otro" checked>
-                    <label class="form-check-label" for="res_ali_5">
-                        Otro
-                    </label>
-                </div>
-                <div class="col-md-12 col-sm-12 restricciones_alimenticias" >
-                    <label class="form-label mt-4">¿Cual?</label>
-                    <input id="restricciones_alimenticias_cual" name="restricciones_alimenticias_cual" maxlength="45" class="form-control" type="text" placeholder="Escriba su restricción" value="{$detalles_registro[0]['alergia_cual']}">
-                </div>
-            </div>
-html;
-            }
+//COMENTAR ALERGIA VEGANO ETC         if ($detalles_registro[0]['alergia'] == '') {
+//             $res_alimenticias = <<<html
+//             <div class="col-md-4 col-sm-12">
+//                 <label class="form-label mt-4">Restricciones Alimentarias *</label>
+//                 <div class="form-check">
+//                     <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_1" value="vegetariano">
+//                     <label class="form-check-label" for="res_ali_1">
+//                         Vegetariano
+//                     </label>
+//                 </div>
+//                 <div class="form-check">
+//                     <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_2" value="vegano">
+//                     <label class="form-check-label" for="res_ali_2">
+//                         Vegano
+//                     </label>
+//                 </div>
+//                 <div class="form-check">
+//                     <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_4" value="ninguna" checked>
+//                     <label class="form-check-label" for="res_ali_4">
+//                         Ninguna
+//                     </label>
+//                 </div>
+//                 <div class="form-check">
+//                     <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_5" value="otro">
+//                     <label class="form-check-label" for="res_ali_5">
+//                         Otro
+//                     </label>
+//                 </div>
+//                 <div class="col-md-12 col-sm-12 restricciones_alimenticias" style="display: none!important;">
+//                     <label class="form-label mt-4">¿Cual?</label>
+//                     <input id="restricciones_alimenticias_cual" name="restricciones_alimenticias_cual" maxlength="45" class="form-control" type="text" placeholder="Escriba su restricción" value="">
+//                 </div>
+//             </div>
+// html;
+//         } else {
+//             if ($detalles_registro[0]['alergia'] == 'otro') {
+//                 $res_alimenticias = <<<html
+//             <div class="col-md-4 col-sm-12">
+//                 <label class="form-label mt-4">Restricciones Alimentarias *</label>
+//                 <div class="form-check">
+//                     <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_1" value="vegetariano">
+//                     <label class="form-check-label" for="res_ali_1">
+//                         Vegetariano
+//                     </label>
+//                 </div>
+//                 <div class="form-check">
+//                     <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_2" value="vegano">
+//                     <label class="form-check-label" for="res_ali_2">
+//                         Vegano
+//                     </label>
+//                 </div>
+//                 <div class="form-check">
+//                     <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_4" value="ninguna" >
+//                     <label class="form-check-label" for="res_ali_4">
+//                         Ninguna
+//                     </label>
+//                 </div>
+//                 <div class="form-check">
+//                     <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_5" value="otro" checked>
+//                     <label class="form-check-label" for="res_ali_5">
+//                         Otro
+//                     </label>
+//                 </div>
+//                 <div class="col-md-12 col-sm-12 restricciones_alimenticias" >
+//                     <label class="form-label mt-4">¿Cual?</label>
+//                     <input id="restricciones_alimenticias_cual" name="restricciones_alimenticias_cual" maxlength="45" class="form-control" type="text" placeholder="Escriba su restricción" value="{$detalles_registro[0]['alergia_cual']}">
+//                 </div>
+//             </div>
+// html;
+//             }
 
-            if ($detalles_registro[0]['alergia'] == 'ninguna') {
-                $res_alimenticias = <<<html
-            <div class="col-md-4 col-sm-12">
-                <label class="form-label mt-4">Restricciones Alimentarias *</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_1" value="vegetariano">
-                    <label class="form-check-label" for="res_ali_1">
-                        Vegetariano
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_2" value="vegano">
-                    <label class="form-check-label" for="res_ali_2">
-                        Vegano
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_4" value="ninguna" checked>
-                    <label class="form-check-label" for="res_ali_4">
-                        Ninguna
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_5" value="otro" >
-                    <label class="form-check-label" for="res_ali_5">
-                        Otro
-                    </label>
-                </div>
-                <div class="col-md-12 col-sm-12 restricciones_alimenticias" style="display: none!important;">
-                    <label class="form-label mt-4">¿Cual?</label>
-                    <input id="restricciones_alimenticias_cual" name="restricciones_alimenticias_cual" maxlength="45" class="form-control" type="text" placeholder="Escriba su restricción" value="{$detalles_registro[0]['restricciones_alimenticias_cual']}">
-                </div>
-            </div>
-html;
-            }
+//             if ($detalles_registro[0]['alergia'] == 'ninguna') {
+//                 $res_alimenticias = <<<html
+//             <div class="col-md-4 col-sm-12">
+//                 <label class="form-label mt-4">Restricciones Alimentarias *</label>
+//                 <div class="form-check">
+//                     <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_1" value="vegetariano">
+//                     <label class="form-check-label" for="res_ali_1">
+//                         Vegetariano
+//                     </label>
+//                 </div>
+//                 <div class="form-check">
+//                     <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_2" value="vegano">
+//                     <label class="form-check-label" for="res_ali_2">
+//                         Vegano
+//                     </label>
+//                 </div>
+//                 <div class="form-check">
+//                     <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_4" value="ninguna" checked>
+//                     <label class="form-check-label" for="res_ali_4">
+//                         Ninguna
+//                     </label>
+//                 </div>
+//                 <div class="form-check">
+//                     <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_5" value="otro" >
+//                     <label class="form-check-label" for="res_ali_5">
+//                         Otro
+//                     </label>
+//                 </div>
+//                 <div class="col-md-12 col-sm-12 restricciones_alimenticias" style="display: none!important;">
+//                     <label class="form-label mt-4">¿Cual?</label>
+//                     <input id="restricciones_alimenticias_cual" name="restricciones_alimenticias_cual" maxlength="45" class="form-control" type="text" placeholder="Escriba su restricción" value="{$detalles_registro[0]['restricciones_alimenticias_cual']}">
+//                 </div>
+//             </div>
+// html;
+//             }
 
-            if ($detalles_registro[0]['alergia'] == 'vegano') {
-                $res_alimenticias = <<<html
-            <div class="col-md-4 col-sm-12">
-                <label class="form-label mt-4">Restricciones Alimentarias *</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_1" value="vegetariano">
-                    <label class="form-check-label" for="res_ali_1">
-                        Vegetariano
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_2" value="vegano" checked>
-                    <label class="form-check-label" for="res_ali_2">
-                        Vegano
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_4" value="ninguna" >
-                    <label class="form-check-label" for="res_ali_4">
-                        Ninguna
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_5" value="otro" >
-                    <label class="form-check-label" for="res_ali_5">
-                        Otro
-                    </label>
-                </div>
-                <div class="col-md-12 col-sm-12 restricciones_alimenticias" style="display: none!important;">
-                    <label class="form-label mt-4">¿Cual?</label>
-                    <input id="restricciones_alimenticias_cual" name="restricciones_alimenticias_cual" maxlength="45" class="form-control" type="text" placeholder="Escriba su restricción" value="{$detalles_registro[0]['restricciones_alimenticias_cual']}">
-                </div>
-            </div>
-html;
-            }
+//             if ($detalles_registro[0]['alergia'] == 'vegano') {
+//                 $res_alimenticias = <<<html
+//             <div class="col-md-4 col-sm-12">
+//                 <label class="form-label mt-4">Restricciones Alimentarias *</label>
+//                 <div class="form-check">
+//                     <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_1" value="vegetariano">
+//                     <label class="form-check-label" for="res_ali_1">
+//                         Vegetariano
+//                     </label>
+//                 </div>
+//                 <div class="form-check">
+//                     <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_2" value="vegano" checked>
+//                     <label class="form-check-label" for="res_ali_2">
+//                         Vegano
+//                     </label>
+//                 </div>
+//                 <div class="form-check">
+//                     <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_4" value="ninguna" >
+//                     <label class="form-check-label" for="res_ali_4">
+//                         Ninguna
+//                     </label>
+//                 </div>
+//                 <div class="form-check">
+//                     <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_5" value="otro" >
+//                     <label class="form-check-label" for="res_ali_5">
+//                         Otro
+//                     </label>
+//                 </div>
+//                 <div class="col-md-12 col-sm-12 restricciones_alimenticias" style="display: none!important;">
+//                     <label class="form-label mt-4">¿Cual?</label>
+//                     <input id="restricciones_alimenticias_cual" name="restricciones_alimenticias_cual" maxlength="45" class="form-control" type="text" placeholder="Escriba su restricción" value="{$detalles_registro[0]['restricciones_alimenticias_cual']}">
+//                 </div>
+//             </div>
+// html;
+//             }
 
-            if ($detalles_registro[0]['alergia'] == 'vegetariano') {
-                $res_alimenticias = <<<html
-            <div class="col-md-4 col-sm-12">
-                <label class="form-label mt-4">Restricciones Alimentarias *</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_1" value="vegetariano" checked>
-                    <label class="form-check-label" for="res_ali_1">
-                        Vegetariano
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_2" value="vegano">
-                    <label class="form-check-label" for="res_ali_2">
-                        Vegano
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_4" value="ninguna" >
-                    <label class="form-check-label" for="res_ali_4">
-                        Ninguna
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_5" value="otro" >
-                    <label class="form-check-label" for="res_ali_5">
-                        Otro
-                    </label>
-                </div>
-                <div class="col-md-12 col-sm-12 restricciones_alimenticias" style="display: none!important;">
-                    <label class="form-label mt-4">¿Cual?</label>
-                    <input id="restricciones_alimenticias_cual" name="restricciones_alimenticias_cual" maxlength="45" class="form-control" type="text" placeholder="Escriba su restricción" value="{$detalles_registro[0]['restricciones_alimenticias_cual']}">
-                </div>
-            </div>
-html;
-            }
-        }
+//             if ($detalles_registro[0]['alergia'] == 'vegetariano') {
+//                 $res_alimenticias = <<<html
+//             <div class="col-md-4 col-sm-12">
+//                 <label class="form-label mt-4">Restricciones Alimentarias *</label>
+//                 <div class="form-check">
+//                     <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_1" value="vegetariano" checked>
+//                     <label class="form-check-label" for="res_ali_1">
+//                         Vegetariano
+//                     </label>
+//                 </div>
+//                 <div class="form-check">
+//                     <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_2" value="vegano">
+//                     <label class="form-check-label" for="res_ali_2">
+//                         Vegano
+//                     </label>
+//                 </div>
+//                 <div class="form-check">
+//                     <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_4" value="ninguna" >
+//                     <label class="form-check-label" for="res_ali_4">
+//                         Ninguna
+//                     </label>
+//                 </div>
+//                 <div class="form-check">
+//                     <input class="form-check-input" type="radio" name="restricciones_alimenticias" id="res_ali_5" value="otro" >
+//                     <label class="form-check-label" for="res_ali_5">
+//                         Otro
+//                     </label>
+//                 </div>
+//                 <div class="col-md-12 col-sm-12 restricciones_alimenticias" style="display: none!important;">
+//                     <label class="form-label mt-4">¿Cual?</label>
+//                     <input id="restricciones_alimenticias_cual" name="restricciones_alimenticias_cual" maxlength="45" class="form-control" type="text" placeholder="Escriba su restricción" value="{$detalles_registro[0]['restricciones_alimenticias_cual']}">
+//                 </div>
+//             </div>
+// html;
+//             }
+//         }
 
         $all_ra = AsistentesDao::getAllRegistrosAcceso();
 
@@ -498,8 +498,8 @@ html;
         View::set('detalles_registro', $detalles_registro[0]);
         View::set('header', $this->_contenedor->header($extraHeader));
         View::set('footer', $this->_contenedor->footer($extraFooter));
-        View::set('tabla_vacunacion', $this->getComprobanteVacunacionById($id));
-        View::set('tabla_prueba_covid', $this->getPruebasCovidById($id));
+        // View::set('tabla_vacunacion', $this->getComprobanteVacunacionById($id));
+        // View::set('tabla_prueba_covid', $this->getPruebasCovidById($id));
         View::render("asistentes_detalles");
     }
 
@@ -536,6 +536,35 @@ html;
         //   $url = explode('/', $qrcode );
     }
 
+    public function updateData()
+    {
+        $data = new \stdClass();
+        $data->_nombre = MasterDom::getData('nombre');
+        $data->_segundo_nombre = MasterDom::getData('segundo_nombre');
+        $data->_apellido_paterno = MasterDom::getData('apellido_paterno');
+        $data->_apellido_materno = MasterDom::getData('apellido_materno');
+        $data->_address = MasterDom::getData('address');
+        $data->_pais = MasterDom::getData('pais');
+        $data->_estado = MasterDom::getData('estado');
+        $data->_email = MasterDom::getData('email');
+        $data->_telephone = MasterDom::getData('telephone');
+        // $data->_utilerias_administrador_id = $_SESSION['utilerias_administradores_id'];
+        // var_dump($data);
+
+        $id = AsistentesDao::update($data);
+
+        // var_dump($id);
+        if ($id) {
+            echo "success";
+            // $this->alerta($id,'add');
+            //header('Location: /PickUp');
+        } else {
+            echo "error";
+            // header('Location: /PickUp');
+            //var_dump($id);
+        }
+    }
+
     public function Actualizar()
     {
 
@@ -548,34 +577,38 @@ html;
             $segundo_nombre = $_POST['segundo_nombre'];
             $apellido_paterno = $_POST['apellido_paterno'];
             $apellido_materno = $_POST['apellido_materno'];
-            $fecha_nacimiento = $_POST['fecha_nacimiento'];
+            $address = $_POST['address'];
+            $pais = $_POST['pais'];
+            $estado = $_POST['estado'];
             $email = $_POST['email'];
-            $telefono = $_POST['telefono'];
+            $telephone = $_POST['telephone'];
             // $alergias = $_POST['select_alergico'];
             // $alergias_otro = $_POST['alergias_otro'];
-            $alergia_medicamento = $_POST['confirm_alergia'];
-            if (isset($_POST['alergia_medicamento_cual'])) {
-                $alergia_medicamento_cual = $_POST['alergia_medicamento_cual'];
-            } else {
-                $alergia_medicamento_cual = '';
-            }
-            $alergia_medicamento_cual = $_POST['alergia_medicamento_cual'];
-            $restricciones_alimenticias = $_POST['restricciones_alimenticias'];
-            $restricciones_alimenticias_cual = $_POST['restricciones_alimenticias_cual'];
+            // $alergia_medicamento = $_POST['confirm_alergia'];
+            // if (isset($_POST['alergia_medicamento_cual'])) {
+            //     $alergia_medicamento_cual = $_POST['alergia_medicamento_cual'];
+            // } else {
+            //     $alergia_medicamento_cual = '';
+            // }
+            // $alergia_medicamento_cual = $_POST['alergia_medicamento_cual'];
+            // $restricciones_alimenticias = $_POST['restricciones_alimenticias'];
+            // $restricciones_alimenticias_cual = $_POST['restricciones_alimenticias_cual'];
 
             $documento->_nombre = $nombre;
             $documento->_segundo_nombre = $segundo_nombre;
             $documento->_apellido_paterno = $apellido_paterno;
             $documento->_apellido_materno = $apellido_materno;
-            $documento->_fecha_nacimiento = $fecha_nacimiento;
+            $documento->_address = $address;
+            $documento->_pais = $pais;
+            $documento->_estado = $estado;
             $documento->_email = $email;
-            $documento->_telefono = $telefono;
+            $documento->_telephone = $telephone;
             // $documento->_alergias = $alergias;
             // $documento->_alergias_otro = $alergias_otro;
             // $documento->_alergia_medicamento = $alergia_medicamento;
             // $documento->_alergia_medicamento_cual = $alergia_medicamento_cual;
-            $documento->_restricciones_alimenticias = $restricciones_alimenticias;
-            $documento->_restricciones_alimenticias_cual = $restricciones_alimenticias_cual;
+            // $documento->_restricciones_alimenticias = $restricciones_alimenticias;
+            // $documento->_restricciones_alimenticias_cual = $restricciones_alimenticias_cual;
 
             // var_dump($documento);
             $id = AsistentesDao::update($documento);
@@ -980,7 +1013,7 @@ html;
             $html .= <<<html
             <tr>
                 <td>
-                    <div class="d-flex px-3 py-1">
+                    <div class="d-flex px-1 py-1">
                         <div>
                             <img src="{$img_user}" class="avatar me-3" alt="image">
                         </div>
@@ -988,21 +1021,75 @@ html;
                     
                             <a href="/Asistentes/Detalles/{$value['clave']}" target="_blank">
                                 <h6 class="mb-0 text-sm text-move text-black">
-                                    <span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} {$value['segundo_nombre']} {$value['apellido_paterno']} {$value['apellido_materno']} $estatus
+                                    <span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} {$value['segundo_nombre']} {$value['apellido_paterno']} {$value['apellido_materno']}
                                     </h6>
                                 </a>
                             <div class="d-flex flex-column justify-content-center">
-                                <u><a  href="mailto:{$value['email']}"><h6 class="mb-0 text-sm text-black"><span class="fa fa-mail-bulk" style="font-size: 13px"></span> {$value['usuario']}</h6></a></u>
-                                <u><a target="_blank" href="https://api.whatsapp.com/send?phone=52{$value['telefono']}&text=Buen%20d%C3%ADa,%20te%20contacto%20de%20parte%20del%20Equipo%20Grupo%20LAHE%20%F0%9F%98%80" target="_blank"><p class="text-sm text-morado-musa font-weight-bold text-secondary mb-0"><span class="fa fa-whatsapp" style="font-size: 13px; color:green;"></span> {$value['telefono']}</p></a></u>
+                                <u><a  href="mailto:{$value['email']}"><h6 class="mb-0 text-sm text-move text-black"><span class="fa fa-mail-bulk" style="font-size: 13px"></span> {$value['usuario']}</h6></a></u>
+                                <u><a target="_blank" href="https://api.whatsapp.com/send?phone=52{$value['telefono']}&text=Buen%20d%C3%ADa,%20te%20contacto%20de%20parte%20del%20Equipo%20Grupo%20LAHE%20%F0%9F%98%80" target="_blank"><p class="text-sm text-black text-move font-weight-bold text-secondary mb-0"><span class="fa fa-whatsapp" style="font-size: 13px; color:green;"></span> {$value['telefono']}</p></a></u>
+                                <h6 class="mb-0 text-sm text-black"><span class="fa fa-flag" style="font-size: 13px"></span> {$value['pais']}</h6>
+                                <h6 class="mb-0 text-sm text-black"><span class="fa fa-flag" style="font-size: 13px"></span> {$value['estado']}</h6>
+                                <h6 class="mb-0 text-sm text-black"><span class="fas fa-home" style="font-size: 13px"></span> {$value['address']}</h6>
+                                <h6 class="mb-0 text-sm text-black"><span class="fa fa-money-check" style="font-size: 13px"></span> {$value['scholarship']}</h6>
                             </div>
                             <!--<p class="text-sm mb-0"><span class="fa fa-solid fa-id-card" style="font-size: 13px;"></span> Número de empleado:  <span style="text-decoration: underline;">{$value['numero_empleado']}</span></p>-->
-                            <hr>
+
                             <!--<p class="text-sm font-weight-bold mb-0 "><span class="fa fas fa-user-tie" style="font-size: 13px;"></span><b> Ejecutivo Asignado a Línea: </b><br><span class="fas fa-suitcase"> </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$value['color']}; color:white "><strong>{$value['nombre_linea_ejecutivo']}</strong></span></p>-->
                             
                         </div>
                     </div>
                 </td>
-         
+
+                <td>
+                    <div class="d-flex px-1 py-1">
+                        <div class="d-flex flex-column justify-content-center text-black">
+                            <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm text-black"><span class="fas fa-building" style="font-size: 13px"></span> {$value['organization']} </h6>
+                            <h6 class="mb-0 text-sm text-black"><span class="fa fa-user-md" style="font-size: 13px"></span> {$value['position_organization']} </h6>
+                            <h6 class="mb-0 text-sm text-black"><span class="fa fa-money-check" style="font-size: 13px"></span> POSTAL CODE:<br> {$value['organization_postal_code']} </h6>
+                            <h6 class="mb-0 text-sm text-black"><span class="fa fa-flag" style="font-size: 13px"></span> {$value['pais_org']} </h6>
+                            </div>
+                            <!--<p class="text-sm mb-0"><span class="fa fa-solid fa-id-card" style="font-size: 13px;"></span> Número de empleado:  <span style="text-decoration: underline;">{$value['numero_empleado']}</span></p>-->
+
+                            <!--<p class="text-sm font-weight-bold mb-0 "><span class="fa fas fa-user-tie" style="font-size: 13px;"></span><b> Ejecutivo Asignado a Línea: </b><br><span class="fas fa-suitcase"> </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$value['color']}; color:white "><strong>{$value['nombre_linea_ejecutivo']}</strong></span></p>-->
+                            
+                        </div>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="d-flex px-1 py-1">
+                        <div class="d-flex flex-column justify-content-center text-black">
+                            <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm text-black"><span class="fas fa-building" style="font-size: 13px"></span> {$value['business_name_iva']} </h6>
+                            <h6 class="mb-0 text-sm text-black"><span class="fa fa-money-check" style="font-size: 13px"></span> {$value['code_iva']} </h6>
+                            <h6 class="mb-0 text-sm text-black"><span class="fa fa-money-check" style="font-size: 13px"></span>PAYMENT METHOD: <br> {$value['payment_method_iva']} </h6>
+                            <h6 class="mb-0 text-sm text-black"><span class="fa fa-user-md" style="font-size: 13px"></span>POSTAL IVA:<br>{$value['postal_code_iva']} </h6>
+                            </div>
+                            <!--<p class="text-sm mb-0"><span class="fa fa-solid fa-id-card" style="font-size: 13px;"></span> Número de empleado:  <span style="text-decoration: underline;">{$value['numero_empleado']}</span></p>-->
+
+                            <!--<p class="text-sm font-weight-bold mb-0 "><span class="fa fas fa-user-tie" style="font-size: 13px;"></span><b> Ejecutivo Asignado a Línea: </b><br><span class="fas fa-suitcase"> </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$value['color']}; color:white "><strong>{$value['nombre_linea_ejecutivo']}</strong></span></p>-->
+                            
+                        </div>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="d-flex px-1 py-1">
+                        <div class="d-flex flex-column justify-content-center text-black">
+                            <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm text-black"><span class="fa fa-calendar-alt" style="font-size: 13px"></span> PAY DATE : <br> {$value['date']} </h6>
+                            <h6 class="mb-0 text-sm text-black"><span class="fa fa-money-check" style="font-size: 13px"></span>PAYMENT METHOD: <br> {$value['method_pay']} </h6>
+                            <h6 class="mb-0 text-sm text-black"><span class="fas fa-dollar-sign" style="font-size: 13px"></span> {$value['amout_due']} DLRS </h6>
+                            </div>
+                            <!--<p class="text-sm mb-0"><span class="fa fa-solid fa-id-card" style="font-size: 13px;"></span> Número de empleado:  <span style="text-decoration: underline;">{$value['numero_empleado']}</span></p>-->
+
+                            <!--<p class="text-sm font-weight-bold mb-0 "><span class="fa fas fa-user-tie" style="font-size: 13px;"></span><b> Ejecutivo Asignado a Línea: </b><br><span class="fas fa-suitcase"> </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$value['color']}; color:white "><strong>{$value['nombre_linea_ejecutivo']}</strong></span></p>-->
+                            
+                        </div>
+                    </div>
+                </td>
+
                 <!-- QUITAR OTROS DATOS<td style="text-align:left; vertical-align:middle;"> 
                     
                     <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-business-time" style="font-size: 13px;"></span><b> Bu: </b>{$value['nombre_bu']}</p>

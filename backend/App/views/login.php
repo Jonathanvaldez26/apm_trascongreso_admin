@@ -18,7 +18,7 @@
             }
 
             .morado-musa-text{
-                color: rgb(1 127 94);
+                color: #1B8586;
             }
 
             .bg-musa-morado{
@@ -61,7 +61,7 @@
                                             </div> -->
                                         </div>
                                         <div class="text-center">
-                                            <button type="button" id="btnEntrar" class="btn bg-gradient-pink morado-musa-text w-100 mt-4 mb-0">ENTRAR</button>
+                                            <button type="button" id="btnEntrar" class="btn bg-gradient-pink text-white w-100 mt-4 mb-0">ENTRAR</button>
                                         </div>
                                     </form>
                                 </div>

@@ -114,7 +114,8 @@ sql;
     public static function getUsuarioByName($nombre){
       $mysqli = Database::getInstance();
       $query=<<<sql
-      SELECT * FROM registros_acceso WHERE nombre LIKE '$nombre%'
+      SELECT CONCAT (name_user, ' ',surname, ' ',second_surname) AS nombre FROM `utilerias_administradores` 
+      WHERE nombre LIKE '$nombre%'
 sql;
       return $mysqli->queryAll($query);
         
@@ -123,7 +124,7 @@ sql;
     public static function getAllRegistrosAcceso(){
       $mysqli = Database::getInstance();
       $query=<<<sql
-      SELECT * FROM registros_acceso
+      SELECT * FROM utilerias_administradores
 sql;
       return $mysqli->queryAll($query);
         
@@ -140,10 +141,12 @@ sql;
     public static function getByClaveRA($clave){
       $mysqli = Database::getInstance();
       $query=<<<sql
-      SELECT ua.utilerias_asistentes_id, ra.id_registro_acceso, ua.usuario, ua.contrasena, ua.politica, ua.status FROM utilerias_asistentes ua
-      INNER JOIN registros_acceso ra
-      ON ra.id_registro_acceso = ua.id_registro_acceso
-      WHERE ra.clave = '$clave'
+      SELECT ra.*, ra.name_user as nombre, ra.middle_name as segundo_nombre, ra.surname as apellido_paterno, ra.second_surname as apellido_materno, ra.user_id AS clave_ticket, pa.pais, es.estado, pao.pais as pais_org, CONCAT(ra.user_id,'.png') AS qr  
+      FROM utilerias_administradores ra
+      INNER JOIN paises pa ON (ra.id_country = pa.id_pais)
+      INNER JOIN paises pao ON (ra.organization_country = pao.id_pais)
+      INNER JOIN estados es ON (ra.id_state = es.id_estado)
+      WHERE ra.user_id = '$clave'
 sql;
       return $mysqli->queryAll($query);
   }
@@ -151,10 +154,8 @@ sql;
     public static function getRegistroAccesoById($id){
       $mysqli = Database::getInstance();
       $query=<<<sql
-      SELECT ra.*, ra.ticket_virtual AS clave_ticket, CONCAT(ra.ticket_virtual,'.png') AS qr  FROM registros_acceso ra
-      INNER JOIN utilerias_asistentes ua
-      ON ra.id_registro_acceso = ua.id_registro_acceso
-      WHERE utilerias_asistentes_id = $id
+      SELECT ra.*, ra.user_id AS clave_ticket, CONCAT(ra.user_id,'.png') AS qr  FROM utilerias_administradores ra
+      WHERE ra.user_id = $id
 sql;
       return $mysqli->queryAll($query);
   }
@@ -162,10 +163,9 @@ sql;
   public static function getRegistroAccesoByClaveRA($clave){
     $mysqli = Database::getInstance();
     $query=<<<sql
-    SELECT ra.*, ra.ticket_virtual AS clave_ticket, CONCAT(ra.ticket_virtual,'.png') AS qr FROM registros_acceso ra
-    LEFT JOIN utilerias_asistentes ua
-    ON ra.id_registro_acceso = ua.id_registro_acceso
-    WHERE ra.clave = '$clave'
+    SELECT ra.*, ra.name_user as nombre, ra.middle_name as segundo_nombre, ra.surname as apellido_paterno, ra.second_surname as apellido_materno, ra.user_id AS clave_ticket, CONCAT(ra.user_id,'.png') AS qr  
+    FROM utilerias_administradores ra
+    WHERE ra.user_id = '$clave'
 sql;
     return $mysqli->queryAll($query);
 }
@@ -208,10 +208,12 @@ sql;
     public static function getTotalByClaveRA($clave){
       $mysqli = Database::getInstance();
       $query=<<<sql
-      SELECT * FROM utilerias_asistentes ua 
-      INNER JOIN registros_acceso ra 
-      ON ua.id_registro_acceso = ra.id_registro_acceso 
-      WHERE ra.clave = '$clave'
+      SELECT ra.*, ra.name_user as nombre, ra.middle_name as segundo_nombre, ra.surname as apellido_paterno, ra.second_surname as apellido_materno, ra.user_id AS clave_ticket, pa.pais, es.estado, pao.pais as pais_org, CONCAT(ra.user_id,'.png') AS qr  
+      FROM utilerias_administradores ra
+      INNER JOIN paises pa ON (ra.id_country = pa.id_pais)
+      INNER JOIN paises pao ON (ra.organization_country = pao.id_pais)
+      INNER JOIN estados es ON (ra.id_state = es.id_estado)
+      WHERE ra.user_id = '$clave'
 sql;
       return $mysqli->queryAll($query);
   }
@@ -241,7 +243,15 @@ sql;
     public static function update($data){
       $mysqli = Database::getInstance(true);
       $query=<<<sql
-      UPDATE registros_acceso SET nombre = :nombre, segundo_nombre = :segundo_nombre, apellido_materno = :apellido_materno, apellido_paterno = :apellido_paterno, fecha_nacimiento = :fecha_nacimiento, telefono = :telefono, alergia = :restricciones_alimenticias, alergia_cual = :restricciones_alimenticias_cual WHERE email = :email;
+      UPDATE utilerias_administradores as ua
+      INNER JOIN paises pa ON (ua.id_country = pa.id_pais)
+      INNER JOIN paises pao ON (ua.organization_country = pao.id_pais)
+      INNER JOIN estados es ON (ua.id_state = es.id_estado)
+      SET ua.name_user = :nombre, ua.middle_name = :segundo_nombre, 
+      ua.second_surname = :apellido_materno, ua.surname = :apellido_paterno, 
+      ua.scholarship = :scholarship, ua.address = :address, ua.telephone = :telephone, 
+      pa.pais = :pais, es.estado = :estado 
+      WHERE ua.usuario = :email;
 sql;
       $parametros = array(
         
@@ -249,14 +259,17 @@ sql;
         ':segundo_nombre'=>$data->_segundo_nombre,
         ':apellido_paterno'=>$data->_apellido_paterno,
         ':apellido_materno'=>$data->_apellido_materno,
-        ':fecha_nacimiento'=>$data->_fecha_nacimiento,
-        ':telefono'=>$data->_telefono,
+        ':scholarship'=>$data->_scholarship,
+        ':telephone'=>$data->_telephone,
+        ':address'=>$data->_address,
+        ':pais'=>$data->_pais,
+        ':estado'=>$data->_estado,
         // ':alergias'=>$data->_alergias,
         // ':alergias_otro'=>$data->_alergias_otro,
         // ':alergia_medicamento'=>$data->_alergia_medicamento,
         // ':alergia_medicamento_cual'=>$data->_alergia_medicamento_cual,
-        ':restricciones_alimenticias'=>$data->_restricciones_alimenticias,
-        ':restricciones_alimenticias_cual'=>$data->_restricciones_alimenticias_cual,
+        // ':restricciones_alimenticias'=>$data->_restricciones_alimenticias,
+        // ':restricciones_alimenticias_cual'=>$data->_restricciones_alimenticias_cual,
         ':email'=>$data->_email
         
       );

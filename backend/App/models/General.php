@@ -27,11 +27,12 @@ sql;
   public static function getAllColaboradoresByName($search){
     $mysqli = Database::getInstance();
     $query =<<<sql
-    SELECT ra.id_registro_acceso, ua.utilerias_asistentes_id, ua.status, ra.telefono, ua.usuario, ra.ticket_virtual, ra.nombre, ra.segundo_nombre, ra.apellido_paterno, ra.apellido_materno, ra.img, ra.genero, ra.alergia, ra.alergia_cual, ra.especialidad, ra.clave, lp.nombre as nombre_linea
-    FROM registros_acceso ra
-    LEFT JOIN utilerias_asistentes ua ON (ra.id_registro_acceso = ua.id_registro_acceso)
-    INNER JOIN linea_principal lp ON (ra.especialidad = lp.id_linea_principal)
-    AND CONCAT_WS(ra.email,ra.nombre,ra.segundo_nombre,ra.apellido_materno,ra.apellido_paterno,ra.ticket_virtual) LIKE '%$search%';
+    SELECT ra.*, ra.user_id as id_registro_acceso,ra.usuario as email , ra.telephone as telefono, ra.usuario as usuario, ra.user_id as ticket_virtual, ra.name_user as nombre, ra.middle_name as segundo_nombre, ra.surname as apellido_paterno, ra.second_surname as apellido_materno, ra.img, ra.user_id as clave, ra.organization, pa.pais, es.estado, pao.pais as pais_org
+    FROM utilerias_administradores ra
+    INNER JOIN paises pa ON (ra.id_country = pa.id_pais)
+    INNER JOIN paises pao ON (ra.organization_country = pao.id_pais)
+    INNER JOIN estados es ON (ra.id_state = es.id_estado)
+    AND CONCAT_WS(ra.usuario,ra.name_user,ra.middle_name,ra.surname,ra.second_surname,ra.user_id) LIKE '%$search%';
 sql;
 
 // $query =<<<sql
