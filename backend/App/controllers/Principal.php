@@ -46,7 +46,7 @@ html;
 
       $all_ra = AsistentesDao::getAllRegistrosAcceso();
     //   $this->setTicketVirtual($all_ra);
-    //   $this->setClaveRA($all_ra);
+      $this->setClaveRA($all_ra);
       
 
       View::set('permisoGlobalHidden',$permisoGlobalHidden);
@@ -84,8 +84,8 @@ html;
             if ($value['clave'] == '' || $value['clave'] == NULL || $value['clave'] == 'NULL' || $value['clave'] == ' ') {
                 $clave_10 = $this->generateRandomString(10);
                 // var_dump($clave_10);
-                AsistentesDao::updateClaveRA($value['id_registro_acceso'], $clave_10);
-                $this->generaterQr($clave_10);
+                AsistentesDao::updateClaveRA($value['user_id'], $clave_10);
+                // $this->generaterQr($clave_10);
             }
             
         }

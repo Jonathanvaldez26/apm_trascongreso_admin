@@ -28,8 +28,8 @@ sql;
     $mysqli = Database::getInstance();
     $query =<<<sql
     SELECT ra.*, ra.user_id as id_registro_acceso,ra.usuario as email , ra.telephone as telefono, ra.usuario 
-    as usuario, ra.user_id as ticket_virtual, ra.name_user as nombre, ra.middle_name as segundo_nombre, 
-    ra.surname as apellido_paterno, ra.second_surname as apellido_materno, ra.img, ra.user_id as clave, 
+    as usuario, ra.clave as ticket_virtual, ra.name_user as nombre, ra.middle_name as segundo_nombre, 
+    ra.surname as apellido_paterno, ra.second_surname as apellido_materno, ra.img, ra.clave, 
     ra.organization, pa.pais, es.estado, pao.pais as pais_org
     FROM utilerias_administradores ra
     INNER JOIN paises pa ON (ra.id_country = pa.id_pais)

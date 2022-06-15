@@ -163,9 +163,9 @@ sql;
   public static function getRegistroAccesoByClaveRA($clave){
     $mysqli = Database::getInstance();
     $query=<<<sql
-    SELECT ra.*, ra.name_user as nombre, ra.middle_name as segundo_nombre, ra.surname as apellido_paterno, ra.second_surname as apellido_materno, ra.user_id AS clave_ticket, CONCAT(ra.user_id,'.png') AS qr  
+    SELECT ra.*, ra.name_user as nombre, ra.middle_name as segundo_nombre, ra.surname as apellido_paterno, ra.second_surname as apellido_materno, ra.clave AS clave_ticket, CONCAT(ra.clave,'.png') AS qr, ra.clave  
     FROM utilerias_administradores ra
-    WHERE ra.user_id = '$clave'
+    WHERE ra.clave = '$clave'
 sql;
     return $mysqli->queryAll($query);
 }
@@ -295,7 +295,7 @@ sql;
     public static function updateClaveRA($id,$clave){
       $mysqli = Database::getInstance(true);
       $query=<<<sql
-      UPDATE registros_acceso SET clave = '$clave' WHERE id_registro_acceso = '$id'
+      UPDATE utilerias_administradores SET clave = '$clave' WHERE user_id = '$id'
 sql;
 
       return $mysqli->update($query);
