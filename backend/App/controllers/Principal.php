@@ -45,8 +45,8 @@ html;
       $utileriasHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_utilerias", 1)==0)? "style=\"display:none;\"" : "";  
 
       $all_ra = AsistentesDao::getAllRegistrosAcceso();
-      $this->setTicketVirtual($all_ra);
-      $this->setClaveRA($all_ra);
+    //   $this->setTicketVirtual($all_ra);
+    //   $this->setClaveRA($all_ra);
       
 
       View::set('permisoGlobalHidden',$permisoGlobalHidden);
