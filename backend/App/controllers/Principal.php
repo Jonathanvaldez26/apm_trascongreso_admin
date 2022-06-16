@@ -47,7 +47,6 @@ html;
       $all_ra = AsistentesDao::getAllRegistrosAcceso();
     //   $this->setTicketVirtual($all_ra);
       $this->setClaveRA($all_ra);
-      
 
       View::set('permisoGlobalHidden',$permisoGlobalHidden);
       View::set('asistentesHidden',$asistentesHidden);

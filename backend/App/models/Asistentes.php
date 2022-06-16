@@ -130,6 +130,27 @@ sql;
         
     }
 
+    public static function getUserReferenceNull(){
+      $mysqli = Database::getInstance();
+      $query=<<<sql
+      SELECT * FROM utilerias_administradores WHERE reference is null
+sql;
+      return $mysqli->queryAll($query);
+        
+    }
+
+    public static function getUserByClaveCompra($clave){
+      $mysqli = Database::getInstance();
+      $query=<<<sql
+      SELECT ua.user_id,ua.name_user, ua.middle_name, ua.surname, ua.second_surname,ua.usuario, ua.telephone, pp.clave
+      FROM utilerias_administradores ua
+      INNER JOIN pendiente_pago pp ON(ua.user_id = pp.user_id)
+      WHERE pp.clave = '$clave' GROUP BY pp.user_id
+sql;
+      return $mysqli->queryAll($query);
+        
+    }
+
     public static function getById($id){
         $mysqli = Database::getInstance();
         $query=<<<sql
