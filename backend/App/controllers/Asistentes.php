@@ -846,14 +846,9 @@ html;
                             <div class="d-flex flex-column justify-content-center">
                                 <u><a  href="mailto:{$value['email']}"><h6 class="mb-0 text-sm text-move text-black"><span class="fa fa-mail-bulk" style="font-size: 13px"></span> {$value['usuario']}</h6></a></u>
                                 <u><a target="_blank" href="https://api.whatsapp.com/send?phone=52{$value['telefono']}&text=Buen%20d%C3%ADa,%20te%20contacto%20de%20parte%20del%20Equipo%20Grupo%20LAHE%20%F0%9F%98%80" target="_blank"><p class="text-sm text-black text-move font-weight-bold text-secondary mb-0"><span class="fa fa-whatsapp" style="font-size: 13px; color:green;"></span> {$value['telefono']}</p></a></u>
-                                <h6 class="mb-0 text-sm text-black"><span class="fa fa-flag" style="font-size: 13px"></span> {$value['pais']}, {$value['estado']}, {$value['estado']}</h6>
-                                <h6 class="mb-0 text-sm text-black"><span class="fas fa-home" style="font-size: 13px"></span> {$value['address']}</h6>
+                                <h6 class="mb-0 text-sm text-black"><span class="fa fa-flag" style="font-size: 13px"></span> {$value['pais']}, {$value['estado']}, {$value['estado']}, {$value['address']}</h6>
                                 <h6 class="mb-0 text-sm text-black"><span class="fa fa-money-check" style="font-size: 13px"></span> {$value['scholarship']}</h6>
                             </div>
-                            <!--<p class="text-sm mb-0"><span class="fa fa-solid fa-id-card" style="font-size: 13px;"></span> Número de empleado:  <span style="text-decoration: underline;">{$value['numero_empleado']}</span></p>-->
-
-                            <!--<p class="text-sm font-weight-bold mb-0 "><span class="fa fas fa-user-tie" style="font-size: 13px;"></span><b> Ejecutivo Asignado a Línea: </b><br><span class="fas fa-suitcase"> </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$value['color']}; color:white "><strong>{$value['nombre_linea_ejecutivo']}</strong></span></p>-->
-                            
                         </div>
                     </div>
                 </td>
