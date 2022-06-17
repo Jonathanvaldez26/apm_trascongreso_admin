@@ -273,6 +273,20 @@ html;
         }
     }
 
+    public function removePendientesPago(){
+        $id_producto = $_POST['id_producto'];
+        $user_id = $_POST['user_id'];
+        // echo $_POST['cantidad'];
+
+        $delete = CajaDao::deletePendientesProductosByUser($user_id,$id_producto);
+
+        if($delete){
+            echo "success";
+        }else{
+            echo "fail";
+        }
+    }
+
     public function mostrarLista($clave)
     {
         $lista_registrados = RegistroAsistenciaDao::getRegistrosAsistenciasByCode($clave);

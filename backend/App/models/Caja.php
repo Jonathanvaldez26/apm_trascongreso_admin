@@ -54,7 +54,7 @@ sql;
         $mysqli = Database::getInstance();
         $query = <<<sql
         INSERT INTO asigna_producto (user_id,id_producto,fecha_asignacion,status) VALUES(:user_id,:id_producto,NOW(),1)                        
-  sql;
+sql;
   
         $parametros = array(
             ':user_id' => $data->_user_id,
@@ -65,6 +65,14 @@ sql;
   
         return $id;
           
+      }
+
+      public static function deletePendientesProductosByUser($user_id,$id_producto){
+        $mysqli = Database::getInstance(true);
+        $query=<<<sql
+        DELETE FROM pendiente_pago WHERE id_producto = $id_producto AND user_id = $user_id
+sql;
+          return $mysqli->delete($query);
       }
 
       public static function getAsignaProductoByIdProductAndUser($user_id,$id_producto){
