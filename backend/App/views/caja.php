@@ -93,6 +93,7 @@
                                                         <div class="row m-2">
                                                             <h6>Correo: <span class="text-thin" id="correo_user"> _____</span></h6>
                                                             <h6>Teléfono: <span class="text-thin" id="telefono_user"> 00 0000 0000</span></h6>
+                                                            <input type="hidden" id="user_id" name="user_id">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -106,23 +107,58 @@
                                                                 </button>
                                                             </div>
                                                             <div class="card p-4" style="overflow-y: auto;">
-                                                            <table id="lista_productos" class="align-items-center mb-0 table table-borderless dataTable no-footer" >
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Producto</th>
-                                                                        <th>Cantidad</th>
-                                                                        <th>Precio Unitario</th>
-                                                                        <th>Total</th>
-                                                                    </tr>
-                                                                </thead>
+                                                                <table id="lista_productos" class="align-items-center mb-0 table table-borderless dataTable no-footer">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Producto</th>
+                                                                            <th>Cantidad</th>
+                                                                            <th>Precio Unitario USD</th>
+                                                                            <th>Precio Unitario pesos $</th>
+                                                                            <th>Total USD</th>
+                                                                            <th>Total $</th>
+                                                                        </tr>
+                                                                    </thead>
 
-                                                                <tbody>
-                                                                    <?php echo $tabla; ?>
+                                                                    <tbody>
+                                                                        <?php echo $tabla; ?>
 
-                                                                </tbody>
+                                                                    </tbody>
 
-                                                            </table>
+                                                                </table>
+
                                                             </div>
+
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <div>
+                                                                        <span>Total USD: <span id="total_usd"></span></span>
+
+                                                                    </div>
+                                                                    <div>
+
+                                                                        <span>Total $ pesos mexicanos: <span id="total_pesos"></span></span>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <div style="display:flex; justify-content:end;">
+                                                                        <button id="btn_pagar" class="btn btn-primary" style="display: none;">Pagar</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -158,9 +194,13 @@
                                 </tbody>
 
                             </table>
+
                         </div>
+
+
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -370,10 +410,62 @@
                 })
             }
 
+            $("#btn_pagar").on("click", function() {
+                // alert("funciona");
+                var user_id = $("#user_id").val();
+
+                console.log(user_id);
+
+                Swal.fire({
+                    title: 'Se va a procesar el pago.',
+                    text: "",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Cancelar',
+                    confirmButtonText: 'Pagar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: "/Caja/setPay",
+                            type: "POST",
+                            data: {
+                                user_id
+                            },
+                            // dataType: 'json',
+                            beforeSend: function() {
+                                console.log("Procesando....");
+                            },
+                            success: function(respuesta) {
+                                console.log(respuesta);
+
+                                if(respuesta == 'success'){
+                                    Swal.fire('Pago generado correctamente.','','success').then(()=>{
+                                        setTimeout(function(){
+                                        location.reload();
+                                    },1000);
+                                    });
+                                   
+                                }
+                            },
+                            error: function(respuesta) {
+
+                            }
+
+                        });
+                    }
+
+                })
+                // var total_usd = $("#total_usd").text();
+                // alert(total_usd);
+
+            });
+
 
 
             $("#codigo_qr_venta").on('change', function() {
-                var table = '';                
+                var table = '';
                 codigo = $('#codigo_qr_venta').val();
                 console.log(codigo);
 
@@ -394,12 +486,17 @@
                         console.log("Procesando....");
                     },
                     success: function(respuesta) {
-                       
-                        // console.log(respuesta);
+                        var total_usd = 0;
+                        var total_pesos = 0;
+
+                        console.log(respuesta);
                         if (respuesta.status == "success") {
+                            $("#user_id").val(respuesta.datos_user.user_id);
                             $("#nombre_completo").html(respuesta.nombre_completo);
                             $("#correo_user").html(respuesta.datos_user.usuario);
                             $("#telefono_user").html(respuesta.datos_user.telephone);
+                            $("#btn_pagar").show();
+
 
                             $.each(respuesta.productos, function(key, value) {
                                 var precio = 0;
@@ -408,26 +505,32 @@
                                 // console.log(value.es_servicio);
                                 // console.log(value.es_curso);
 
-                                if(value.es_congreso == 1){
+                                if (value.es_congreso == 1) {
                                     precio = value.amout_due;
-                                }else if(value.es_servicio == 1){
+                                } else if (value.es_servicio == 1) {
                                     precio = value.precio_publico;
-                                }else if(value.es_curso == 1){
+                                } else if (value.es_curso == 1) {
                                     precio = value.precio_publico;
                                 }
 
                                 table += `<tr>
                                             <td>${value.nombre}</td>
                                             <td>${value.cantidad}</td>
-                                            <td>${precio}</td>
-                                            <td>${precio * value.cantidad}</td>
+                                            <td>${precio} USD</td>
+                                            <td>$ ${precio * respuesta.tipo_cambio}</td>
+                                            <td>${precio * value.cantidad} USD</td>
+                                            <td>$ ${(precio * value.cantidad) * respuesta.tipo_cambio}</td>
                                             </tr>`;
+
+                                total_usd += precio * value.cantidad;
+                                total_pesos += (precio * value.cantidad) * respuesta.tipo_cambio;
+
                             });
 
+                            $("#total_usd").html(total_usd);
+                            $("#total_pesos").html(total_pesos);
+
                             $("#lista_productos").find('tbody').html(table);
-
-                            
-
                         } else {
                             console.log("fallo");
                         }
