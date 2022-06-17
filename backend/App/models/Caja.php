@@ -17,6 +17,18 @@ sql;
         return $mysqli->queryAll($query);
     }
 
+    public static function getProductosPendientesPagoAll($user_id){
+        $mysqli = Database::getInstance();
+        $query=<<<sql
+        SELECT pp.*,'' as cantidad ,p.nombre, p.es_curso,p.es_servicio,p.es_congreso,p.precio_publico,p.tipo_moneda,ua.amout_due
+        FROM pendiente_pago pp
+        INNER JOIN productos p ON (pp.id_producto = p.id_producto)
+        INNER JOIN utilerias_administradores ua ON(pp.user_id = ua.user_id)
+        WHERE pp.user_id = $user_id AND pp.status = 0
+sql;
+        return $mysqli->queryAll($query);
+      }
+
     public static function getProductosPendientesPagoTicketSitio($user_id){
         $mysqli = Database::getInstance();
         $query=<<<sql
@@ -29,12 +41,54 @@ sql;
         return $mysqli->queryAll($query);
       }
 
+      public static function updateStatusPendientePago($id){
+        $mysqli = Database::getInstance();
+        $query=<<<sql
+        UPDATE pendiente_pago SET status = 1 WHERE id_pendiente_pago = $id
+sql;
+        return $mysqli->update($query);
+      }
+
+      public static function insertAsignaProducto($data){
+
+        $mysqli = Database::getInstance();
+        $query = <<<sql
+        INSERT INTO asigna_producto (user_id,id_producto,fecha_asignacion,status) VALUES(:user_id,:id_producto,NOW(),1)                        
+  sql;
+  
+        $parametros = array(
+            ':user_id' => $data->_user_id,
+            ':id_producto' => $data->_id_producto
+        );
+  
+        $id = $mysqli->insert($query, $parametros);
+  
+        return $id;
+          
+      }
+
+      public static function getAsignaProductoByIdProductAndUser($user_id,$id_producto){
+        $mysqli = Database::getInstance();
+        $query=<<<sql
+        SELECT * FROM asigna_producto WHERE user_id = $user_id and id_producto = $id_producto;
+sql;
+        return $mysqli->queryOne($query);
+      }
+
       public static function getCountProductos($user_id,$id_producto){
         $mysqli = Database::getInstance();
         $query=<<<sql
         SELECT count(*) as numero_productos FROM pendiente_pago WHERE user_id = $user_id and id_producto = $id_producto;
 sql;
         return $mysqli->queryAll($query);
+      }
+
+      public static function getTipoCambio(){
+        $mysqli = Database::getInstance();
+        $query=<<<sql
+        SELECT * FROM tipo_cambio WHERE id_tipo_cambio = 1
+sql;
+        return $mysqli->queryOne($query);
       }
 
     public static function getByIdDirectivos($id){

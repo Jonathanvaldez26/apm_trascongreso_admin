@@ -145,6 +145,8 @@ html;
             }
         }
 
+      
+
 
         // if ($flag == true) {
             // View::set('tabla', $tabla);
@@ -172,12 +174,18 @@ html;
 
         $datos_user = AsistentesDao::getUserByClaveCompra($codigo)[0];
         $user_id = $datos_user['user_id']; 
+
         
         
         $nombre_completo = $datos_user['name_user'] . " " . $datos_user['middle_name'] . " " . $datos_user['surname'] . " " . $datos_user['second_surname'];
 
 
         $productos = CajaDao::getProductosPendientesPagoTicketSitio($user_id);
+
+        $tipo_cambio = CajaDao::getTipoCambio()['tipo_cambio'];
+
+      
+       
 
         foreach($productos as $key => $value){            
             
@@ -196,13 +204,6 @@ html;
             $productos[$key]['cantidad'] = $total_productos['numero_productos'];
          
             // array_push($productos[$key],["cantidad" => $total_productos['numero_productos']]);
-            // array_push($productos[$key],$value['cantidad'] = $total_productos['numero_productos']);
-            
-
-            // $count_productos = $total_productos['numero_productos'];
-
-            // array_push($total,$precio);
-            // array_push($total,($precio * $count_productos));
 
 
         }
@@ -214,6 +215,7 @@ html;
                 "nombre_completo" => $nombre_completo,
                 "datos_user" => $datos_user,
                 "productos" => $productos,
+                "tipo_cambio" => $tipo_cambio
                 
             ];
         }else{
@@ -227,6 +229,48 @@ html;
         echo json_encode($data);
         
         
+    }
+
+
+    public function setPay(){
+        $user_id = $_POST['user_id'];
+
+        $productos = CajaDao::getProductosPendientesPagoAll($user_id);
+        $flag = 0;
+
+
+        foreach($productos as $key => $value){           
+
+            $updateStatus = CajaDao::updateStatusPendientePago($value['id_pendiente_pago']);
+
+            if($updateStatus){                
+
+                
+                $getProducto = CajaDao::getAsignaProductoByIdProductAndUser($user_id,$value['id_producto']);
+
+                if(!$getProducto){
+                    
+                    $data = new \stdClass();
+                    $data->_user_id = $user_id;
+                    $data->_id_producto = $value['id_producto'];              
+                    
+
+                    $insertAsiganProducto = CajaDao::insertAsignaProducto($data);
+
+                    if($insertAsiganProducto){
+                        $flag = 1;
+                    }
+                }                
+                 
+            }
+
+        }
+
+        if($flag == 1){
+            echo "success";
+        }else{
+            echo "fail";
+        }
     }
 
     public function mostrarLista($clave)
