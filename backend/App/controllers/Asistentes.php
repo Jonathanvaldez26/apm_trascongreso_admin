@@ -712,17 +712,19 @@ html;
             $linea = '';
 
 
+
             if($value['scholarship'] != '')
             {
                 $color = '#149777';
-                $linea = 'Becado';
+                $linea = 'Becado'.' - '.$value['scholarship'];
+
 
                 foreach (GeneralDao::getBecas($value['scholarship']) as $key => $value_beca) {
 
                     if($value_beca['nombrecompleto'] != '')
                     {
                         $industria .= <<<html
-                    <h6 class="mb-0 text-sm text-black"><span class="fas fa-building" style="font-size: 13px"></span> {$value_beca['nombrecompleto']} </h6>
+                    <h6 class="mb-0 text-sm text-black"><span class="fas fa-building" style="font-size: 13px"></span> Becado por: {$value_beca['nombrecompleto']} </h6>
 html;
                     }
                     else
@@ -752,7 +754,7 @@ html;
                     
                             <a href="/Asistentes/Detalles/{$value['clave']}" target="_blank">
                                 <h6 class="mb-0 text-sm text-move text-black">
-                                    <span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} {$value['segundo_nombre']} {$value['apellido_paterno']} {$value['apellido_materno']} </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$color}; color:white "><strong>{$linea}</strong></span>
+                                    <span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} {$value['segundo_nombre']} {$value['apellido_paterno']} {$value['apellido_materno']} </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$color}; color:white "><strong>{$linea} - </strong></span>
                                     {$industria}
                                
                                 </h6>
