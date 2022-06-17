@@ -706,46 +706,7 @@ html;
 
         $html = "";
         foreach (GeneralDao::getAllColaboradoresByName($name) as $key => $value) {
-            if ($value['alergia'] == '' && $value['alergia_cual'] == '') {
-                $alergia = 'No registro alergias';
-            } else {
-                if ($value['alergia'] == 'otro') {
-                    $alergia = $value['alergia_cual'];
-                } else {
-                    $alergia = $value['alergia'];
-                }
-            }
-
-            if ($value['alergia_medicamento'] == 'si') {
-                if ($value['alergia_medicamento_cual'] == '') {
-                    $alergia_medicamento = 'No registro alergias a medicamentos';
-                } else {
-                    $alergia_medicamento = $value['alergia_medicamento_cual'];
-                }
-            } else {
-                $alergia_medicamento = 'No posee ninguna alergia';
-            }
-
-            if ($value['restricciones_alimenticias'] == 'ninguna' || $value['restricciones_alimenticias'] == '') {
-                $restricciones_alimenticias = 'No registro restricciones alimenticias';
-            } else {
-                if ($value['restricciones_alimenticias'] == 'otro') {
-                    $restricciones_alimenticias = $value['restricciones_alimenticias_cual'];
-                } else {
-                    $restricciones_alimenticias = $value['restricciones_alimenticias'];
-                }
-            }
-
             
-            // $value['apellido_materno'] = utf8_encode($value['apellido_materno']);
-            // $value['nombre'] = utf8_encode($value['nombre']);
-
-            if (empty($value['img']) || $value['img'] == null) {
-                $img_user = "/img/user.png";
-            } else {
-                $img_user = "https://registro.foromusa.com/img/users_musa/{$value['img']}";
-            }
-
             $estatus = '';
             if ($value['status'] == 1) {
                 $estatus .= <<<html
@@ -840,7 +801,7 @@ html;
                     
                             <a href="/Asistentes/Detalles/{$value['clave']}" target="_blank">
                                 <h6 class="mb-0 text-sm text-move text-black">
-                                    <span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} {$value['segundo_nombre']} {$value['apellido_paterno']} {$value['apellido_materno']}
+                                    <span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} {$value['segundo_nombre']} {$value['apellido_paterno']} {$value['apellido_materno']} </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$value['color']}; color:white "><strong>{$value['nombre_linea_ejecutivo']}</strong></span>
                                     </h6>
                                 </a>
                             <div class="d-flex flex-column justify-content-center">
