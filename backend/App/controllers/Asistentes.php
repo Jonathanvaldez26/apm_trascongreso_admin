@@ -775,7 +775,11 @@ html;
                                 <u><p class="text-sm text-black text-move font-weight-bold text-secondary mb-0"><span class="fa fa-whatsapp" style="font-size: 13px; color:green;"></span> {$telefono}</p></a></u>
                                 <h6 class="mb-0 text-sm text-black"><span class="fa fa-map-pin" style="font-size: 13px"></span> {$value['pais']}</h6>
                             </div>
-                            <hr>
+                            <hr><hr>
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="mb-0 text-sm text-black"><span class="fa fa-calendar" style="font-size: 13px"></span> Fecha de Registro: {$value['date']}</h6>
+                            </div>
+                            <hr><hr>
                             <div class="d-flex flex-column justify-content-center">
                                 <h6 class="mb-0 text-sm text-black"><span class="fa fa-calendar" style="font-size: 13px"></span> Fecha de Registro: {$value['date']}</h6>
                             </div>
