@@ -717,16 +717,20 @@ html;
                 $color = '#149777';
                 $linea = 'Becado';
                 foreach (GeneralDao::getBecas($value['scholarship']) as $key => $value_beca) {
-                    $industria .= <<<html
+
+                    if($value_beca['nombrecompleto'] != '')
+                    {
+                        $industria .= <<<html
                     <h6 class="mb-0 text-sm text-black"><span class="fas fa-building" style="font-size: 13px"></span> {$value_beca['nombrecompleto']} </h6>
 html;
-                }
-            }
-            else
-            {
-                $industria .= <<<html
+                    }
+                    else
+                    {
+                        $industria .= <<<html
                     <h6 class="mb-0 text-sm text-black" ><span class="fas fa-building" style="font-size: 13px"></span> hola </h6>
 html;
+                    }
+                }
             }
 
 
