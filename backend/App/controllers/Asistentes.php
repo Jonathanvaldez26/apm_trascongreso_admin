@@ -711,6 +711,8 @@ html;
             $industria = '';
             $linea = '';
             $telefono = '';
+            $miembro = '';
+            $clave_socio = '';
 
             if(  strlen($value['scholarship']) >= 9)
             {
@@ -720,6 +722,29 @@ html;
             {
                 $telefono = 'Sin Número';
             }
+
+            if($value['apm_member'] == 1)
+            {
+                $miembro_apm = 'SI';
+                if($value['clave_socio'] != '')
+                {
+                    $clave_socio .= <<<html
+                    <span class="badge badge-success" style="background-color: #2ef119; color:white "><strong>Clave Socio: {$value['clave_socio']} </strong></span>  
+html;
+                }
+                else
+                {
+                    $clave_socio .= <<<html
+                    <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>No se encontro Clave Socio Verificar con APM </strong></span>  
+html;
+                }
+            }
+            else
+            {
+                $miembro_apm = 'NO';
+            }
+
+
 
 
 
@@ -781,7 +806,8 @@ html;
                             </div>
                             
                             <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm text-black"><span class="fa fa-calendar" style="font-size: 13px"></span> Fecha de Registro: {$value['date']}</h6>
+                                <h6 class="mb-0 text-sm text-black"><span class="fa fa-calendar" style="font-size: 13px"></span> Es miembro APM: $miembro_apm</h6>
+                                 {$clave_socio}
                             </div>
                         </div>
                     </div>
