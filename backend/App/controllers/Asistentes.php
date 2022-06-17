@@ -767,9 +767,7 @@ html;
                             </div>
                             <hr>
                             <div class="d-flex flex-column justify-content-center">
-                                <u><a  href="mailto:{$value['email']}"><h6 class="mb-0 text-sm text-move text-black"><span class="fa fa-mail-bulk" style="font-size: 13px"></span> {$value['usuario']}</h6></a></u>
-                                <u><a target="_blank" href="https://api.whatsapp.com/send?phone=52{$value['telefono']}&text=Buen%20d%C3%ADa,%20te%20contacto%20de%20parte%20del%20Equipo%20Grupo%20LAHE%20%F0%9F%98%80" target="_blank"><p class="text-sm text-black text-move font-weight-bold text-secondary mb-0"><span class="fa fa-whatsapp" style="font-size: 13px; color:green;"></span> {$value['telefono']}</p></a></u>
-                                <h6 class="mb-0 text-sm text-black"><span class="fa fa-map-pin" style="font-size: 13px"></span> {$value['pais']}</h6>
+                                <h6 class="mb-0 text-sm text-black"><span class="fa fa-calendar" style="font-size: 13px"></span>Fecha de Registro: {$value['date']}</h6>
                             </div>
                         </div>
                     </div>
