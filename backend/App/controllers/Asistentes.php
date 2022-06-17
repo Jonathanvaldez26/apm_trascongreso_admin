@@ -711,6 +711,8 @@ html;
             $industria = '';
             $linea = '';
             $telefono = '';
+            $miembro = '';
+            $clave_socio = '';
 
             if(  strlen($value['scholarship']) >= 9)
             {
@@ -720,6 +722,29 @@ html;
             {
                 $telefono = 'Sin Número';
             }
+
+            if($value['apm_member'] == 1)
+            {
+                $miembro_apm = 'SI';
+                if($value['clave_socio'] != '')
+                {
+                    $clave_socio .= <<<html
+                    <span class="badge badge-success" style="background-color: #2ef119; color:white "><strong>Clave Socio: {$value['clave_socio']} </strong></span>  
+html;
+                }
+                else
+                {
+                    $clave_socio .= <<<html
+                    <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>No se encontro Clave Socio Verificar con APM </strong></span>  
+html;
+                }
+            }
+            else
+            {
+                $miembro_apm = 'NO';
+            }
+
+
 
 
 
@@ -775,35 +800,20 @@ html;
                                 <u><p class="text-sm text-black text-move font-weight-bold text-secondary mb-0"><span class="fa fa-whatsapp" style="font-size: 13px; color:green;"></span> {$telefono}</p></a></u>
                                 <h6 class="mb-0 text-sm text-black"><span class="fa fa-map-pin" style="font-size: 13px"></span> {$value['pais']}</h6>
                             </div>
-                            <hr><hr>
+                            <hr>
                             <div class="d-flex flex-column justify-content-center">
                                 <h6 class="mb-0 text-sm text-black"><span class="fa fa-calendar" style="font-size: 13px"></span> Fecha de Registro: {$value['date']}</h6>
                             </div>
-                            <hr><hr>
-                            <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm text-black"><span class="fa fa-calendar" style="font-size: 13px"></span> Fecha de Registro: {$value['date']}</h6>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-
-                <td>
-                    <div class="d-flex px-1 py-1">
-                        <div class="d-flex flex-column justify-content-center text-black">
-                            <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm text-black"><span class="fas fa-building" style="font-size: 13px"></span> {$value['organization']} </h6>
-                            <h6 class="mb-0 text-sm text-black"><span class="fa fa-user-md" style="font-size: 13px"></span> {$value['position_organization']} </h6>
-                            <h6 class="mb-0 text-sm text-black"><span class="fa fa-money-check" style="font-size: 13px"></span> POSTAL CODE:<br> {$value['organization_postal_code']} </h6>
-                            <h6 class="mb-0 text-sm text-black"><span class="fa fa-flag" style="font-size: 13px"></span> {$value['pais_org']} </h6>
-                            </div>
-                            <!--<p class="text-sm mb-0"><span class="fa fa-solid fa-id-card" style="font-size: 13px;"></span> Número de empleado:  <span style="text-decoration: underline;">{$value['numero_empleado']}</span></p>-->
-
-                            <!--<p class="text-sm font-weight-bold mb-0 "><span class="fa fas fa-user-tie" style="font-size: 13px;"></span><b> Ejecutivo Asignado a Línea: </b><br><span class="fas fa-suitcase"> </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$value['color']}; color:white "><strong>{$value['nombre_linea_ejecutivo']}</strong></span></p>-->
                             
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="mb-0 text-sm text-black"><span class="fa fa-calendar" style="font-size: 13px"></span> Es miembro APM: $miembro_apm</h6>
+                                 {$clave_socio}
+                            </div>
                         </div>
                     </div>
                 </td>
 
+              
                 <td>
                     <div class="d-flex px-1 py-1">
                         <div class="d-flex flex-column justify-content-center text-black">
