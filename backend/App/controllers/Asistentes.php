@@ -707,6 +707,15 @@ html;
         $html = "";
         foreach (GeneralDao::getAllColaboradoresByName($name) as $key => $value) {
 
+            $color = '';
+            if($value['scholarship'] != '')
+            {
+                $color = '#149777';
+                $linea = 'Becado';
+            }
+
+
+
             if (empty($value['img']) || $value['img'] == null) {
                 $img_user = "/img/user.png";
             } else {
@@ -724,7 +733,7 @@ html;
                     
                             <a href="/Asistentes/Detalles/{$value['clave']}" target="_blank">
                                 <h6 class="mb-0 text-sm text-move text-black">
-                                    <span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} {$value['segundo_nombre']} {$value['apellido_paterno']} {$value['apellido_materno']} </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$value['color']}; color:white "><strong>{$value['nombre_linea_ejecutivo']}</strong></span>
+                                    <span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} {$value['segundo_nombre']} {$value['apellido_paterno']} {$value['apellido_materno']} </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$color}; color:white "><strong>{$linea}</strong></span>
                                     </h6>
                                 </a>
                             <div class="d-flex flex-column justify-content-center">
