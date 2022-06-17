@@ -754,7 +754,7 @@ html;
                     
                             <a href="/Asistentes/Detalles/{$value['clave']}" target="_blank">
                                 <h6 class="mb-0 text-sm text-move text-black">
-                                    <span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} {$value['segundo_nombre']} {$value['apellido_paterno']} {$value['apellido_materno']} </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$color}; color:white "><strong>{$linea} - </strong></span>
+                                    <span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} {$value['segundo_nombre']} {$value['apellido_paterno']} {$value['apellido_materno']} </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$color}; color:white "><strong>{$linea} </strong></span>
                                     {$industria}
                                
                                 </h6>
