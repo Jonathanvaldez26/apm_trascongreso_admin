@@ -770,6 +770,11 @@ html;
                     }
                 }
             }
+            else
+            {
+                $color = '#B49C21';
+                $linea = 'No Socio';
+            }
 
 
             if (empty($value['img']) || $value['img'] == null) {
@@ -818,13 +823,8 @@ html;
                     <div class="d-flex px-1 py-1">
                         <div class="d-flex flex-column justify-content-center text-black">
                             <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm text-black"><span class="fa fa-money-check" style="font-size: 13px"></span>PAYMENT METHOD: <br> {$value['method_pay']} </h6>
                             <h6 class="mb-0 text-sm text-black"><span class="fas fa-dollar-sign" style="font-size: 13px"></span> {$value['amout_due']} DLRS </h6>
                             </div>
-                            <!--<p class="text-sm mb-0"><span class="fa fa-solid fa-id-card" style="font-size: 13px;"></span> Número de empleado:  <span style="text-decoration: underline;">{$value['numero_empleado']}</span></p>-->
-
-                            <!--<p class="text-sm font-weight-bold mb-0 "><span class="fa fas fa-user-tie" style="font-size: 13px;"></span><b> Ejecutivo Asignado a Línea: </b><br><span class="fas fa-suitcase"> </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$value['color']}; color:white "><strong>{$value['nombre_linea_ejecutivo']}</strong></span></p>-->
-                            
                         </div>
                     </div>
                 </td>
