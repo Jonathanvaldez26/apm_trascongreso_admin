@@ -749,6 +749,7 @@ html;
                     <div class="d-flex px-1 py-1">
                         <div>
                             <img src="{$img_user}" class="avatar me-3" alt="image">
+                            <span class="badge badge-success" style="background-color: color:#ea5b9b; "><strong>Clave LAHE {$value['clave']} </strong></span>
                         </div>
                         <div class="d-flex flex-column justify-content-center text-black">
                     
@@ -760,9 +761,6 @@ html;
                                
                                 </h6>
                             </a>
-                            <div class="d-flex flex-column justify-content-center">
-                                <span class="badge badge-success" style="background-color: color:#ea5b9b; "><strong>Clave LAHE {$value['clave']} </strong></span>    
-                            </div>
                             <div class="d-flex flex-column justify-content-center">
                                 <u><a  href="mailto:{$value['email']}"><h6 class="mb-0 text-sm text-move text-black"><span class="fa fa-mail-bulk" style="font-size: 13px"></span> {$value['usuario']}</h6></a></u>
                                 <u><a target="_blank" href="https://api.whatsapp.com/send?phone=52{$value['telefono']}&text=Buen%20d%C3%ADa,%20te%20contacto%20de%20parte%20del%20Equipo%20Grupo%20LAHE%20%F0%9F%98%80" target="_blank"><p class="text-sm text-black text-move font-weight-bold text-secondary mb-0"><span class="fa fa-whatsapp" style="font-size: 13px; color:green;"></span> {$value['telefono']}</p></a></u>
