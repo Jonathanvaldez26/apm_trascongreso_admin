@@ -35,7 +35,7 @@ sql;
     INNER JOIN paises pa ON (ra.id_country = pa.id_pais)
     INNER JOIN paises pao ON (ra.organization_country = pao.id_pais)
     INNER JOIN estados es ON (ra.id_state = es.id_estado)
-    AND CONCAT_WS(ra.usuario,ra.name_user,ra.middle_name,ra.surname,ra.second_surname,ra.user_id) 
+    AND CONCAT_WS(ra.usuario,ra.name_user,ra.middle_name,ra.surname,ra.second_surname,ra.user_id, ra.clave) 
     LIKE '%$search%';
 sql;
 
