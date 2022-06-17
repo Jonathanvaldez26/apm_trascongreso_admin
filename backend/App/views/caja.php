@@ -68,6 +68,9 @@
                                                                 <div class="col">
                                                                     <div class="form-group">
                                                                         <input style="font-size: 35px" type="text" id="codigo_qr_venta" name="codigo_qr_venta" class="form-control form-control-lg text-center" minlength="11" maxlength="11" autocomplete="off" autocapitalize="off" autofocus>
+                                                                        
+                                                                        <input style="font-size: 35px" type="hidden" id="codigo_qr_venta_hidden" name="codigo_qr_venta_hidden" class="form-control form-control-lg text-center" minlength="11" maxlength="11" autocomplete="off" autocapitalize="off" autofocus>
+
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -440,13 +443,13 @@
                             success: function(respuesta) {
                                 console.log(respuesta);
 
-                                if(respuesta == 'success'){
-                                    Swal.fire('Pago generado correctamente.','','success').then(()=>{
-                                        setTimeout(function(){
-                                        location.reload();
-                                    },1000);
+                                if (respuesta == 'success') {
+                                    Swal.fire('Pago generado correctamente.', '', 'success').then(() => {
+                                        setTimeout(function() {
+                                            location.reload();
+                                        }, 1000);
                                     });
-                                   
+
                                 }
                             },
                             error: function(respuesta) {
@@ -465,16 +468,48 @@
 
 
             $("#codigo_qr_venta").on('change', function() {
-                var table = '';
                 codigo = $('#codigo_qr_venta').val();
+                $("#codigo_qr_venta_hidden").val(codigo);
                 console.log(codigo);
 
                 $('#codigo_qr_venta').val('');
                 // $('#lista-reg > tbody').empty();
 
                 console.log(codigo);
+
+                getSell(codigo);
                 // console.log(clave_a);
 
+                // $.ajax({
+                //     url: "/Caja/getSell",
+                //     type: "POST",
+                //     data: {
+                //         codigo
+                //     },
+                //     dataType: 'json',
+                //     beforeSend: function() {
+                //         console.log("Procesando....");
+                //     },
+                //     success: function(respuesta) {
+
+                //         console.log(respuesta);
+                //         if (respuesta.status == "success") {
+
+                //             crearTabla(respuesta);
+
+                //         } else {
+                //             console.log("fallo");
+                //         }
+
+                //     },
+                //     error: function(respuesta) {
+
+                //     }
+
+                // });
+            });
+
+            function getSell(codigo){
                 $.ajax({
                     url: "/Caja/getSell",
                     type: "POST",
@@ -486,51 +521,12 @@
                         console.log("Procesando....");
                     },
                     success: function(respuesta) {
-                        var total_usd = 0;
-                        var total_pesos = 0;
 
                         console.log(respuesta);
                         if (respuesta.status == "success") {
-                            $("#user_id").val(respuesta.datos_user.user_id);
-                            $("#nombre_completo").html(respuesta.nombre_completo);
-                            $("#correo_user").html(respuesta.datos_user.usuario);
-                            $("#telefono_user").html(respuesta.datos_user.telephone);
-                            $("#btn_pagar").show();
 
+                            crearTabla(respuesta);
 
-                            $.each(respuesta.productos, function(key, value) {
-                                var precio = 0;
-                                // console.log("funcioina");
-                                // console.log(value.es_congreso);
-                                // console.log(value.es_servicio);
-                                // console.log(value.es_curso);
-
-                                if (value.es_congreso == 1) {
-                                    precio = value.amout_due;
-                                } else if (value.es_servicio == 1) {
-                                    precio = value.precio_publico;
-                                } else if (value.es_curso == 1) {
-                                    precio = value.precio_publico;
-                                }
-
-                                table += `<tr>
-                                            <td>${value.nombre}</td>
-                                            <td>${value.cantidad}</td>
-                                            <td>${precio} USD</td>
-                                            <td>$ ${precio * respuesta.tipo_cambio}</td>
-                                            <td>${precio * value.cantidad} USD</td>
-                                            <td>$ ${(precio * value.cantidad) * respuesta.tipo_cambio}</td>
-                                            </tr>`;
-
-                                total_usd += precio * value.cantidad;
-                                total_pesos += (precio * value.cantidad) * respuesta.tipo_cambio;
-
-                            });
-
-                            $("#total_usd").html(total_usd);
-                            $("#total_pesos").html(total_pesos);
-
-                            $("#lista_productos").find('tbody').html(table);
                         } else {
                             console.log("fallo");
                         }
@@ -538,6 +534,97 @@
                     },
                     error: function(respuesta) {
 
+                    }
+
+                });
+            }
+
+            function crearTabla(respuesta) {
+                var table = '';
+                var total_usd = 0;
+                var total_pesos = 0;
+
+                $("#user_id").val(respuesta.datos_user.user_id);
+                $("#nombre_completo").html(respuesta.nombre_completo);
+                $("#correo_user").html(respuesta.datos_user.usuario);
+                $("#telefono_user").html(respuesta.datos_user.telephone);
+                $("#btn_pagar").show();
+
+
+                $.each(respuesta.productos, function(key, value) {
+                    var precio = 0;
+                    // console.log("funcioina");
+                    // console.log(value.es_congreso);
+                    // console.log(value.es_servicio);
+                    // console.log(value.es_curso);
+
+                    if (value.es_congreso == 1) {
+                        precio = value.amout_due;
+                    } else if (value.es_servicio == 1) {
+                        precio = value.precio_publico;
+                    } else if (value.es_curso == 1) {
+                        precio = value.precio_publico;
+                    }
+
+                    table += `<tr>
+                                <td><button class="btn btn-danger btn-sm btn-icon-only btn-delete" style="margin-top: 10px; margin-right:10px;" value="${value.id_pendiente_pago}" data-id-producto="${value.id_producto}">x</button>${value.nombre}</td>
+                                <td>${value.cantidad}</td>
+                                <td>${precio} USD</td>
+                                <td>$ ${precio * respuesta.tipo_cambio}</td>
+                                <td>${precio * value.cantidad} USD</td>
+                                <td>$ ${(precio * value.cantidad) * respuesta.tipo_cambio}</td>
+                            </tr>`;
+
+                    total_usd += precio * value.cantidad;
+                    total_pesos += (precio * value.cantidad) * respuesta.tipo_cambio;
+
+                });
+
+                $("#total_usd").html(total_usd);
+                $("#total_pesos").html(total_pesos);
+
+                $("#lista_productos").find('tbody').html(table);
+            }
+
+            $("table#lista_productos").on("click", "button.btn-delete", function() {
+                var id_producto = $(this).attr('data-id-producto');
+                var user_id = $("#user_id").val();
+
+                // alert(id_producto);
+                // alert(user_id);
+                $.ajax({
+                    url: "/Caja/removePendientesPago",
+                    type: "POST",
+                    data: {
+                        id_producto,
+                        user_id
+                    },
+                    cache: false,
+                    beforeSend: function() {
+                        console.log("Procesando....");
+
+                    },
+                    success: function(respuesta) {
+
+                        console.log(respuesta);
+                        if (respuesta == "success") {
+                            // location.reload();
+                            var codigo = $("#codigo_qr_venta_hidden").val();
+                            getSell(codigo);
+                        }
+
+                        // if (respuesta.status == 'success') {
+                        //     $("#img_qr").attr("src", respuesta.src);
+                        //     $("#img_qr").css('display', 'block');
+                        //     Swal.fire("¡Mantenga a la mano su codigo QR para pagar en linea de cajas!", "", "success").
+                        //     then((value) => {
+                        //         window.location.reload();
+                        //     });
+                        // }
+
+                    },
+                    error: function(respuesta) {
+                        console.log(respuesta);
                     }
 
                 });
