@@ -68,7 +68,7 @@
                                                                 <div class="col">
                                                                     <div class="form-group">
                                                                         <input style="font-size: 35px" type="text" id="codigo_qr_venta" name="codigo_qr_venta" class="form-control form-control-lg text-center" minlength="11" maxlength="11" autocomplete="off" autocapitalize="off" autofocus>
-                                                                        
+
                                                                         <input style="font-size: 35px" type="hidden" id="codigo_qr_venta_hidden" name="codigo_qr_venta_hidden" class="form-control form-control-lg text-center" minlength="11" maxlength="11" autocomplete="off" autocapitalize="off" autofocus>
 
                                                                     </div>
@@ -473,43 +473,15 @@
                 console.log(codigo);
 
                 $('#codigo_qr_venta').val('');
-                // $('#lista-reg > tbody').empty();
 
                 console.log(codigo);
 
                 getSell(codigo);
-                // console.log(clave_a);
 
-                // $.ajax({
-                //     url: "/Caja/getSell",
-                //     type: "POST",
-                //     data: {
-                //         codigo
-                //     },
-                //     dataType: 'json',
-                //     beforeSend: function() {
-                //         console.log("Procesando....");
-                //     },
-                //     success: function(respuesta) {
 
-                //         console.log(respuesta);
-                //         if (respuesta.status == "success") {
-
-                //             crearTabla(respuesta);
-
-                //         } else {
-                //             console.log("fallo");
-                //         }
-
-                //     },
-                //     error: function(respuesta) {
-
-                //     }
-
-                // });
             });
 
-            function getSell(codigo){
+            function getSell(codigo) {
                 $.ajax({
                     url: "/Caja/getSell",
                     type: "POST",
@@ -590,44 +562,55 @@
                 var id_producto = $(this).attr('data-id-producto');
                 var user_id = $("#user_id").val();
 
-                // alert(id_producto);
-                // alert(user_id);
-                $.ajax({
-                    url: "/Caja/removePendientesPago",
-                    type: "POST",
-                    data: {
-                        id_producto,
-                        user_id
-                    },
-                    cache: false,
-                    beforeSend: function() {
-                        console.log("Procesando....");
+                Swal.fire({
+                    title: '¿Remover el producto?',
+                    text: "",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Cancelar',
+                    confirmButtonText: 'Confirmar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
 
-                    },
-                    success: function(respuesta) {
+                        $.ajax({
+                            url: "/Caja/removePendientesPago",
+                            type: "POST",
+                            data: {
+                                id_producto,
+                                user_id
+                            },
+                            cache: false,
+                            beforeSend: function() {
+                                console.log("Procesando....");
 
-                        console.log(respuesta);
-                        if (respuesta == "success") {
-                            // location.reload();
-                            var codigo = $("#codigo_qr_venta_hidden").val();
-                            getSell(codigo);
-                        }
+                            },
+                            success: function(respuesta) {
 
-                        // if (respuesta.status == 'success') {
-                        //     $("#img_qr").attr("src", respuesta.src);
-                        //     $("#img_qr").css('display', 'block');
-                        //     Swal.fire("¡Mantenga a la mano su codigo QR para pagar en linea de cajas!", "", "success").
-                        //     then((value) => {
-                        //         window.location.reload();
-                        //     });
-                        // }
+                                console.log(respuesta);
+                                if (respuesta == "success") {
+                                    // location.reload();
+                                    var codigo = $("#codigo_qr_venta_hidden").val();
+                                    getSell(codigo);
+                                }
 
-                    },
-                    error: function(respuesta) {
-                        console.log(respuesta);
+
+
+                            },
+                            error: function(respuesta) {
+                                console.log(respuesta);
+                            }
+
+                        });
+
                     }
 
-                });
+                })
+
+                // alert(id_producto);
+                // alert(user_id);
+
             });
 
 
