@@ -30,12 +30,12 @@ sql;
     SELECT ra.*, ra.user_id as id_registro_acceso,ra.usuario as email , ra.telephone as telefono, ra.usuario 
     as usuario, ra.clave as ticket_virtual, ra.name_user as nombre, ra.middle_name as segundo_nombre, 
     ra.surname as apellido_paterno, ra.second_surname as apellido_materno, ra.img, ra.clave, 
-    ra.organization, pa.pais, es.estado, pao.pais as pais_org
+    ra.organization, pa.pais, es.estado, pao.pais as pais_org, ra.clave
     FROM utilerias_administradores ra
     INNER JOIN paises pa ON (ra.id_country = pa.id_pais)
     INNER JOIN paises pao ON (ra.organization_country = pao.id_pais)
     INNER JOIN estados es ON (ra.id_state = es.id_estado)
-    AND CONCAT_WS(ra.usuario,ra.name_user,ra.middle_name,ra.surname,ra.second_surname,ra.user_id) 
+    AND CONCAT_WS(ra.usuario,ra.name_user,ra.middle_name,ra.surname,ra.second_surname,ra.user_id, ra.clave) 
     LIKE '%$search%';
 sql;
 
@@ -55,7 +55,7 @@ sql;
         SELECT b.codigo, l.nombrecompleto FROM becas b INNER JOIN laboratorios l on l.id_laboratorio = b.id_laboratorio WHERE codigo = '$codigo';
 sql;
 
-        return $mysqli->queryOne($query);
+        return $mysqli->queryAll($query);
     }
 
 

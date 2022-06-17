@@ -710,18 +710,31 @@ html;
             $color = '';
             $industria = '';
             $linea = '';
+            $telefono = '';
+
+            if(  strlen($value['scholarship']) >= 9)
+            {
+                $telefono = $value['telefono'];
+            }
+            else
+            {
+                $telefono = 'Sin Número';
+            }
+
 
 
             if($value['scholarship'] != '')
             {
                 $color = '#149777';
-                $linea = 'Becado';
+                $linea = 'Becado'.' - '.$value['scholarship'];
+
+
                 foreach (GeneralDao::getBecas($value['scholarship']) as $key => $value_beca) {
 
                     if($value_beca['nombrecompleto'] != '')
                     {
                         $industria .= <<<html
-                    <h6 class="mb-0 text-sm text-black"><span class="fas fa-building" style="font-size: 13px"></span> {$value_beca['nombrecompleto']} </h6>
+                    <h6 class="mb-0 text-sm text-black"><span class="fas fa-building" style="font-size: 13px"></span> Becado por: {$value_beca['nombrecompleto']} </h6>
 html;
                     }
                     else
@@ -748,18 +761,27 @@ html;
                             <img src="{$img_user}" class="avatar me-3" alt="image">
                         </div>
                         <div class="d-flex flex-column justify-content-center text-black">
-                    
+                        <div>
+                            <span class="badge badge-success" style="background-color: color:#ea5b9b; "><strong>{$value['clave']} </strong></span>
+                        </div>
                             <a href="/Asistentes/Detalles/{$value['clave']}" target="_blank">
                                 <h6 class="mb-0 text-sm text-move text-black">
-                                    <span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} {$value['segundo_nombre']} {$value['apellido_paterno']} {$value['apellido_materno']} </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$color}; color:white "><strong>{$linea}</strong></span>
+                                    <span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} {$value['segundo_nombre']} {$value['apellido_paterno']} {$value['apellido_materno']} </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$color}; color:white "><strong>{$linea} </strong></span>                   
                                     {$industria}
-                               
                                 </h6>
                             </a>
                             <div class="d-flex flex-column justify-content-center">
                                 <u><a  href="mailto:{$value['email']}"><h6 class="mb-0 text-sm text-move text-black"><span class="fa fa-mail-bulk" style="font-size: 13px"></span> {$value['usuario']}</h6></a></u>
-                                <u><a target="_blank" href="https://api.whatsapp.com/send?phone=52{$value['telefono']}&text=Buen%20d%C3%ADa,%20te%20contacto%20de%20parte%20del%20Equipo%20Grupo%20LAHE%20%F0%9F%98%80" target="_blank"><p class="text-sm text-black text-move font-weight-bold text-secondary mb-0"><span class="fa fa-whatsapp" style="font-size: 13px; color:green;"></span> {$value['telefono']}</p></a></u>
-                                <h6 class="mb-0 text-sm text-black"><span class="fa fa-flag" style="font-size: 13px"></span> {$value['pais']}, {$value['address']}</h6>
+                                <u><p class="text-sm text-black text-move font-weight-bold text-secondary mb-0"><span class="fa fa-whatsapp" style="font-size: 13px; color:green;"></span> {$telefono}</p></a></u>
+                                <h6 class="mb-0 text-sm text-black"><span class="fa fa-map-pin" style="font-size: 13px"></span> {$value['pais']}</h6>
+                            </div>
+                            <hr><hr>
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="mb-0 text-sm text-black"><span class="fa fa-calendar" style="font-size: 13px"></span> Fecha de Registro: {$value['date']}</h6>
+                            </div>
+                            <hr><hr>
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="mb-0 text-sm text-black"><span class="fa fa-calendar" style="font-size: 13px"></span> Fecha de Registro: {$value['date']}</h6>
                             </div>
                         </div>
                     </div>
