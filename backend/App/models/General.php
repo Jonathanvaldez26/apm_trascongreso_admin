@@ -55,7 +55,7 @@ sql;
         SELECT b.codigo, l.nombrecompleto FROM becas b INNER JOIN laboratorios l on l.id_laboratorio = b.id_laboratorio WHERE codigo = '$codigo';
 sql;
 
-        return $mysqli->queryOne($query);
+        return $mysqli->queryAll($query);
     }
 
 
