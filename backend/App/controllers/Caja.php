@@ -244,62 +244,64 @@ html;
         $productos_transaccion = '';
 
 
-        foreach($productos as $key => $value){ 
+        // foreach($productos as $key => $value){ 
             
-            $reference = $value['reference'];
-            $productos_transaccion .= $value['nombre'].','; 
+        //     $reference = $value['reference'];
+        //     $productos_transaccion .= $value['nombre'].','; 
             
 
-            $updateStatus = CajaDao::updateStatusPendientePago($value['id_pendiente_pago'],$metodo_pago);
+        //     $updateStatus = CajaDao::updateStatusPendientePago($value['id_pendiente_pago'],$metodo_pago);
 
-            if($updateStatus){                
+        //     if($updateStatus){                
 
                 
-                $getProducto = CajaDao::getAsignaProductoByIdProductAndUser($user_id,$value['id_producto']);
+        //         $getProducto = CajaDao::getAsignaProductoByIdProductAndUser($user_id,$value['id_producto']);
 
-                if(!$getProducto){
+        //         if(!$getProducto){
                     
-                    $data = new \stdClass();
-                    $data->_user_id = $user_id;
-                    $data->_id_producto = $value['id_producto'];              
+        //             $data = new \stdClass();
+        //             $data->_user_id = $user_id;
+        //             $data->_id_producto = $value['id_producto'];              
                     
 
-                    $insertAsiganProducto = CajaDao::insertAsignaProducto($data);
+        //             $insertAsiganProducto = CajaDao::insertAsignaProducto($data);
 
-                    if($insertAsiganProducto){                       
-                        $flag = 1;
-                    }
-                }                
+        //             if($insertAsiganProducto){                       
+        //                 $flag = 1;
+        //             }
+        //         }                
                  
-            }
+        //     }
 
-        }
+        // }
         
 
-        if($flag == 1){
-            $productos_transaccion = substr($productos_transaccion, 0, -1);
+        // if($flag == 1){
+        //     $productos_transaccion = substr($productos_transaccion, 0, -1);
             
-             //guarar en transaccion
-             $dataTransaccion = new \stdClass();
-             $dataTransaccion->_user_id = $user_id;
-             $dataTransaccion->_referencia_transaccion = $reference;
-             $dataTransaccion->_productos = $productos_transaccion;
-             $dataTransaccion->_total_dolares = $total_usd;
-             $dataTransaccion->_total_pesos = $total_pesos;
-             $dataTransaccion->_tipo_pago = $metodo_pago;
+        //      //guarar en transaccion
+        //      $dataTransaccion = new \stdClass();
+        //      $dataTransaccion->_user_id = $user_id;
+        //      $dataTransaccion->_referencia_transaccion = $reference;
+        //      $dataTransaccion->_productos = $productos_transaccion;
+        //      $dataTransaccion->_total_dolares = $total_usd;
+        //      $dataTransaccion->_total_pesos = $total_pesos;
+        //      $dataTransaccion->_tipo_pago = $metodo_pago;
 
-             $insertTransaccion = CajaDao::insertTransaccion($dataTransaccion);
+        //      $insertTransaccion = CajaDao::insertTransaccion($dataTransaccion);
 
-             if($insertTransaccion){
-                echo "success";
-             }else{
-                echo "fail";
-            }
+        //      if($insertTransaccion){
+        //         echo "success";
+        //      }else{
+        //         echo "fail";
+        //     }
             
-        }
-        else{
-            echo "fail";
-        }
+        // }
+        // else{
+        //     echo "fail";
+        // }
+
+        echo "success";
     }
 
     public function removePendientesPago(){
@@ -315,6 +317,123 @@ html;
             echo "fail";
         }
     }
+    
+
+    //user id y clave pendiente clave
+    public function print($user_id,$clave)
+    {
+        date_default_timezone_set('America/Mexico_City');
+
+        $this->generaterQr($clave);
+
+        $datos_user = CajaDao::getDataUser($user_id);
+        $user_id = $datos_user['user_id'];        
+
+
+        $productos = CajaDao::getProductosPendientesPagoTicketSitio($user_id);
+
+        
+        $reference = $productos[0]['reference'];
+        $fecha = $productos[0]['fecha'];
+        
+        $nombre_completo = $datos_user['name_user'] . " " . $datos_user['middle_name'] . " " . $datos_user['surname'] . " " . $datos_user['second_surname'];
+
+
+        $pdf = new \FPDF($orientation = 'P', $unit = 'mm', $format = 'A4');
+        $pdf->AddPage();
+        $pdf->SetFont('Arial', 'B', 8);    //Letra Arial, negrita (Bold), tam. 20
+        $pdf->setY(1);
+        $pdf->SetFont('Arial', 'B', 16);
+        $pdf->Image('plantillas/ticket_esp.jpeg', 0, 0, 210, 300);
+        
+        // $pdf->SetFont('Arial', 'B', 25);
+        // $pdf->Multicell(133, 80, $clave_ticket, 0, 'C');
+
+        //$pdf->Image('1.png', 1, 0, 190, 190);
+        $pdf->SetFont('Arial', 'B', 5);    //Letra Arial, negrita (Bold), tam. 20
+        //$nombre = utf8_decode("Jonathan Valdez Martinez");
+        //$num_linea =utf8_decode("Línea: 39");
+        //$num_linea2 =utf8_decode("Línea: 39");
+
+        $espace = 140;
+        $total = array();
+        foreach($productos as $key => $value){            
+            
+            
+            if($value['es_congreso'] == 1){
+                $precio = $value['amout_due'];
+            }else if($value['es_servicio'] == 1){
+                $precio = $value['precio_publico'];
+            }else if($value['es_curso'] == 1){
+                $precio = $value['precio_publico'];
+            }
+
+            
+
+            $total_productos = CajaDao::getCountProductos($user_id,$value['id_producto'])[0];
+
+            $count_productos = $total_productos['numero_productos'];
+
+            // array_push($total,$precio);
+            array_push($total,($precio * $count_productos));
+
+
+            //Nombre Curso
+            $pdf->SetXY(22, $espace);
+            $pdf->SetFont('Arial', 'B', 8);  
+            $pdf->SetTextColor(0, 0, 0);
+            $pdf->Multicell(100, 4, utf8_decode($value['nombre']) ." - cant.".$count_productos, 0, 'C');
+
+            //Costo
+            $pdf->SetXY(125, $espace);
+            $pdf->SetFont('Arial', 'B', 8);  
+            $pdf->SetTextColor(0, 0, 0);
+            $pdf->Multicell(100, 4, '$ '.number_format(($precio * $count_productos),2).' ' .$value['tipo_moneda'], 0, 'C');
+
+            $espace = $espace + 5;
+        }
+
+        $tipo_cambio = CajaDao::getTipoCambio()['tipo_cambio'];
+        // echo $tipo_cambio;
+        // exit;
+
+        //folio
+        $pdf->SetXY(92, 60.5);
+        $pdf->SetFont('Arial', 'B', 13);  
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->Multicell(100, 10, $reference, 0, 'C');
+
+        //fecha
+        $pdf->SetXY(90, 70.5);
+        $pdf->SetFont('Arial', 'B', 13);  
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->Multicell(100, 10, $fecha, 0, 'C');
+
+      
+
+        //total dolares
+        $pdf->SetXY(125, 202);
+        $pdf->SetFont('Arial', 'B', 13);  
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->Multicell(100, 10, number_format(array_sum($total)).' USD', 0, 'C');
+
+        //total pesos
+        $pdf->SetXY(125, 210.5);
+        $pdf->SetFont('Arial', 'B', 13);  
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->Multicell(100, 10, '$ '.number_format($tipo_cambio * array_sum($total),2), 0, 'C');
+
+        //imagen Qr
+        $pdf->Image('qrs/'.$clave.'.png' , 152 ,245, 35 , 38,'PNG');
+
+
+        $pdf->Output();
+        // $pdf->Output('F','constancias/'.$clave.$id_curso.'.pdf');
+
+        // $pdf->Output('F', 'C:/pases_abordar/'. $clave.'.pdf');
+    }
+
+
 
     public function mostrarLista($clave)
     {
@@ -583,7 +702,7 @@ html;
         $config = array(
             'ecc' => 'H',    // L-smallest, M, Q, H-best
             'size' => 11,    // 1-50
-            'dest_file' => '../public/qrs/gafetes/' . $codigo_rand . '.png',
+            'dest_file' => '../public/qrs/' . $codigo_rand . '.png',
             'quality' => 90,
             'logo' => 'logo.jpg',
             'logo_size' => 100,

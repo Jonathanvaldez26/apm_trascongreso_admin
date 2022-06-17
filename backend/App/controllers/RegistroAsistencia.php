@@ -379,7 +379,7 @@ html;
 
     public function abrirpdfGafete($clave, $clave_ticket = null){
 
-        $this->generaterQr($clave_ticket);
+        $this->generaterQr($clave);
         $datos_user = AsistentesDao::getRegistroAccesoByClaveRA($clave)[0];
 
         $nombre_completo = mb_strtoupper($datos_user['nombre']) . " " . mb_strtoupper($datos_user['segundo_nombre']) . "\n\n" . mb_strtoupper($datos_user['apellido_paterno']) . "\n\n" . mb_strtoupper($datos_user['apellido_materno']);
@@ -391,7 +391,7 @@ html;
         $pdf->SetFont('Arial', 'B', 8);    //Letra Arial, negrita (Bold), tam. 20
         $pdf->setY(1);
         $pdf->SetFont('Arial', 'B', 16);
-        $pdf->Image('qrs/gafetes/'.$clave_ticket.'.png', 50, 85, 50, 50);
+        $pdf->Image('qrs/gafetes/'.$clave.'.png', 50, 85, 50, 50);
         $pdf->SetFont('Arial', 'B', 25);
         // $pdf->Multicell(133, 80, $clave_ticket, 0, 'C');
 
