@@ -818,7 +818,6 @@ html;
                     <div class="d-flex px-1 py-1">
                         <div class="d-flex flex-column justify-content-center text-black">
                             <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm text-black"><span class="fa fa-calendar-alt" style="font-size: 13px"></span> PAY DATE : <br> {$value['date']} </h6>
                             <h6 class="mb-0 text-sm text-black"><span class="fa fa-money-check" style="font-size: 13px"></span>PAYMENT METHOD: <br> {$value['method_pay']} </h6>
                             <h6 class="mb-0 text-sm text-black"><span class="fas fa-dollar-sign" style="font-size: 13px"></span> {$value['amout_due']} DLRS </h6>
                             </div>
