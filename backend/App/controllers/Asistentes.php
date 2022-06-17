@@ -749,7 +749,8 @@ html;
                     <div class="d-flex px-1 py-1">
                         <div>
                             <img src="{$img_user}" class="avatar me-3" alt="image">
-                            <span class="badge badge-success" style="background-color: color:#ea5b9b; "><strong>Clave LAHE {$value['clave']} </strong></span>
+                            <br>
+                            <span class="badge badge-success" style="background-color: color:#ea5b9b; "><strong>{$value['clave']} </strong></span>
                         </div>
                         <div class="d-flex flex-column justify-content-center text-black">
                     
