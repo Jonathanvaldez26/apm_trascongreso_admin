@@ -718,8 +718,7 @@ html;
                 $linea = 'Becado';
 
                 foreach (GeneralDao::getBecas($value['scholarship']) as $key => $value_beca) {
-                    var_dump($value_beca['nombrecompleto']);
-                    exit;
+
                     if($value_beca['nombrecompleto'] != '')
                     {
                         $industria .= <<<html
