@@ -234,14 +234,23 @@ html;
 
     public function setPay(){
         $user_id = $_POST['user_id'];
+        $metodo_pago = $_POST['metodo_pago'];
+        $total_usd = $_POST['total_usd'];
+        $total_pesos = $_POST['total_pesos'];
 
         $productos = CajaDao::getProductosPendientesPagoAll($user_id);
         $flag = 0;
+        $reference = '';
+        $productos_transaccion = '';
 
 
-        foreach($productos as $key => $value){           
+        foreach($productos as $key => $value){ 
+            
+            $reference = $value['reference'];
+            $productos_transaccion .= $value['nombre'].','; 
+            
 
-            $updateStatus = CajaDao::updateStatusPendientePago($value['id_pendiente_pago']);
+            $updateStatus = CajaDao::updateStatusPendientePago($value['id_pendiente_pago'],$metodo_pago);
 
             if($updateStatus){                
 
@@ -257,7 +266,7 @@ html;
 
                     $insertAsiganProducto = CajaDao::insertAsignaProducto($data);
 
-                    if($insertAsiganProducto){
+                    if($insertAsiganProducto){                       
                         $flag = 1;
                     }
                 }                
@@ -265,10 +274,30 @@ html;
             }
 
         }
+        
 
         if($flag == 1){
-            echo "success";
-        }else{
+            $productos_transaccion = substr($productos_transaccion, 0, -1);
+            
+             //guarar en transaccion
+             $dataTransaccion = new \stdClass();
+             $dataTransaccion->_user_id = $user_id;
+             $dataTransaccion->_referencia_transaccion = $reference;
+             $dataTransaccion->_productos = $productos_transaccion;
+             $dataTransaccion->_total_dolares = $total_usd;
+             $dataTransaccion->_total_pesos = $total_pesos;
+             $dataTransaccion->_tipo_pago = $metodo_pago;
+
+             $insertTransaccion = CajaDao::insertTransaccion($dataTransaccion);
+
+             if($insertTransaccion){
+                echo "success";
+             }else{
+                echo "fail";
+            }
+            
+        }
+        else{
             echo "fail";
         }
     }

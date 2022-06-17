@@ -41,10 +41,10 @@ sql;
         return $mysqli->queryAll($query);
       }
 
-      public static function updateStatusPendientePago($id){
+      public static function updateStatusPendientePago($id,$metodo_pago){
         $mysqli = Database::getInstance();
         $query=<<<sql
-        UPDATE pendiente_pago SET status = 1 WHERE id_pendiente_pago = $id
+        UPDATE pendiente_pago SET status = 1, tipo_pago = '$metodo_pago'  WHERE id_pendiente_pago = $id
 sql;
         return $mysqli->update($query);
       }
@@ -59,6 +59,29 @@ sql;
         $parametros = array(
             ':user_id' => $data->_user_id,
             ':id_producto' => $data->_id_producto
+        );
+  
+        $id = $mysqli->insert($query, $parametros);
+  
+        return $id;
+          
+      }
+
+
+      public static function insertTransaccion($data){
+
+        $mysqli = Database::getInstance();
+        $query = <<<sql
+        INSERT INTO transaccion_compra (user_id,referencia_transaccion,productos,total_dolares,total_pesos,tipo_pago,fecha_transaccion) VALUES(:user_id,:referencia_transaccion,:productos,:total_dolares,:total_pesos,:tipo_pago,NOW())                        
+sql;
+  
+        $parametros = array(
+            ':user_id' => $data->_user_id,
+            ':referencia_transaccion' => $data->_referencia_transaccion,
+            ':productos' => $data->_productos,
+            ':total_dolares' => $data->_total_dolares,
+            ':total_pesos' => $data->_total_pesos,
+            ':tipo_pago' => $data->_tipo_pago
         );
   
         $id = $mysqli->insert($query, $parametros);
