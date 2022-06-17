@@ -725,7 +725,7 @@ html;
             else
             {
                 $industria .= <<<html
-                    <h6 class="mb-0 text-sm text-black" style="display:none"><span class="fas fa-building" style="font-size: 13px"></span> {$value['nombrecompleto']} </h6>
+                    <h6 class="mb-0 text-sm text-black" ><span class="fas fa-building" style="font-size: 13px"></span> hola </h6>
 html;
             }
 
