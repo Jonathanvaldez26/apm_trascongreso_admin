@@ -708,12 +708,30 @@ html;
         foreach (GeneralDao::getAllColaboradoresByName($name) as $key => $value) {
 
             $color = '';
+            $industria = '';
+            $linea = '';
+
+
             if($value['scholarship'] != '')
             {
                 $color = '#149777';
                 $linea = 'Becado';
-            }
+                foreach (GeneralDao::getBecas($value['scholarship']) as $key => $value_beca) {
 
+                    if($value_beca['nombrecompleto'] != '')
+                    {
+                        $industria .= <<<html
+                    <h6 class="mb-0 text-sm text-black"><span class="fas fa-building" style="font-size: 13px"></span> {$value_beca['nombrecompleto']} </h6>
+html;
+                    }
+                    else
+                    {
+                        $industria .= <<<html
+                    <h6 class="mb-0 text-sm text-black" ><span class="fas fa-building" style="font-size: 13px"></span> hola </h6>
+html;
+                    }
+                }
+            }
 
 
             if (empty($value['img']) || $value['img'] == null) {
@@ -734,8 +752,10 @@ html;
                             <a href="/Asistentes/Detalles/{$value['clave']}" target="_blank">
                                 <h6 class="mb-0 text-sm text-move text-black">
                                     <span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} {$value['segundo_nombre']} {$value['apellido_paterno']} {$value['apellido_materno']} </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$color}; color:white "><strong>{$linea}</strong></span>
-                                    </h6>
-                                </a>
+                                    {$industria}
+                               
+                                </h6>
+                            </a>
                             <div class="d-flex flex-column justify-content-center">
                                 <u><a  href="mailto:{$value['email']}"><h6 class="mb-0 text-sm text-move text-black"><span class="fa fa-mail-bulk" style="font-size: 13px"></span> {$value['usuario']}</h6></a></u>
                                 <u><a target="_blank" href="https://api.whatsapp.com/send?phone=52{$value['telefono']}&text=Buen%20d%C3%ADa,%20te%20contacto%20de%20parte%20del%20Equipo%20Grupo%20LAHE%20%F0%9F%98%80" target="_blank"><p class="text-sm text-black text-move font-weight-bold text-secondary mb-0"><span class="fa fa-whatsapp" style="font-size: 13px; color:green;"></span> {$value['telefono']}</p></a></u>
@@ -778,36 +798,7 @@ html;
                     </div>
                 </td>
 
-                <!-- QUITAR OTROS DATOS<td style="text-align:left; vertical-align:middle;"> 
-                    
-                    <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-business-time" style="font-size: 13px;"></span><b> Bu: </b>{$value['nombre_bu']}</p>
-                    <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-pills" style="font-size: 13px;"></span><b> Linea Principal: </b>{$value['nombre_linea']}</p>
-                    <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-hospital" style="font-size: 13px;"></span><b> Posición: </b>{$value['nombre_posicion']}</p>
-
-                    hr>
-                    <p class="text-sm font-weight-bold mb-0 "><span class="fas fa-egg-fried" style="font-size: 13px;"></span><b> Restricciones alimenticias: </b>{$value['restricciones_alimenticias']}</p>
-                    
-                    <p class="text-sm font-weight-bold mb-0 "><span class="fas fa-allergies" style="font-size: 13px;"></span><b> Alergias: </b>{$value['alergia']}{$value['alergia_cual']} <br>
-                    {$value['alergia_medicamento_cual']}</p>
-
-                    <hr>
-                    <p class="text-sm font-weight-bold mb-0 "><span class="fas fa-ban" style="font-size: 13px;"></span><b> Restricciones alimenticias: </b>{$restricciones_alimenticias}</p>
-                    
-                    <p class="text-sm font-weight-bold mb-0 "><span class="fas fa-allergies" style="font-size: 13px;"></span><b> Alergias:</b> {$alergia}
-
-                    <p class="text-sm font-weight-bold mb-0 "><span class="fas fa-pills" style="font-size: 13px;"></span><b> Alergias a medicamentos:</b> {$alergia_medicamento}</p>
-
-                </td>-->
-
-        
-
-          <!-- QUITAR STATUS <td style="text-align:left; vertical-align:middle;"> 
-            {$pase_ida}
-            {$pase_regreso}
-            {$ticket_v}
-            {$pru_covid}
-            {$compro_covid}
-          </td>-->
+    
           
           <td style="text-align:center; vertical-align:middle;">
             <a href="/RegistroAsistencia/abrirpdfGafete/{$value['clave']}/{$value['ticket_virtual']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Imprimir Gafetes" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Imprimir Gafetes" target="_blank"><i class="fas fa-print"> </i></a>     
