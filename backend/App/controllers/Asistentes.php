@@ -712,78 +712,7 @@ html;
             } else {
                 $img_user = "https://registro.foromusa.com/img/users_musa/{$value['img']}";
             }
-            
-            $pases = PasesDao::getByIdUser($value['utilerias_asistentes_id']);
-            $cont_pase_ida = 0;
-            $cont_pase_regreso = 0;
-            foreach ($pases as $key => $pas) {
-
-                if ($pases >= 1) {
-
-                    if ($pas['tipo'] == 1) {
-                        $cont_pase_ida++;
-
-                        if ($pas['status'] == 1) {
-
-                            $pase_ida = '<p class="text-sm font-weight-bold mb-0 " style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Documento validado"><span class="fa fa-plane-departure" style=" font-size: 13px;"></span> Regreso (<i class="fa fa-solid fa-check" style="color: green;"></i>)</p> ';
-                        } else {
-                            $pase_ida = '<p class="text-sm font-weight-bold mb-0 " style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Documento pendiente de validar"><span class="fa fa-plane-departure" style="font-size: 13px;"></span> Regreso (<i class="fa fa-solid fa-hourglass-end" style="color: #1a8fdd;"></i>)</p> ';
-                        }
-                    } elseif ($pas['tipo'] == 2) {
-                        $cont_pase_regreso++;
-
-                        if ($pas['status'] == 1) {
-
-                            $pase_regreso = '<p class="text-sm font-weight-bold mb-0 " style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Documento validado"><span class="fa fa-plane-arrival" style=" font-size: 13px;"></span> Llegada (<i class="fa fa-solid fa-check" style="color: green;"></i>)</p>';
-                        } else {
-                            $pase_regreso = '<p class="text-sm font-weight-bold mb-0 " style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Documento pendiente de validar"><span class="fa fa-plane-arrival" style="font-size: 13px"></span> Llegada (<i class="fa fa-solid fa-hourglass-end" style="color: #1a8fdd;"></i>)</p>';
-                        }
-                    }
-                }
-            }
-
-            if ($cont_pase_regreso <= 0) {
-                $pase_regreso = '<p class="text-sm font-weight-bold mb-0 " style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Aún no se sube el documento"><span class="fa fa-plane-arrival" style="font-size: 13px"></span> Llegada (<i class="fas fa-times" style="color: #7B241C;"></i>)</p>';
-            }
-
-            if ($cont_pase_ida <= 0) {
-                $pase_ida = '<p class="text-sm font-weight-bold mb-0 " style="cursor: pointer;"  data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Aún no se sube el documento"><span class="fa fa-plane-departure" style="font-size: 13px;"></span> Regreso (<i class="fas fa-times" style="color: #7B241C;"></i>)</p>';
-            }
-
-            $pruebacovid = PruebasCovidUsuariosDao::getByIdUser($value['utilerias_asistentes_id'])[0];
-
-            if ($pruebacovid) {
-
-                if ($pruebacovid['status'] == 1) {
-                    $pru_covid = '<p class="text-sm font-weight-bold mb-0 " style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Documento validado"><span class="fa fas fa-virus" style="font-size: 13px;"></span> Prueba Covid (<i class="fas fa-times" style="color:#7B241C;"></i>)</p>';
-                } else { 
-                    if ($pruebacovid['status'] == 2) {
-                        $pru_covid = '<p class="text-sm font-weight-bold mb-0 " style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Documento validado"><span class="fa fas fa-virus" style="font-size: 13px;"></span> Prueba Covid (<i class="fa fa-solid fa-check" style="color: green;"></i>)</p>';
-                    } else {
-                        $pru_covid = '<p class="text-sm font-weight-bold mb-0 " style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Documento pendiente de validar"><span class="fa fas fa-virus" style="font-size: 13px;"></span> Prueba Covid (<i class="fa fa-solid fa-hourglass-end" style="color: #1a8fdd;"></i>)</p>';
-                    }
-                }
-            } else {
-                $pru_covid = '<p class="text-sm font-weight-bold mb-0 " style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Aún no se sube el documento"><span class="fa fas fa-virus" style="font-size: 13px;"></span> Prueba Covid (<i class="fas fa-times" style="color:#7B241C;"></i>)</p>';
-            }
-
-            $comprobantecovid = ComprobantesVacunacionDao::getByIdUser($value['utilerias_asistentes_id'])[0];
-
-            if ($comprobantecovid) {
-
-                if ($comprobantecovid['validado'] == 1) {
-
-                    $compro_covid = '<p class="text-sm font-weight-bold mb-0 " style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Documento validado"><span class="fa fa-file-text-o" style="font-size: 13px;"></span> Comprobante Covid (<i class="fa fa-solid fa-check" style="color: green;"></i>)</p>';
-                } else {
-
-                    $compro_covid = '<p class="text-sm font-weight-bold mb-0 " style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Documento pendiente de validar"><span class="fa fa-file-text-o" style="font-size: 13px;"></span> Comprobante Covid (<i class="fa fa-solid fa-hourglass-end" style="color:#1a8fdd;"></i>)</p>';
-                }
-            } else {
-                $compro_covid = '<p class="text-sm font-weight-bold mb-0 " style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Aún no se sube el documento"><span class="fa fa-file-text-o" style="font-size: 13px;"></span> Comprobante Covid  (<i class="fas fa-times" style="color: #7B241C;" ></i>)</p>';
-            }
-
-
-
+           
             $html .= <<<html
             <tr>
                 <td>
