@@ -716,7 +716,7 @@ html;
             {
                 $color = '#149777';
                 $linea = 'Becado';
-                foreach (GeneralDao::getBecas($value['email']) as $key => $value_beca) {
+                foreach (GeneralDao::getBecas($value['scholarship']) as $key => $value_beca) {
                     $industria .= <<<html
                     <h6 class="mb-0 text-sm text-black"><span class="fas fa-building" style="font-size: 13px"></span> {$value['nombrecompleto']} </h6>
 html;
