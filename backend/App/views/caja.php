@@ -131,32 +131,57 @@
 
                                                             </div>
 
-                                                            <div class="row">
+                                                            <div class="row mt-3">
                                                                 <div class="col-md-6">
 
                                                                 </div>
 
-                                                                <div class="col-md-6">
-                                                                    <div>
-                                                                        <span>Total USD: <span id="total_usd"></span></span>
+                                                                <div class="col-md-6" id="cont-totales" style="display: none;">
+                                                                    <div style="display:flex; justify-content: space-evenly;">
+                                                                        <div id="cont-totales">
+                                                                            <div>
+                                                                                <span>Total USD: <span id="total_usd"></span></span>
 
-                                                                    </div>
-                                                                    <div>
+                                                                            </div>
+                                                                            <div>
 
-                                                                        <span>Total $ pesos mexicanos: <span id="total_pesos"></span></span>
+                                                                                <span>Total pesos mexicanos: $ <span id="total_pesos"></span></span>
+                                                                            </div>
+                                                                            <br>
+                                                                            <div>
+
+                                                                                <span>Cambio pesos mexicanos: $ <span id="total_cambio"></span></span>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div id="cont-input-pay">
+                                                                            <div class="form-group">
+                                                                                <label>Ingrese el monto</label>
+                                                                                <input type="number" class="form-control" id="txt_pago" name="txt_pago" min="0" step="0.01">
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
+
                                                                 </div>
 
                                                             </div>
 
                                                             <div class="row">
                                                                 <div class="col-md-6">
+                                                                    <!-- <div style="display:flex; justify-content:end;"> -->
+                                                                    <select class="form-control" id="metodo_pago" name="metodo_pago" style="width: auto; display:none;">
+                                                                        <option value="">Seleccione una opción</option>
+                                                                        <option value="Efectivo">Efectivo</option>
+                                                                        <option value="Tarjeta">Tarjeta Credito / Debito</option>
 
+                                                                    </select>
+                                                                    <!-- </div> -->
                                                                 </div>
 
                                                                 <div class="col-md-6">
                                                                     <div style="display:flex; justify-content:end;">
-                                                                        <button id="btn_pagar" class="btn btn-primary" style="display: none;">Pagar</button>
+
+                                                                        <button id="btn_pagar" class="btn btn-primary" style="display: none;" disabled>Pagar</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -415,53 +440,62 @@
 
             $("#btn_pagar").on("click", function() {
                 // alert("funciona");
+                var metodo_pago = $("#metodo_pago").val();
                 var user_id = $("#user_id").val();
-
+                var total_usd = $("#total_usd").text();
+                var total_pesos = $("#total_pesos").text();
                 console.log(user_id);
 
-                Swal.fire({
-                    title: 'Se va a procesar el pago.',
-                    text: "",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    cancelButtonText: 'Cancelar',
-                    confirmButtonText: 'Pagar'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $.ajax({
-                            url: "/Caja/setPay",
-                            type: "POST",
-                            data: {
-                                user_id
-                            },
-                            // dataType: 'json',
-                            beforeSend: function() {
-                                console.log("Procesando....");
-                            },
-                            success: function(respuesta) {
-                                console.log(respuesta);
+                if (metodo_pago != '') {
+                    Swal.fire({
+                        title: 'Se va a procesar el pago.',
+                        text: "",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        cancelButtonText: 'Cancelar',
+                        confirmButtonText: 'Pagar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                url: "/Caja/setPay",
+                                type: "POST",
+                                data: {
+                                    user_id,metodo_pago,total_usd,total_pesos
+                                },
+                                // dataType: 'json',
+                                beforeSend: function() {
+                                    console.log("Procesando....");
+                                },
+                                success: function(respuesta) {
+                                    console.log(respuesta);
 
-                                if (respuesta == 'success') {
-                                    Swal.fire('Pago generado correctamente.', '', 'success').then(() => {
-                                        setTimeout(function() {
-                                            location.reload();
-                                        }, 1000);
-                                    });
+                                    if (respuesta == 'success') {
+                                        Swal.fire('Pago generado correctamente.', '', 'success').then(() => {
+                                            setTimeout(function() {
+                                                location.reload();
+                                            }, 1000);
+                                        });
+
+                                    }
+                                },
+                                error: function(respuesta) {
 
                                 }
-                            },
-                            error: function(respuesta) {
 
-                            }
+                            });
+                        }
 
-                        });
-                    }
+                    })
+                    // var total_usd = $("#total_usd").text();
+                    // alert(total_usd);
+                }else{
+                    //seleccionar metodo de pago
+                    Swal.fire('Selecciona un metodo de pago','','info');
+                }
 
-                })
-                // var total_usd = $("#total_usd").text();
-                // alert(total_usd);
+
 
             });
 
@@ -520,7 +554,9 @@
                 $("#nombre_completo").html(respuesta.nombre_completo);
                 $("#correo_user").html(respuesta.datos_user.usuario);
                 $("#telefono_user").html(respuesta.datos_user.telephone);
+                $("#cont-totales").show();
                 $("#btn_pagar").show();
+                $("#metodo_pago").show();
 
 
                 $.each(respuesta.productos, function(key, value) {
@@ -612,6 +648,25 @@
                 // alert(user_id);
 
             });
+
+            $("#txt_pago").on('keyup', function() {
+                var total_pesos = parseFloat($("#total_pesos").text());
+                var total_pagar = $(this).val();
+                var cambio = 0;
+                if (total_pagar >= total_pesos) {
+                    $("#btn_pagar").removeAttr('disabled');
+                    cambio = total_pagar - total_pesos;
+                    $("#total_cambio").html(cambio);
+
+                    // console.log("se habilita");
+                } else {
+                    $("#btn_pagar").attr('disabled', 'disabled');
+                    $("#total_cambio").html("");
+                    // console.log("se desabilita");
+                }
+            });
+
+
 
 
         });
