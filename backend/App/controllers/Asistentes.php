@@ -706,19 +706,13 @@ html;
 
         $html = "";
         foreach (GeneralDao::getAllColaboradoresByName($name) as $key => $value) {
-            
-            $estatus = '';
-            if ($value['status'] == 1) {
-                $estatus .= <<<html
-                <span class="badge badge-success">Activo</span>
-html;
-            } else {
-                $estatus .= <<<html
-                <span class="badge badge-success">Inactivo</span>
-html;
-            }
 
-            // 6c5df2a1307bb58194383e7e79ac9414
+            if (empty($value['img']) || $value['img'] == null) {
+                $img_user = "/img/user.png";
+            } else {
+                $img_user = "https://registro.foromusa.com/img/users_musa/{$value['img']}";
+            }
+            
             $pases = PasesDao::getByIdUser($value['utilerias_asistentes_id']);
             $cont_pase_ida = 0;
             $cont_pase_regreso = 0;
