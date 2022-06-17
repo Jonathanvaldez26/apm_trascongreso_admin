@@ -39,13 +39,25 @@ sql;
     LIKE '%$search%';
 sql;
 
+
 // $query =<<<sql
 //     SELECT *
-//     FROM registros_acceso 
+//     FROM registros_acceso
 //     WHERE CONCAT_WS(email,nombre,segundo_nombre,apellido_materno,apellido_paterno,ticket_virtual) LIKE '%$search%';
 // sql;
     return $mysqli->queryAll($query);
   }
+
+
+    public static function getBecas($codigo){
+        $mysqli = Database::getInstance();
+        $query =<<<sql
+        SELECT b.codigo, l.nombrecompleto FROM becas b INNER JOIN laboratorios l on l.id_laboratorio = b.id_laboratorio WHERE codigo = '$codigo';
+sql;
+
+        return $mysqli->queryOne($query);
+    }
+
 
   public static function getAllColaboradoresByNameQuery($search){
     $mysqli = Database::getInstance();
