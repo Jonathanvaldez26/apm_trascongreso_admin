@@ -113,11 +113,20 @@ sql;
 sql;
         return $mysqli->queryAll($query);
       }
+      
 
       public static function getTipoCambio(){
         $mysqli = Database::getInstance();
         $query=<<<sql
         SELECT * FROM tipo_cambio WHERE id_tipo_cambio = 1
+sql;
+        return $mysqli->queryOne($query);
+      }
+
+      public static function getDataUser($user_id){
+        $mysqli = Database::getInstance(true);
+        $query=<<<sql
+        SELECT * FROM utilerias_administradores WHERE user_id = '$user_id'
 sql;
         return $mysqli->queryOne($query);
       }

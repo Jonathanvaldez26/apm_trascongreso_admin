@@ -1,4 +1,10 @@
 <?php echo $header; ?>
+<style>
+    .font-totales{
+        font-size: 25px;
+        font-weight: bold;
+    }
+</style>
 
 <body class="g-sidenav-show  bg-gray-100">
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
@@ -97,6 +103,10 @@
                                                             <h6>Correo: <span class="text-thin" id="correo_user"> _____</span></h6>
                                                             <h6>Teléfono: <span class="text-thin" id="telefono_user"> 00 0000 0000</span></h6>
                                                             <input type="hidden" id="user_id" name="user_id">
+
+                                                            <a href="" id="generar_gafete" target="_blank">gafete</a>
+                                                            <a href="" id="imprimir_comprobante" target="_blank">comprobante</a>
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>
@@ -133,30 +143,42 @@
 
                                                             <div class="row mt-3">
                                                                 <div class="col-md-6">
-
-                                                                </div>
-
-                                                                <div class="col-md-6" id="cont-totales" style="display: none;">
-                                                                    <div style="display:flex; justify-content: space-evenly;">
-                                                                        <div id="cont-totales">
+                                                                <div class="cont-totales">
                                                                             <div>
-                                                                                <span>Total USD: <span id="total_usd"></span></span>
+                                                                                <span class="font-totales">Total USD: <span id="total_usd"></span></span>
 
                                                                             </div>
                                                                             <div>
 
-                                                                                <span>Total pesos mexicanos: $ <span id="total_pesos"></span></span>
+                                                                                <span class="font-totales">Total pesos mexicanos: $ <span id="total_pesos"></span></span>
                                                                             </div>
                                                                             <br>
                                                                             <div>
 
-                                                                                <span>Cambio pesos mexicanos: $ <span id="total_cambio"></span></span>
+                                                                                <span class="font-totales">Cambio pesos mexicanos: $ <span id="total_cambio"></span></span>
                                                                             </div>
                                                                         </div>
+                                                                    
+
+                                                                </div>
+
+                                                                <div class="col-md-6 cont-totales"  style="display: none;">
+                                                                    <div style="display:flex; justify-content: space-evenly;">
+                                                                        
 
                                                                         <div id="cont-input-pay">
+                                                                            <div>
+                                                                                <label>Metodo de Pago *</label>
+                                                                                <select class="form-control" id="metodo_pago" name="metodo_pago" style="width: auto; display:none;">
+                                                                                    <option value="">Seleccione una opción</option>
+                                                                                    <option value="Efectivo">Efectivo</option>
+                                                                                    <option value="Tarjeta">Tarjeta Credito / Debito</option>
+
+                                                                                </select>
+                                                                            </div>
+
                                                                             <div class="form-group">
-                                                                                <label>Ingrese el monto</label>
+                                                                                <label>Ingrese el monto *</label>
                                                                                 <input type="number" class="form-control" id="txt_pago" name="txt_pago" min="0" step="0.01">
                                                                             </div>
                                                                         </div>
@@ -169,12 +191,12 @@
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <!-- <div style="display:flex; justify-content:end;"> -->
-                                                                    <select class="form-control" id="metodo_pago" name="metodo_pago" style="width: auto; display:none;">
+                                                                    <!-- <select class="form-control" id="metodo_pago" name="metodo_pago" style="width: auto; display:none;">
                                                                         <option value="">Seleccione una opción</option>
                                                                         <option value="Efectivo">Efectivo</option>
                                                                         <option value="Tarjeta">Tarjeta Credito / Debito</option>
 
-                                                                    </select>
+                                                                    </select> -->
                                                                     <!-- </div> -->
                                                                 </div>
 
@@ -462,7 +484,10 @@
                                 url: "/Caja/setPay",
                                 type: "POST",
                                 data: {
-                                    user_id,metodo_pago,total_usd,total_pesos
+                                    user_id,
+                                    metodo_pago,
+                                    total_usd,
+                                    total_pesos
                                 },
                                 // dataType: 'json',
                                 beforeSend: function() {
@@ -473,6 +498,7 @@
 
                                     if (respuesta == 'success') {
                                         Swal.fire('Pago generado correctamente.', '', 'success').then(() => {
+                                            $('#generar_gafete')[0].click();
                                             setTimeout(function() {
                                                 location.reload();
                                             }, 1000);
@@ -490,9 +516,9 @@
                     })
                     // var total_usd = $("#total_usd").text();
                     // alert(total_usd);
-                }else{
+                } else {
                     //seleccionar metodo de pago
-                    Swal.fire('Selecciona un metodo de pago','','info');
+                    Swal.fire('Selecciona un metodo de pago', '', 'info');
                 }
 
 
@@ -550,11 +576,13 @@
                 var total_usd = 0;
                 var total_pesos = 0;
 
+                $("#imprimir_comprobante").attr('href','/Caja/print/'+respuesta.datos_user.user_id+'/'+respuesta.datos_user.clave);
+                $("#generar_gafete").attr('href','/RegistroAsistencia/abrirpdfGafete/'+respuesta.datos_user.clave_user);
                 $("#user_id").val(respuesta.datos_user.user_id);
                 $("#nombre_completo").html(respuesta.nombre_completo);
                 $("#correo_user").html(respuesta.datos_user.usuario);
                 $("#telefono_user").html(respuesta.datos_user.telephone);
-                $("#cont-totales").show();
+                $(".cont-totales").show();
                 $("#btn_pagar").show();
                 $("#metodo_pago").show();
 
