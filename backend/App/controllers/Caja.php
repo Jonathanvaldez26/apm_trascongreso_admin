@@ -32,7 +32,7 @@ class Caja
         <link rel="apple-touch-icon" sizes="76x76" href="https://foromusa.com/assets/images/Musa0-01.png">
         <link rel="icon" type="image/png" href="https://foromusa.com/assets/images/Musa0-01.png">
         <title>
-            Asistencia CONAVE Convención 2022 ASOFARMA
+            CAJA - APM 
         </title>
         <!--     Fonts and icons     -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
