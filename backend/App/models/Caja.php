@@ -131,6 +131,14 @@ sql;
         return $mysqli->queryOne($query);
       }
 
+      public static function getLastTransaccionByUser($user_id){
+        $mysqli = Database::getInstance(true);
+        $query=<<<sql
+        SELECT * FROM transaccion_compra WHERE user_id = $user_id ORDER BY id_transaccion_compra DESC LIMIT 1
+sql;
+        return $mysqli->queryOne($query);
+      }
+
     public static function getByIdDirectivos($id){
         $mysqli = Database::getInstance();
         $query=<<<sql

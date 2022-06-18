@@ -104,8 +104,8 @@
                                                             <h6>Teléfono: <span class="text-thin" id="telefono_user"> 00 0000 0000</span></h6>
                                                             <input type="hidden" id="user_id" name="user_id">
 
-                                                            <a href="" id="generar_gafete" target="_blank">gafete</a>
-                                                            <a href="" id="imprimir_comprobante" target="_blank">comprobante</a>
+                                                            <a href="" id="generar_gafete" target="_blank" style="display: none;">gafete</a>
+                                                            <a href="" id="imprimir_comprobante" target="_blank" style="display: none;">comprobante</a>
                                                             
                                                         </div>
                                                     </div>
@@ -497,8 +497,10 @@
                                     console.log(respuesta);
 
                                     if (respuesta == 'success') {
+                                        $('#generar_gafete')[0].click();
+                                        $('#imprimir_comprobante')[0].click();
                                         Swal.fire('Pago generado correctamente.', '', 'success').then(() => {
-                                            $('#generar_gafete')[0].click();
+                                            
                                             setTimeout(function() {
                                                 location.reload();
                                             }, 1000);
@@ -554,18 +556,20 @@
                     },
                     success: function(respuesta) {
 
+                        console.log(respuesta.status);
                         console.log(respuesta);
                         if (respuesta.status == "success") {
 
                             crearTabla(respuesta);
 
-                        } else {
-                            console.log("fallo");
-                        }
-
+                        } 
                     },
                     error: function(respuesta) {
-
+                        Swal.fire('No se encontro ningun registro para este codigo','','error');
+                        setTimeout(function(){
+                            location.reload();
+                        },1000)
+                        console.log(respuesta);
                     }
 
                 });
@@ -576,50 +580,56 @@
                 var total_usd = 0;
                 var total_pesos = 0;
 
-                $("#imprimir_comprobante").attr('href','/Caja/print/'+respuesta.datos_user.user_id+'/'+respuesta.datos_user.clave);
-                $("#generar_gafete").attr('href','/RegistroAsistencia/abrirpdfGafete/'+respuesta.datos_user.clave_user);
-                $("#user_id").val(respuesta.datos_user.user_id);
-                $("#nombre_completo").html(respuesta.nombre_completo);
-                $("#correo_user").html(respuesta.datos_user.usuario);
-                $("#telefono_user").html(respuesta.datos_user.telephone);
-                $(".cont-totales").show();
-                $("#btn_pagar").show();
-                $("#metodo_pago").show();
+                if(Object.keys(respuesta).length > 0){
+                    
+                    $("#imprimir_comprobante").attr('href','/Caja/print/'+respuesta.datos_user.user_id+'/'+respuesta.datos_user.clave);
+                    $("#generar_gafete").attr('href','/RegistroAsistencia/abrirpdfGafete/'+respuesta.datos_user.clave_user);
+                    $("#user_id").val(respuesta.datos_user.user_id);
+                    $("#nombre_completo").html(respuesta.nombre_completo);
+                    $("#correo_user").html(respuesta.datos_user.usuario);
+                    $("#telefono_user").html(respuesta.datos_user.telephone);
+                    $(".cont-totales").show();
+                    $("#btn_pagar").show();
+                    $("#metodo_pago").show();
 
 
-                $.each(respuesta.productos, function(key, value) {
-                    var precio = 0;
-                    // console.log("funcioina");
-                    // console.log(value.es_congreso);
-                    // console.log(value.es_servicio);
-                    // console.log(value.es_curso);
+                    $.each(respuesta.productos, function(key, value) {
+                        var precio = 0;
+                        // console.log("funcioina");
+                        // console.log(value.es_congreso);
+                        // console.log(value.es_servicio);
+                        // console.log(value.es_curso);
 
-                    if (value.es_congreso == 1) {
-                        precio = value.amout_due;
-                    } else if (value.es_servicio == 1) {
-                        precio = value.precio_publico;
-                    } else if (value.es_curso == 1) {
-                        precio = value.precio_publico;
-                    }
+                        if (value.es_congreso == 1) {
+                            precio = value.amout_due;
+                        } else if (value.es_servicio == 1) {
+                            precio = value.precio_publico;
+                        } else if (value.es_curso == 1) {
+                            precio = value.precio_publico;
+                        }
 
-                    table += `<tr>
-                                <td><button class="btn btn-danger btn-sm btn-icon-only btn-delete" style="margin-top: 10px; margin-right:10px;" value="${value.id_pendiente_pago}" data-id-producto="${value.id_producto}">x</button>${value.nombre}</td>
-                                <td>${value.cantidad}</td>
-                                <td>${precio} USD</td>
-                                <td>$ ${precio * respuesta.tipo_cambio}</td>
-                                <td>${precio * value.cantidad} USD</td>
-                                <td>$ ${(precio * value.cantidad) * respuesta.tipo_cambio}</td>
-                            </tr>`;
+                        table += `<tr>
+                                    <td><button class="btn btn-danger btn-sm btn-icon-only btn-delete" style="margin-top: 10px; margin-right:10px;" value="${value.id_pendiente_pago}" data-id-producto="${value.id_producto}">x</button>${value.nombre}</td>
+                                    <td>${value.cantidad}</td>
+                                    <td>${precio} USD</td>
+                                    <td>$ ${precio * respuesta.tipo_cambio}</td>
+                                    <td>${precio * value.cantidad} USD</td>
+                                    <td>$ ${(precio * value.cantidad) * respuesta.tipo_cambio}</td>
+                                </tr>`;
 
-                    total_usd += precio * value.cantidad;
-                    total_pesos += (precio * value.cantidad) * respuesta.tipo_cambio;
+                        total_usd += precio * value.cantidad;
+                        total_pesos += (precio * value.cantidad) * respuesta.tipo_cambio;
 
-                });
+                    });
 
-                $("#total_usd").html(total_usd);
-                $("#total_pesos").html(total_pesos);
+                    $("#total_usd").html(total_usd);
+                    $("#total_pesos").html(total_pesos);
 
-                $("#lista_productos").find('tbody').html(table);
+                    $("#lista_productos").find('tbody').html(table);
+
+                }
+
+
             }
 
             $("table#lista_productos").on("click", "button.btn-delete", function() {
