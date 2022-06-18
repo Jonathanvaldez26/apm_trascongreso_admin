@@ -729,7 +729,7 @@ html;
                 if($value['clave_socio'] != '')
                 {
                     $clave_socio .= <<<html
-                    <span class="badge badge-success" style="background-color: #2ef119; color:white "><strong>Clave Socio: {$value['clave_socio']} </strong></span>  
+                    <span class="badge badge-success" style="background-color: #0c6300; color:white "><strong>Clave Socio: {$value['clave_socio']} </strong></span>  
 html;
                 }
                 else
