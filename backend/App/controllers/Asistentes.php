@@ -772,8 +772,19 @@ html;
             }
             else
             {
-                $color = '#B49C21';
-                $linea = 'No Socio';
+                if($value['clave_socio'] != '')
+                {
+                    $color = '#1F86E9';
+                    $linea = 'Es Socio';
+                }
+                else
+                {
+                    $color = '#B49C21';
+                    $linea = 'No Socio';
+                }
+
+
+
             }
 
 
