@@ -775,12 +775,12 @@ html;
                 if($value['clave_socio'] != '')
                 {
                     $color = '#1F86E9';
-                    $linea = 'Es Socio';
+                    $linea = 'Es Socio APM';
                 }
                 else
                 {
                     $color = '#B49C21';
-                    $linea = 'No Socio';
+                    $linea = 'No Socio APM';
                 }
 
 
