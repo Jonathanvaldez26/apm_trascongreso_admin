@@ -411,7 +411,6 @@ html;
 
 
 
-
     public function generaterQr($clave_ticket)
     {
 

@@ -390,6 +390,38 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-12 col-lg-6 col-md-4 position-relative z-index-2">
+                    <div class="card card-plain">
+                        <div class="card-body p-3">
+                            <div class="row">
+                                <div class="col-12">
+                                    <a href="/Constancias/Talleres">
+                                        <div class="card up-card">
+                                            <div class="row m-4">
+                                                <div class="col-3">
+                                                    <div class="bg-gradient-pink avatar avatar-l position-relative" >
+                                                        <span class="fas fa-file m-3 text-white" style="font-size: x-large;"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-9 m-auto">
+                                                    <div class="col-auto my-auto">
+                                                        <div class="h-100">
+                                                            <h5 class="mb-1">
+                                                                Constancias
+                                                            </h5>
+                                                            <p class="mb-0 font-weight-bold text-sm">
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- <div class="col-12 col-lg-6 col-md-4 position-relative z-index-2">
                     <div class="card card-plain">
                         <div class="card-body p-3">
