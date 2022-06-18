@@ -710,9 +710,8 @@ html;
             $color = '';
             $industria = '';
             $linea = '';
-            $telefono = '';
-            $miembro = '';
             $clave_socio = '';
+            $tipo_user = '';
 
             if(  strlen($value['scholarship']) >= 9)
             {
@@ -750,22 +749,26 @@ html;
 
             if($value['scholarship'] != '')
             {
-                $color = '#149777';
-                $linea = 'Becado'.' - '.$value['scholarship'];
-
+                if($value['clave_socio'] != '')
+                {
+                    $tipo_user .= <<<html
+                    <span class="badge badge-success" style="background-color:  #149777; color:white "><strong>Beca #{$value['scholarship']} </strong></span> 
+                    <span class="badge badge-success" style="background-color:  #1F86E9; color:white "><strong>Es Socio APM </strong></span>  
+html;
+                }
+                else
+                {
+                    $tipo_user .= <<<html
+                    <span class="badge badge-success" style="background-color:  #B49C21; color:white "><strong>No Socio APM </strong></span>  
+html;
+                }
 
                 foreach (GeneralDao::getBecas($value['scholarship']) as $key => $value_beca) {
 
                     if($value_beca['nombrecompleto'] != '')
                     {
                         $industria .= <<<html
-                    <h6 class="mb-0 text-sm text-black"><span class="fas fa-building" style="font-size: 13px"></span> Becado por: {$value_beca['nombrecompleto']} </h6>
-html;
-                    }
-                    else
-                    {
-                        $industria .= <<<html
-                    <h6 class="mb-0 text-sm text-black" ><span class="fas fa-building" style="font-size: 13px"></span> hola </h6>
+                    <h6 class="mb-0 text-sm text-black"><span class="fas fa-building" style="font-size: 13px"></span> Becado por: {$value_beca['nombrecompleto']} </h6>   
 html;
                     }
                 }
@@ -774,17 +777,16 @@ html;
             {
                 if($value['clave_socio'] != '')
                 {
-                    $color = '#1F86E9';
-                    $linea = 'Es Socio APM';
+                    $tipo_user .= <<<html
+                    <span class="badge badge-success" style="background-color:  #1F86E9; color:white "><strong>Es Socio APM </strong></span>  
+html;
                 }
                 else
                 {
-                    $color = '#B49C21';
-                    $linea = 'No Socio APM';
+                    $tipo_user .= <<<html
+                    <span class="badge badge-success" style="background-color:  #B49C21; color:white "><strong>No Socio APM </strong></span>  
+html;
                 }
-
-
-
             }
 
 
@@ -807,7 +809,7 @@ html;
                         </div>
                             <a href="/Asistentes/Detalles/{$value['clave']}" target="_blank">
                                 <h6 class="mb-0 text-sm text-move text-black">
-                                    <span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} {$value['segundo_nombre']} {$value['apellido_paterno']} {$value['apellido_materno']} </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$color}; color:white "><strong>{$linea} </strong></span>                   
+                                    <span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} {$value['segundo_nombre']} {$value['apellido_paterno']} {$value['apellido_materno']} </span> {$value['nombre_ejecutivo']} {$tipo_user}                  
                                     {$industria}
                                 </h6>
                             </a>
