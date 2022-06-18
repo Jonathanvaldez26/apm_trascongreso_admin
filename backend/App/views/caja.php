@@ -15,15 +15,15 @@
                     <div class="card card-body mt-n6 overflow-hidden m-5">
                         <div class="row mb-0">
                             <div class="col-auto">
-                                <div class="bg-gradient-musa avatar avatar-xl position-relative">
+                                <div class="bg-gradient-pink avatar avatar-xl position-relative">
                                     <!-- <img src="../../assets/img/bruce-mars.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm"> -->
-                                    <span class="fa fa-bell" style="font-size: xx-large;"></span>
+                                    <span class="fa fa-bell " style="font-size: xx-large;"></span>
                                 </div>
                             </div>
                             <div class="col-auto my-auto">
                                 <div class="h-100">
                                     <h5 class="mb-0">
-                                        Listas de Asistencias:
+                                        CAJA
                                     </h5>
                                     <h6><b><?php echo $nombre; ?></b></h6>
                                     <p class="mb-0 font-weight-bold text-sm">
@@ -32,7 +32,7 @@
                             </div>
 
                             <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
-                                <div class="nav-wrapper position-relative end-0">
+                                <!-- <div class="nav-wrapper position-relative end-0">
                                     <ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
                                         <li class="nav-item">
                                             <a class="nav-link mb-0 px-0 py-1 active" href="#cam1" data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="true">
@@ -47,7 +47,7 @@
                                             </a>
                                         </li>
                                     </ul>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
