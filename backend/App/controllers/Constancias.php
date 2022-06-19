@@ -514,26 +514,26 @@ html;
         // echo $id_producto;
         // exit;
 
-        if ($id_producto == 1) {
-            $nombre_imagen = 'constancia_congreso_1.jpeg';
-        } 
-        else if ($id_producto == 2) {
-            $nombre_imagen = 'constancia_transcongreso_2.png';
-        } else if ($id_producto == 3) {
-            $nombre_imagen = 'constancia_transcongreso_3.png';
-        } else if ($id_producto == 4) {
-            $nombre_imagen = 'constancia_transcongreso_4.png';
-        } else if ($id_producto == 5) {
-            $nombre_imagen = 'constancia_transcongreso_5.png';
-        } else if ($id_producto == 6) {
-            $nombre_imagen = 'constancia_transcongreso_6.png';
-        } else if ($id_producto == 7) {
-            $nombre_imagen = 'constancia_transcongreso_7.png';
-        } else if ($id_producto == 8) {
-            $nombre_imagen = 'constancia_transcongreso_8.png';
-        } else if ($id_producto == 9) {
-            $nombre_imagen = 'constancia_transcongreso_9.png';
-        }
+        // if ($id_producto == 1) {
+        //     $nombre_imagen = 'constancia_congreso_1.jpeg';
+        // } 
+        // else if ($id_producto == 2) {
+        //     $nombre_imagen = 'constancia_transcongreso_2.png';
+        // } else if ($id_producto == 3) {
+        //     $nombre_imagen = 'constancia_transcongreso_3.png';
+        // } else if ($id_producto == 4) {
+        //     $nombre_imagen = 'constancia_transcongreso_4.png';
+        // } else if ($id_producto == 5) {
+        //     $nombre_imagen = 'constancia_transcongreso_5.png';
+        // } else if ($id_producto == 6) {
+        //     $nombre_imagen = 'constancia_transcongreso_6.png';
+        // } else if ($id_producto == 7) {
+        //     $nombre_imagen = 'constancia_transcongreso_7.png';
+        // } else if ($id_producto == 8) {
+        //     $nombre_imagen = 'constancia_transcongreso_8.png';
+        // } else if ($id_producto == 9) {
+        //     $nombre_imagen = 'constancia_transcongreso_9.png';
+        // }
 
         $datos_user = GeneralDao::getUserRegisterByClave($clave,$id_producto)[0];
 
@@ -549,7 +549,8 @@ html;
         $pdf->SetFont('Arial', 'B', 8);    //Letra Arial, negrita (Bold), tam. 20
         $pdf->setY(1);
         $pdf->SetFont('Arial', 'B', 16);
-        $pdf->Image('constancias/plantillas/'.$nombre_imagen, 0, 0, 296, 210);
+        $pdf->Image('constancias/plantillas/constancia_congreso_1.jpeg', 0, 0, 296, 210);
+        // $pdf->Image('constancias/plantillas/'.$nombre_imagen, 0, 0, 296, 210);
         // $pdf->SetFont('Arial', 'B', 25);
         // $pdf->Multicell(133, 80, $clave_ticket, 0, 'C');
 
@@ -793,6 +794,45 @@ html;
         $html = "";
 
         $html .= <<<html
+        <div class="container-fluid">
+            <div class=" mt-7 mb-4">
+                <div class="card card-body mt-n6 overflow-hidden">
+                    <div class="row gx-4">
+                        <div class="col-auto">
+                            <div class="bg-gradient-pink avatar avatar-xl position-relative">
+                                <!-- <img src="../../assets/img/apmn.png" alt="profile_image" class="w-100 border-radius-lg shadow-sm"> -->
+                                <span class="fas fa-file" style="font-size: xx-large;"></span>
+                            </div>
+                        </div>
+                        <div class="col-auto my-auto">
+                            <div class="h-100">
+                                <h5 class="mb-1">
+                                    Constancias APM
+                                </h5>
+                                <p class="mb-0 font-weight-bold text-sm">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col" align="right">
+                            <div class="bg-gradient-pink avatar avatar-xl">
+                                <!-- <img src="../../assets/img/apmn.png" alt="profile_image" class="w-100 border-radius-lg shadow-sm"> -->
+                                <a href="/Principal/">
+                                    <span class="fas fa-arrow-left" style="font-size: xx-large; color:white;"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body px-0 pb-0">
+                            <div class="tab-content" id="v-pills-tabContent">
+                                <div class="tab-pane fade show position-relative active height-350 border-radius-lg" id="Invitados" role="tabpanel" aria-labelledby="Invitados">
+                                    <div class="table-responsive p-0">
         <table class="align-items-center mb-0 table table-borderless" id="">
         <thead class="thead-light">
             <tr>
@@ -823,7 +863,7 @@ html;
                 </td>
 
                 <td style="text-align:center;">
-                    <a href="/Constancias/TallerPorIdProducto/{$value['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Lista de registrados" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Lista de registrados" target="_blank"><i class="fas fa-list"> </i></a>
+                    <a href="/Constancias/TallerPorIdProducto/{$value['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Lista de registrados" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Lista de registrados"><i class="fas fa-list"> </i></a>
                 </td>
             </tr>
 html;
@@ -836,6 +876,45 @@ html;
 
         $html = "";
         $html .= <<<html
+        <div class="container-fluid">
+            <div class=" mt-7 mb-4">
+                <div class="card card-body mt-n6 overflow-hidden">
+                    <div class="row gx-4">
+                        <div class="col-auto">
+                            <div class="bg-gradient-pink avatar avatar-xl position-relative">
+                                <!-- <img src="../../assets/img/apmn.png" alt="profile_image" class="w-100 border-radius-lg shadow-sm"> -->
+                                <span class="fas fa-file" style="font-size: xx-large;"></span>
+                            </div>
+                        </div>
+                        <div class="col-auto my-auto">
+                            <div class="h-100">
+                                <h5 class="mb-1">
+                                    Constancias APM
+                                </h5>
+                                <p class="mb-0 font-weight-bold text-sm">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col" align="right">
+                            <div class="bg-gradient-pink avatar avatar-xl">
+                                <!-- <img src="../../assets/img/apmn.png" alt="profile_image" class="w-100 border-radius-lg shadow-sm"> -->
+                                <a href="/Constancias/Talleres">
+                                    <span class="fas fa-arrow-left" style="font-size: xx-large; color:white;"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body px-0 pb-0">
+                            <div class="tab-content" id="v-pills-tabContent">
+                                <div class="tab-pane fade show position-relative active height-350 border-radius-lg" id="Invitados" role="tabpanel" aria-labelledby="Invitados">
+                                    <div class="table-responsive p-0">
         <table class="align-items-center mb-0 table table-borderless" id="user_list_table">
         <thead class="thead-light">
             <tr>

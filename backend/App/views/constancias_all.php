@@ -77,26 +77,33 @@
         </nav>
         <!-- End Navbar -->
 
-        <div class="container-fluid">
+        <!-- <div class="container-fluid">
             <div class=" mt-7 mb-4">
                 <div class="card card-body mt-n6 overflow-hidden">
                     <div class="row gx-4">
                         <div class="col-auto">
                             <div class="bg-gradient-pink avatar avatar-xl position-relative">
-                                <!-- <img src="../../assets/img/bruce-mars.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm"> -->
+                                <img src="../../assets/img/apmn.png" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
                                 <span class="fas fa-file" style="font-size: xx-large;"></span>
                             </div>
                         </div>
                         <div class="col-auto my-auto">
                             <div class="h-100">
                                 <h5 class="mb-1">
-                                    Talleres APM
+                                    Constancias APM
                                 </h5>
                                 <p class="mb-0 font-weight-bold text-sm">
                                 </p>
                             </div>
                         </div>
-                       
+                        <div class="col" align="right">
+                            <div class="bg-gradient-pink avatar avatar-xl">
+                                <img src="../../assets/img/apmn.png" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                                <a href="/Constancias/Talleres">
+                                    <span class="fas fa-arrow-left" style="font-size: xx-large; color:white;"></span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -108,7 +115,8 @@
                         <div class="card-body px-0 pb-0">
                             <div class="tab-content" id="v-pills-tabContent">
                                 <div class="tab-pane fade show position-relative active height-350 border-radius-lg" id="Invitados" role="tabpanel" aria-labelledby="Invitados">
-                                    <div class="table-responsive p-0">
+                                    <div class="table-responsive p-0"> -->
+                                        
                                         <!-- <table class="align-items-center mb-0 table table-borderless" id=""> -->
                                             <!-- <thead class="thead-light">
                                                 <tr>
