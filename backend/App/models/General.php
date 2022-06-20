@@ -99,7 +99,6 @@ sql;
 
   return $mysqli->queryAll($query);
 }
->>>>>>> 5a6c7ae757aee00c249531ef51598fa8ca6d0b9d
 
 
     public static function getBecas($codigo){
