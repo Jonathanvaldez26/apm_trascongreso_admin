@@ -588,7 +588,7 @@ html;
 html;
                 }
             }
-            
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -689,7 +689,7 @@ html;
                             </div>
                             
                             <div class="d-flex flex-column justify-content-center">
-                                <u><a  href="mailto:{$value['email']}"><h6 class="mb-0 text-sm text-move text-black"><span class="fa fa-mail-bulk" style="font-size: 13px"></span> {$value['usuario']}</h6></a></u>
+                                <u><h6 class="mb-0 text-sm text-move text-black"><span class="fa fa-mail-bulk" style="font-size: 13px"></span> {$value['usuario']}</h6></u>
                                 <h6 class="mb-0 text-sm text-black"><span class="fa fa-map-pin" style="font-size: 13px"></span> {$value['pais']}</h6>
                             </div>
                             <hr>
