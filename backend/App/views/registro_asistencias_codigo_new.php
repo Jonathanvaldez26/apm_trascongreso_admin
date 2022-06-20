@@ -30,7 +30,13 @@
                             <div class="nav-wrapper position-relative end-0">
                                 <ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link mb-0 px-0 py-1 active" id="lista-tab" href="#lista_a" data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="true">
+                                        <a class="nav-link mb-0 px-0 py-1 active" href="#cam1" data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="true">
+                                            <span class="fa fa-clock-o"></span>
+                                            <span class="ms-1">Registro</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link mb-0 px-0 py-1" id="lista-tab" href="#cam2" data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false">
                                             <span class="fa fa-check-circle-o"></span>
                                             <span class="ms-1">Lista</span>
                                         </a>
@@ -45,7 +51,7 @@
     </div>
 
     <div class="tab-content" id="v-pills-tabContent">
-        <div class="tab-pane fade  position-relative  height-350 border-radius-lg" id="cam1" role="tabpanel" aria-labelledby="cam1">
+        <div class="tab-pane fade show position-relative active height-350 border-radius-lg" id="cam1" role="tabpanel" aria-labelledby="cam1">
     
             <div class="mt-7">
                 <div class="row">
@@ -71,7 +77,7 @@
                                                             <img class="w-100 h-100 avatar" id="img_asistente" src="/img/user.png" alt="user">
                                                         </div>
                                                         <div class="col-6">
-                                                            <h6>Especialidad: <span class="text-thin" id="especialidad_user"> Ninguna</span></h6> 
+                                                            <!-- <h6>Especialidad: <span class="text-thin" id="especialidad_user"> Ninguna</span></h6>  -->
                                                             <!-- <h6>Bu: <span class="text-thin" id="bu_user"> Ninguna</span></h6>
                                                             <h6>Posicion: <span class="text-thin" id="posicion_user"> Ninguna</span></h6>  -->
                                                         </div>
@@ -87,20 +93,21 @@
                                                 <div class="card">
                                                     <div class="card-header pb-0 p-3">
                                                         <div class="d-flex justify-content-between">
-                                                            <h6 class="mb-0"><span class="fa fa-list-alt" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Lista de asistencia"></span> <?php echo $nombre;?></h6>
+                                                            <h6 class="mb-0"><span class="fa fa-list-alt"></span> <?php echo $nombre;?></h6>
                                                             <button type="button" class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="<?php echo $descripcion; ?>">
                                                                 <i class="fas fa-info" aria-hidden="true"></i>
                                                             </button>
                                                         </div>
                                                         <hr>
-                                                        <h7 class="mb-0"><span class="fa fa-calendar-alt"></span> <span id="fecha"><?php echo $fecha_asistencia; ?></span> | Asistencia abierta de <span class="fa fa-clock-o"></span> <span id="hora-inicio"><?php echo $hora_asistencia_inicio; ?></span> a <span class="fa fa-clock-o"></span> <span id="hora-fin"><?php echo $hora_asistencia_fin; ?></span> <strong> Hora Local Cancún</strong></h7>
+                                                        <h7 class="mb-0"><span class="fa fa-calendar-alt"></span> <span id="fecha"><?php echo $fecha_asistencia; ?></span> | Asistencia abierta de <span class="fa fa-clock-o"></span> <span id="hora-inicio"><?php echo $hora_asistencia_inicio; ?></span> a <span class="fa fa-clock-o"></span> <span id="hora-fin"><?php echo $hora_asistencia_fin; ?></span> <strong></strong></h7>
                                                         <hr>
                                                         <br>
                                                         <div class="row gx-2 gx-sm-3">
                                                             <div class="col">
                                                                 <div class="form-group">
-                                                                    <input style="font-size: 35px" type="text" id="codigo_registro" name="codigo_registro" class="form-control form-control-lg text-center" minlength="6" maxlength="6" autocomplete="off" autocapitalize="off" autofocus>
+                                                                    <input style="font-size: 35px" type="text" id="codigo_registro" name="codigo_registro" class="form-control form-control-lg text-center" minlength="6" maxlength="11" autocomplete="off" autocapitalize="off" autofocus>
                                                                 </div>
+                                                                <input type="hidden" id="clave_asistencia" name="clave_asistencia" value="<?=$clave_asistencia?>">
                                                             </div>
                                                         </div>
                                                         <div class="text-center">
@@ -121,7 +128,7 @@
 
         
     
-        <div class="tab-pane fade show position-relative active height-350 border-radius-lg" id="lista_a" role="tabpanel" aria-labelledby="lista_a">
+        <div class="tab-pane fade position-relative height-350 border-radius-lg" id="cam2" role="tabpanel" aria-labelledby="cam2">
             <div class="row">
                 <div class="col-10 m-auto">
                     <div class="card p-4" style="overflow-y: auto;">
@@ -173,8 +180,9 @@
     function borrarRegister(dato){
         // alert(dato);
         $.ajax({
-            url: "/RegistroAsistencia/borrarRegistrado/"+dato,
+            url: "/RegistroAsistencia/borrarRegistrado/",
             type: "POST",
+            data: {dato},
             dataType: 'json',
             beforeSend: function() {
                 console.log("Procesando....");
@@ -356,17 +364,16 @@
         
         $("#codigo_registro").on('change',function(){
 
-            codigo = $('#codigo_registro').val();
+            clave_user = $('#codigo_registro').val();
+            clave_asistencia = $('#clave_asistencia').val();
             $('#codigo_registro').val('');
             // $('#lista-reg > tbody').empty();
 
-            console.log(codigo);
-            console.log(clave_a);
         
             $.ajax({
-                url: "/RegistroAsistencia/registroAsistencia/"+codigo+'/'+clave_a,
+                url: "/RegistroAsistencia/registroAsistencia/",
                 type: "POST",
-                // data: formData,
+                data: {clave_user,clave_asistencia},
                 dataType: 'json',
                 beforeSend: function() {
                     console.log("Procesando....");
@@ -376,10 +383,10 @@
                     if (respuesta.status == 'success') {
                         // console.log(respuesta);
                         // console.log(respuesta.msg_insert);
-                        let nombre_completo = respuesta.datos.nombre+' '+respuesta.datos.segundo_nombre+' '+respuesta.datos.apellido_paterno +' '+respuesta.datos.apellido_materno;
+                        let nombre_completo = respuesta.datos.name_user+' '+respuesta.datos.middle_name+' '+respuesta.datos.surname +' '+respuesta.datos.second_surname;
                         $("#nombre_completo").html(nombre_completo);
-                        $("#correo_user").html(respuesta.datos.email);
-                        $("#telefono_user").html(respuesta.datos.telefono);
+                        $("#correo_user").html(respuesta.datos.usuario);
+                        $("#telefono_user").html(respuesta.datos.telephone);
 
                         if (respuesta.datos.img != '' || respuesta.datos.img != null || respuesta.datos.img != NULL || respuesta.datos.img != 'null' ) {
                             
@@ -394,12 +401,7 @@
 
                         // console.log(respuesta.especialidades['0']);
                         // $("#especialidad_user").html(respuesta.especialidades['0'].nombre);
-                        for (let index = 0; index < respuesta.especialidades.length; index++) {
-                            const element = respuesta.especialidades[index];
-                            if (element.id_especialidad == respuesta.datos.especialidad) {
-                                $("#especialidad_user").html(element.nombre);
-                            }
-                        }
+                       
 
                         if(respuesta.msg_insert == 'success_find_assistant'){
                             Swal.fire({
@@ -422,6 +424,7 @@
                                 $("#codigo_registro").focus();
                             })
                         } else {
+                            Swal.fire("Asistencia regisrada","","success");
                             // window.location.replace("/RegistroAsistencia/codigo/"+clave_a);
                         }
                     } else  {

@@ -91,28 +91,31 @@ html;
 
         $codigo = RegistroAsistenciaDao::getById($id);
 
-        $lista_registrados = RegistroAsistenciaDao::getRegistrosAsistenciasByCode($id);
+        $lista_registrados = RegistroAsistenciaDao::getRegistrosAsistenciasNewByCode($id);
 
-        $nombre_asistencia = RegistroAsistenciaDao::getRegistrosAsistenciasByCode($id)[0]['nombre_asistencia'];
+        $nombre_asistencia = RegistroAsistenciaDao::getRegistrosAsistenciasNewByCode($id)[0]['nombre_asistencia'];
 
         $tabla = '';
         foreach ($lista_registrados as $key => $value) {
             $tabla .= <<<html
             <tr>
-                <td><b>{$value['nombre_completo']} </b> <span class="badge badge-info" style="color: white; background: {$value['color_linea']};"> {$value['nombre_linea_ejecutivo']} </span></td>
+                <td><b>{$value['nombre_completo']} </b></td>
                 <td>
-                    <u><a href="mailto:{$value['email']}"><span class="fa fa-mail-bulk"> </span> {$value['email']}</a></u>
+                    <u><a href="mailto:{$value['usuario']}"><span class="fa fa-mail-bulk"> </span> {$value['usuario']}</a></u>
                     <br><br>
-                    <u><a href="https://api.whatsapp.com/send?phone=52{$value['telefono']}&text=Buen%20d%C3%ADa,%20te%20contacto%20de%20parte%20del%20Equipo%20Grupo%20LAHE%20%F0%9F%98%80" target="_blank"><span class="fa fa-whatsapp" style="color:green;"> </span> {$value['telefono']}</a></u>
-                </td>
-                <td>
-                    <b>Especialidad: </b>{$value['nombre_especialidad']}
+                    <u><a href="https://api.whatsapp.com/send?phone=52{$value['telephone']}&text=Buen%20d%C3%ADa,%20te%20contacto%20de%20parte%20del%20Equipo%20Grupo%20LAHE%20%F0%9F%98%80" target="_blank"><span class="fa fa-whatsapp" style="color:green;"> </span> {$value['telephone']}</a></u>
                 </td>
                 
 html;
             if ($value['status'] == 1) {
                 $tabla .= <<<html
-                <td class="text-center"><span class="badge badge-success">En Tiempo</span><td>
+                <td class="text-center"> 
+                    <span class="badge badge-success"> En Tiempo</span>
+                    <br>
+                    <span>Fecha ingreso: <b>{$value['fecha_alta']}</b></span>
+                    <br> 
+                    <span>Asistencia a: <b>{$nombre_asistencia}</b></span>
+                <td>
                 <td>
                     <button class="btn btn-danger " onclick="borrarRegister({$value['id_registro_asistencia']})" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Eliminar Registro de {$value['nombre_completo']}">
                         <i class="fas fa-trash"></i>
@@ -122,7 +125,13 @@ html;
 html;
             } else if ($value['status'] == 2) {
                 $tabla .= <<<html
-                <td class="text-center"><span class="badge badge-danger">Fuera del Horario</span><td>
+                <td class="text-center">
+                    <span class="badge badge-danger">Fuera del Horario</span>
+                    <br>
+                    <span>Fecha ingreso: <b>{$value['fecha_alta']}</b></span>
+                    <br> 
+                    <span>Asistencia a: <b>{$nombre_asistencia}</b></span>
+                <td>
                 <td>
                     <button class="btn btn-danger " onclick="borrarRegister({$value['id_registro_asistencia']})" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Eliminar Registro de {$value['nombre_completo']}">
                         <i class="fas fa-trash"></i>
@@ -150,12 +159,13 @@ html;
             View::set('nombre', $nombre);
             View::set('descripcion', $descripcion);
             View::set('nombre_asistencia', $nombre_asistencia);
+            View::set('clave_asistencia',$id);
             View::set('fecha_asistencia', $fecha_asistencia);
             View::set('hora_asistencia_inicio', $hora_asistencia_inicio);
             View::set('hora_asistencia_fin', $hora_asistencia_fin);
             View::set('header', $extraHeader);
             View::set('footer', $extraFooter);
-            View::render("registro_asistencias_codigo");
+            View::render("registro_asistencias_codigo_new");
         } else {
             // View::render("asistencias_panel_registro");
             View::render("asistencias_all_vacia");
@@ -169,66 +179,69 @@ html;
         echo json_encode($lista_registrados);
     }
 
-    public function borrarRegistrado($id_user)
+    public function borrarRegistrado()
     {
 
         $id_asistencia = '';
-        $delete_registrado = RegistroAsistenciaDao::delete($id_user);
+        $dato = $_POST['dato'];
+        $delete_registrado = RegistroAsistenciaDao::delete($dato);
 
         echo json_encode($delete_registrado);
     }
 
-    public function registroAsistencia($clave, $code){
+    public function registroAsistencia(){
+
+        $clave_user = $_POST['clave_user'];
+        $clave_asistencia = $_POST['clave_asistencia'];
         
-        $user_clave = RegistroAsistenciaDao::getInfo($clave)[0];
-        $especialidades = RegistroAsistenciaDao::getEspecialidades();
-        $asistencia = RegistroAsistenciaDao::getIdRegistrosAsistenciasByCode($code)[0];
+        $user_clave = RegistroAsistenciaDao::getInfo($clave_user)[0];
+        // $especialidades = RegistroAsistenciaDao::getEspecialidades();
+        $asistencia = RegistroAsistenciaDao::getIdRegistrosAsistenciasByCode($clave_asistencia)[0];
 
         $fecha = new DateTime('now', new DateTimeZone('America/Cancun'));
         $hora_actual = substr($fecha->format(DATE_RFC822), 15, 5);
-        $a_tiempo = '';
+        $a_tiempo = 1;
 
-        if (
-            intval(substr($hora_actual, 0, 2)) > intval(substr($asistencia['hora_asistencia_inicio'], 0, 2))
-            && intval(substr($hora_actual, 0, 2)) < intval(substr($asistencia['hora_asistencia_fin'], 0, 2))
-        ) {
-            $a_tiempo = 1;
-            $aqui = 1;
-        } else if (
-            intval(substr($hora_actual, 0, 2)) == intval(substr($asistencia['hora_asistencia_fin'], 0, 2))
-            && intval(substr($hora_actual, 3, 6)) <= intval(substr($asistencia['hora_asistencia_fin'], 3, 6))
-        ) {
-            $a_tiempo = 1;
-            $aqui = 2;
-        } else if (
-            intval(substr($hora_actual, 0, 2)) == intval(substr($asistencia['hora_asistencia_inicio'], 0, 2))
-            && intval(substr($hora_actual, 3, 6)) >= intval(substr($asistencia['hora_asistencia_inicio'], 3, 6))
-        ) {
-            $a_tiempo = 1;
-            $aqui = 3;
-        } else {
-            $a_tiempo = 2;
-            $aqui = 4;
-        }
+        // if (
+        //     intval(substr($hora_actual, 0, 2)) > intval(substr($asistencia['hora_asistencia_inicio'], 0, 2))
+        //     && intval(substr($hora_actual, 0, 2)) < intval(substr($asistencia['hora_asistencia_fin'], 0, 2))
+        // ) {
+        //     $a_tiempo = 1;
+        //     $aqui = 1;
+        // } else if (
+        //     intval(substr($hora_actual, 0, 2)) == intval(substr($asistencia['hora_asistencia_fin'], 0, 2))
+        //     && intval(substr($hora_actual, 3, 6)) <= intval(substr($asistencia['hora_asistencia_fin'], 3, 6))
+        // ) {
+        //     $a_tiempo = 1;
+        //     $aqui = 2;
+        // } else if (
+        //     intval(substr($hora_actual, 0, 2)) == intval(substr($asistencia['hora_asistencia_inicio'], 0, 2))
+        //     && intval(substr($hora_actual, 3, 6)) >= intval(substr($asistencia['hora_asistencia_inicio'], 3, 6))
+        // ) {
+        //     $a_tiempo = 1;
+        //     $aqui = 3;
+        // } else {
+        //     $a_tiempo = 2;
+        //     $aqui = 4;
+        // }
             if ($user_clave) {
-                $hay_asistente = RegistroAsistenciaDao::findAsistantById($user_clave['utilerias_asistentes_id'], $asistencia['id_asistencia'])[0];
-                if ($hay_asistente) {
-                    $msg_insert = 'success_find_assistant';
-                } else {
+                $hay_asistente = RegistroAsistenciaDao::findAsistantById($user_clave['user_id'], $asistencia['id_asistencia'])[0];
+                // if ($hay_asistente) {
+                    // $msg_insert = 'success_find_assistant';
+                // } else {
                     $msg_insert = 'fail_not_found_assistant';
-                    $insert = RegistroAsistenciaDao::addRegister($asistencia['id_asistencia'], $user_clave['utilerias_asistentes_id'], $a_tiempo);
-                }
+                    $insert = RegistroAsistenciaDao::addRegister($asistencia['id_asistencia'], $user_clave['user_id'], $a_tiempo);
+                // }
     
                 $data = [
                     'datos' => $user_clave,
-                    'especialidades' => $especialidades,
                     'status' => 'success',
                     'msg_insert' => $msg_insert,
                     'hay_asistente' => $hay_asistente,
                     'asistencia' => $asistencia,
                     'hora_actual' => $hora_actual,
                     'a_tiempo' => $a_tiempo,
-                    'aqui' => $aqui,
+                    // 'aqui' => $aqui,
                     'hora_actual' => intval(substr($hora_actual, 0, 2)),
                     'hora_fin' => intval(substr($asistencia['hora_asistencia_fin'], 0, 2)),
                 ];
