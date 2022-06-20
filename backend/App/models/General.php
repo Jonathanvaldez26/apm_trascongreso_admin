@@ -53,6 +53,54 @@ sql;
         return $mysqli->queryAll($query);
     }
 
+  public static function getAllTalleres(){
+    $mysqli = Database::getInstance();
+    $query =<<<sql
+    SELECT pr.id_producto,pr.nombre,COUNT(*) as total_registrado FROM pendiente_pago pp
+    INNER JOIN productos pr ON pp.id_producto = pr.id_producto
+    WHERE pp.status = 1
+    GROUP BY pp.id_producto;
+sql;
+
+    return $mysqli->queryAll($query);
+  }
+
+  public static function getAllUsuariosTalleres($id_producto){
+    $mysqli = Database::getInstance();
+    $query =<<<sql
+    SELECT pr.id_producto,pr.nombre,pp.*, ua.*,pp.status as statuspp FROM pendiente_pago pp
+    INNER JOIN productos pr ON pp.id_producto = pr.id_producto
+    INNER JOIN utilerias_administradores ua ON pp.user_id = ua.user_id
+    WHERE pp.status = 1
+    AND pp.id_producto = $id_producto
+    ORDER BY ua.name_user ASC;
+sql;
+
+    return $mysqli->queryAll($query);
+  }
+
+//   public static function getProductoByIdProducto($id_producto){
+//     $mysqli = Database::getInstance();
+//     $query =<<<sql
+//     SELECT * FROM productos pr
+//     WHERE pr.id_producto = $id_producto;
+// sql;
+
+//     return $mysqli->queryAll($query);
+//   }
+
+  public static function getUserRegisterByClave($clave,$id_producto){
+    $mysqli = Database::getInstance(true);
+    $query =<<<sql
+    SELECT ua.*,pp.* FROM utilerias_administradores ua 
+    INNER JOIN pendiente_pago pp ON ua.user_id = pp.user_id
+    WHERE ua.clave = '$clave' AND pp.id_producto = $id_producto;
+sql;
+
+  return $mysqli->queryAll($query);
+}
+>>>>>>> 5a6c7ae757aee00c249531ef51598fa8ca6d0b9d
+
 
     public static function getBecas($codigo){
         $mysqli = Database::getInstance();
