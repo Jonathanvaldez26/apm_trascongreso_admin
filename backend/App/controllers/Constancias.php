@@ -1417,8 +1417,11 @@ html;
     public function abrirpdf($clave, $noPages = null, $no_habitacion = null)
     {
         $datos_user = AsistentesDao::getRegistroAccesoByClaveRA($clave)[0];
-        $nombre_completo = strtoupper($datos_user['nombre'] . " " . $datos_user['apellido_paterno']) ;
-       
+        
+        $nombre = html_entity_decode($datos_user['nombre'], ENT_QUOTES, "UTF-8");
+        $apellido = html_entity_decode($datos_user['apellido_paterno'], ENT_QUOTES, "UTF-8");
+        $nombre_completo = mb_strtoupper($nombre) . " " .  mb_strtoupper($apellido);
+        // $nombre_completo = strtoupper($datos_user['nombre'] . " " . $datos_user['apellido_paterno']);
         //$nombre_completo = utf8_decode($_POST['nombre']);
         //$datos_user['numero_habitacion']
         
@@ -1441,7 +1444,7 @@ html;
             $pdf->SetFont('Arial', 'B', 25);
             #4D9A9B
             $pdf->SetTextColor(0, 0, 0);
-            $pdf->Multicell(130, 5.5, utf8_decode($nombre_completo) , 0, 'C');
+            $pdf->Multicell(95, 10, utf8_decode($nombre_completo), 0, 'C');
 
  
             $textypos += 6;
