@@ -538,7 +538,7 @@ html;
                 if($value['amout_due'] != '' && $value['scholarship'] == '' )//Si el colaborador tiene amout_due y no tiene beca es una compra
                 {
                     foreach (GeneralDao::getBuscarEstatusCompraEmail($value['usuario'] ) as $key => $value_busca_compra) { //IR A BUSCAR EL ESTATUS DE PAGO
-                        if(empty($value_busca_compra['status']))//Se pregunta si esta vacia, significa que solo se registro y no ha pagadp
+                        if($value_busca_compra['status'] == '')//Se pregunta si esta vacia, significa que solo se registro y no ha pagadp
                         {
                             $permiso_impresion .= <<<html
                         <span class="badge badge-success" style="background-color: #0ae9ff; color:white "><strong>SOLO SE REGISTRO </strong></span>  
