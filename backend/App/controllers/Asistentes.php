@@ -587,6 +587,15 @@ html;
                                     </div>
 html;
                                     }
+                                    else
+                                    {
+                                        $permiso_impresion .= <<<html
+                                    <div>
+                                        <span class="badge badge-success" style="background-color: #d2aaf3; color:black "><strong>REGISTRO P/PAGO</strong></span>  
+                                        <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - SUBIO COMPROBANTE DE PAGO ERRONEO, PEDIR COMPROBANTE VALIDO Y DIRIGIR A EVELYN </strong></span>
+                                    </div> PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
+html;
+                                    }
                                 }
                             }
                         }
