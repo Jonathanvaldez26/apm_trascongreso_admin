@@ -499,7 +499,9 @@ html;
                 if($value['amout_due'] == '')//preguntar si no tiene registrado algun costo es becado
                 {
                     $permiso_impresion .= <<<html
-                    <span class="badge badge-success" style="background-color: #033901; color:white "><strong>OK - HABILITADO PARA IMPRESIÓN DE GAFETE </strong></span>  
+                    <div>
+                        <span class="badge badge-success" style="background-color: #033901; color:white "><strong>OK - HABILITADO PARA IMPRESIÓN DE GAFETE </strong></span>  
+                    </div>
 html;
                 }
                 else
@@ -508,7 +510,9 @@ html;
                         if($value_busca_beca['status'] == 1 && $value_busca_beca['fecha_liberado'] != '')//Si ya esta validado se muestra
                         {
                             $permiso_impresion .= <<<html
-                        <span class="badge badge-success" style="background-color: #033901; color:white "><strong>OK - HABILITADO PARA IMPRESIÓN DE GAFETE </strong></span>  
+                            <div>
+                                <span class="badge badge-success" style="background-color: #033901; color:white "><strong>OK - HABILITADO PARA IMPRESIÓN DE GAFETE </strong></span>  
+                            </div>
 html;
                         }
                         else
@@ -542,8 +546,11 @@ html;
                         if(empty($value_busca_compra['status']))//Se pregunta si esta vacia, significa que solo se registro y no ha pagadp
                         {
                             $permiso_impresion .= <<<html
-                        <span class="badge badge-success" style="background-color: #0ae9ff; color:white "><strong>REGISTRO P/PAGO</strong></span>  
-                        <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - DIRIGIR A CAJA A PAGAR</strong></span>
+                            <div>
+                                <span class="badge badge-success" style="background-color: #d2aaf3; color:black "><strong>REGISTRO P/PAGO</strong></span>  
+                                <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - DIRIGIR A CAJA A PAGAR</strong></span>
+                            </div>
+                        
 html;
                         }
                         else
@@ -560,8 +567,10 @@ html;
                                 if($value_busca_compra['url_archivo'] != '' && $value_busca_compra['status'] == 0) //Si ya subio comprobante de pago poner que se tiene que pedir la validacio a apm
                                 {
                                     $permiso_impresion .= <<<html
-                                    <span class="badge badge-success" style="background-color: #0ae9ff; color:white "><strong>REGISTRO P/PAGO</strong></span>  
-                                    <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - PREGUNTAR A APM DE VALIDACIÓN DE PAGO </strong></span>  
+                                    <div>
+                                        <span class="badge badge-success" style="background-color: #d2aaf3; color:black "><strong>REGISTRO P/PAGO</strong></span>  
+                                        <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - PREGUNTAR A APM DE VALIDACIÓN DE PAGO </strong></span>
+                                    </div>
 html;
                                 }
                             }
@@ -572,15 +581,14 @@ html;
                 else
                 {
                     $permiso_impresion .= <<<html
-                        <span class="badge badge-success" style="background-color: #0ae9ff; color:white "><strong>REGISTRO P/PAGO</strong></span>  
-                        <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - DIRIGIR A CAJA A PAGAR</strong></span>
+                        <div>
+                            <span class="badge badge-success" style="background-color: #0ae9ff; color:white "><strong>REGISTRO P/PAGO</strong></span>  
+                            <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - DIRIGIR A CAJA A PAGAR</strong></span>
+                        </div>
 html;
                 }
             }
-
-
-
-
+            
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -690,8 +698,7 @@ html;
                             </div>
                             
                             <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm text-black"><span class="fa fa-calendar" style="font-size: 13px"></span> Se registro como socio APM: $miembro_apm</h6>
-                                 {$clave_socio}
+                                <h6 class="mb-0 text-sm text-black"><span class="fa fa-calendar" style="font-size: 13px"></span> Se registro como socio APM: $miembro_apm  {$clave_socio}</h6> 
                             </div>
                             <div class="d-flex flex-column justify-content-center">
                                  {$permiso_impresion}
