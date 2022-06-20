@@ -558,8 +558,10 @@ html;
                             if($value_busca_compra['url_archivo'] == '')//Si no ha subido comproabnte decir que no ha subido
                             {
                                 $permiso_impresion .= <<<html
-                        <span class="badge badge-success" style="background-color: #0ae9ff; color:white "><strong>REGISTRO P/PAGO</strong></span>  
-                        <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - NO HA SUBIDO COMPROBANTE DE PAGO DIRIGIR A CAJA A PAGAR</strong></span>  
+                                <div>
+                                    <span class="badge badge-success" style="background-color: #0ae9ff; color:white "><strong>REGISTRO P/PAGO</strong></span>  
+                                    <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - NO HA SUBIDO COMPROBANTE DE PAGO DIRIGIR A CAJA A PAGAR</strong></span> 
+                                </div>                    //////////////////////////////
 html;
                             }
                             else
@@ -572,6 +574,18 @@ html;
                                         <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - PREGUNTAR A APM DE VALIDACIÓN DE PAGO </strong></span>
                                     </div>
 html;
+                                }
+                                else
+                                {
+                                    if($value_busca_compra['url_archivo'] != '' && $value_busca_compra['status'] == 2) //Si ya subio comprobante pero se volvio a solicitar
+                                    {
+                                        $permiso_impresion .= <<<html
+                                    <div>
+                                        <span class="badge badge-success" style="background-color: #d2aaf3; color:black "><strong>REGISTRO P/PAGO</strong></span>  
+                                        <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - SUBIO COMPROBANTE DE PAGO ERRONEO, PEDIR COMPROBANTE VALIDO Y DIRIGIR A EVELYN </strong></span>
+                                    </div>
+html;
+                                    }
                                 }
                             }
                         }
