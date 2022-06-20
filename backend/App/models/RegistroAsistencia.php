@@ -126,11 +126,8 @@ sql;
     public static function getInfo($clave){
         $mysqli = Database::getInstance();
         $query=<<<sql
-        SELECT ra.*, ua.utilerias_asistentes_id, ra.ticket_virtual as clave_ticket
-        FROM registros_acceso ra
-        INNER JOIN utilerias_asistentes ua
-        ON ua.id_registro_acceso = ra.id_registro_acceso
-        WHERE ra.ticket_virtual = '$clave'
+        SELECT * FROM utilerias_administradores
+        WHERE clave = '$clave'
 sql;
 
         return $mysqli->queryAll($query);
@@ -353,8 +350,20 @@ sql;
         ON a.id_asistencia = id_asistencias
         and ua.utilerias_asistentes_id = ras.utilerias_asistentes_id
         and ra.id_registro_acceso = ua.id_registro_acceso
-        and lp.id_linea_principal = ra.especialidad
-        
+        and lp.id_linea_principal = ra.especialidad        
+        WHERE a.clave = '$code'
+sql;
+        return $mysqli->queryAll($query);
+    }
+
+    public static function getRegistrosAsistenciasNewByCode($code){
+        $mysqli = Database::getInstance();
+        $query=<<<sql
+        SELECT a.nombre AS nombre_asistencia, ras.user_id,ras.id_registro_asistencia, ras.status,ua.usuario,ras.fecha_alta,ua.telephone,ua.usuario,
+		CONCAT (ua.name_user,' ',ua.middle_name,' ',ua.surname,' ',ua.second_surname) AS nombre_completo        
+        FROM registros_asistencia_new ras
+        INNER JOIN asistencias a ON(ras.id_asistencias = a.id_asistencia)
+        INNER JOIN utilerias_administradores ua ON(ua.user_id = ras.user_id)       
         WHERE a.clave = '$code'
 sql;
         return $mysqli->queryAll($query);
@@ -374,7 +383,7 @@ sql;
     public static function addRegister($id_asistencia,$id_user,$status){
         $mysqli = Database::getInstance();
         $query=<<<sql
-        INSERT INTO registros_asistencia ( `id_asistencias`, `utilerias_asistentes_id`, `fecha_alta`, `status`) 
+        INSERT INTO registros_asistencia_new ( `id_asistencias`, `user_id`, `fecha_alta`, `status`) 
         VALUES ($id_asistencia,$id_user,NOW(),$status)
 sql;
         $id = $mysqli->insert($query);
@@ -398,8 +407,8 @@ sql;
     public static function findAsistantById($id,$id_asist){
         $mysqli = Database::getInstance();
         $query=<<<sql
-        SELECT * FROM `registros_asistencia` 
-        WHERE utilerias_asistentes_id = $id and id_asistencias = $id_asist
+        SELECT * FROM `registros_asistencia_new` 
+        WHERE user_id = $id and id_asistencias = $id_asist
 sql;
         return $mysqli->queryAll($query);
     }
@@ -407,7 +416,7 @@ sql;
     public static function delete($id_registro_asistencia){
         $mysqli = Database::getInstance(true);
         $query=<<<sql
-        DELETE FROM `registros_asistencia` WHERE id_registro_asistencia = $id_registro_asistencia 
+        DELETE FROM `registros_asistencia_new` WHERE id_registro_asistencia = $id_registro_asistencia 
 sql;
         return $mysqli->delete($query);
 

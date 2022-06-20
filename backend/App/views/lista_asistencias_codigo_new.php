@@ -130,7 +130,6 @@
                                 <tr>
                                     <th>Nombre</th>
                                     <th>Información Personal</th>
-                                    <!-- <th>Información de Trabajo</th> -->
                                     <th>Status<th>
                                     <th>Acciones</th>
                                 </tr>
@@ -173,8 +172,9 @@
     function borrarRegister(dato){
         // alert(dato);
         $.ajax({
-            url: "/RegistroAsistencia/borrarRegistrado/"+dato,
+            url: "/RegistroAsistencia/borrarRegistrado/",
             type: "POST",
+            data:{dato},
             dataType: 'json',
             beforeSend: function() {
                 console.log("Procesando....");

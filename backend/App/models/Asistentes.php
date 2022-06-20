@@ -130,6 +130,15 @@ sql;
         
     }
 
+    public static function getUserById(){
+      $mysqli = Database::getInstance();
+      $query=<<<sql
+      SELECT * FROM utilerias_administradores
+sql;
+      return $mysqli->queryAll($query);
+        
+    }
+
     public static function getUserReferenceNull(){
       $mysqli = Database::getInstance();
       $query=<<<sql

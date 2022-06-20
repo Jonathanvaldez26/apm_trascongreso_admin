@@ -91,28 +91,31 @@ html;
 
         $codigo = RegistroAsistenciaDao::getById($id);
 
-        $lista_registrados = RegistroAsistenciaDao::getRegistrosAsistenciasByCode($id);
+        $lista_registrados = RegistroAsistenciaDao::getRegistrosAsistenciasNewByCode($id);
 
-        $nombre_asistencia = RegistroAsistenciaDao::getRegistrosAsistenciasByCode($id)[0]['nombre_asistencia'];
+        $nombre_asistencia = RegistroAsistenciaDao::getRegistrosAsistenciasNewByCode($id)[0]['nombre_asistencia'];
 
         $tabla = '';
         foreach ($lista_registrados as $key => $value) {
             $tabla .= <<<html
             <tr>
-                <td><b>{$value['nombre_completo']} </b> <span class="badge badge-info" style="color: white; background: {$value['color_linea']};"> {$value['nombre_linea_ejecutivo']} </span></td>
+                <td><b>{$value['nombre_completo']} </b></td>
                 <td>
-                    <u><a href="mailto:{$value['email']}"><span class="fa fa-mail-bulk"> </span> {$value['email']}</a></u>
+                    <u><a href="mailto:{$value['usuario']}"><span class="fa fa-mail-bulk"> </span> {$value['usuario']}</a></u>
                     <br><br>
-                    <u><a href="https://api.whatsapp.com/send?phone=52{$value['telefono']}&text=Buen%20d%C3%ADa,%20te%20contacto%20de%20parte%20del%20Equipo%20Grupo%20LAHE%20%F0%9F%98%80" target="_blank"><span class="fa fa-whatsapp" style="color:green;"> </span> {$value['telefono']}</a></u>
-                </td>
-                <td>
-                    <b>Especialidad: </b>{$value['nombre_especialidad']}
+                    <u><a href="https://api.whatsapp.com/send?phone=52{$value['telephone']}&text=Buen%20d%C3%ADa,%20te%20contacto%20de%20parte%20del%20Equipo%20Grupo%20LAHE%20%F0%9F%98%80" target="_blank"><span class="fa fa-whatsapp" style="color:green;"> </span> {$value['telephone']}</a></u>
                 </td>
                 
 html;
             if ($value['status'] == 1) {
                 $tabla .= <<<html
-                <td class="text-center"><span class="badge badge-success">En Tiempo</span><td>
+                <td class="text-center">
+                    <span class="badge badge-success">En Tiempo</span>
+                    <br>
+                    <span>Fecha ingreso: <b>{$value['fecha_alta']}</b></span>
+                    <br> 
+                    <span>Asistencia a: <b>{$nombre_asistencia}</b></span>
+                <td>
                 <td>
                     <button class="btn btn-danger " onclick="borrarRegister({$value['id_registro_asistencia']})" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Eliminar Registro de {$value['nombre_completo']}">
                         <i class="fas fa-trash"></i>
@@ -122,7 +125,13 @@ html;
 html;
             } else if ($value['status'] == 2) {
                 $tabla .= <<<html
-                <td class="text-center"><span class="badge badge-danger">Fuera del Horario</span><td>
+                <td class="text-center">
+                    <span class="badge badge-danger">Fuera del Horario</span>
+                    <br>
+                    <span>Fecha ingreso: <b>{$value['fecha_alta']}</b></span>
+                    <br> 
+                    <span>Asistencia a: <b>{$nombre_asistencia}</b></span>
+                <td>
                 <td>
                     <button class="btn btn-danger " onclick="borrarRegister({$value['id_registro_asistencia']})" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Eliminar Registro de {$value['nombre_completo']}">
                         <i class="fas fa-trash"></i>
@@ -155,7 +164,7 @@ html;
             View::set('hora_asistencia_fin', $hora_asistencia_fin);
             View::set('header', $extraHeader);
             View::set('footer', $extraFooter);
-            View::render("lista_asistencias_codigo");
+            View::render("lista_asistencias_codigo_new");
         } else {
             // View::render("asistencias_panel_registro");
             View::render("asistencias_all_vacia");
