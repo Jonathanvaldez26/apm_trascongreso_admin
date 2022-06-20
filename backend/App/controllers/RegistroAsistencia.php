@@ -411,17 +411,16 @@ html;
         $datos_user = AsistentesDao::getRegistroAccesoByClaveRA($clave)[0];
         $nombre = html_entity_decode($datos_user['nombre'], ENT_QUOTES, "UTF-8");
         $apellido = html_entity_decode($datos_user['apellido_paterno'], ENT_QUOTES, "UTF-8");
-        $nombre_completo = mb_strtoupper($nombre) . "\n\n" . mb_strtoupper($apellido);
+        $nombre_completo = mb_strtoupper($nombre) ." ". mb_strtoupper($apellido);
         // $nombre_completo = mb_strtoupper($datos_user['nombre']) . " " . mb_strtoupper($datos_user['segundo_nombre']) . "\n\n" . mb_strtoupper($datos_user['apellido_paterno']) . "\n\n" . mb_strtoupper($datos_user['apellido_materno']);
 
         
 
-        $pdf = new \FPDF($orientation = 'P', $unit = 'mm', array(390, 152));
+        $pdf = new \FPDF($orientation = 'P', $unit = 'mm', array(300, 210));
         $pdf->AddPage();
         $pdf->SetFont('Arial', 'B', 8);    //Letra Arial, negrita (Bold), tam. 20
-        $pdf->setY(1);
         $pdf->SetFont('Arial', 'B', 16);
-        $pdf->Image('qrs/gafetes/'.$clave.'.png', 50, 85, 50, 50);
+        $pdf->Image('qrs/gafetes/'.$clave.'.png',70,40,70,0,'PNG');
         $pdf->SetFont('Arial', 'B', 25);
         // $pdf->Multicell(133, 80, $clave_ticket, 0, 'C');
 
@@ -431,12 +430,16 @@ html;
         //$num_linea =utf8_decode("Línea: 39");
         //$num_linea2 =utf8_decode("Línea: 39");
 
-        $pdf->SetXY(29, 260);
-        $pdf->SetFont('Arial', 'B', 30);
+        $pdf->setXY(55,235);
+        $pdf->SetFont('Times','B',16);
         #4D9A9B
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->Multicell(95, 10, utf8_decode($nombre_completo), 0, 'C');
-        $pdf->output();
+        $pdf->SetLeftMargin(0);
+        $pdf->SetTopMargin(0);
+        $pdf->SetRightMargin(0);
+        $pdf->SetAutoPageBreak(0,0);
+        $pdf->Multicell(70.8,4.8, utf8_decode($nombre_completo), -0, 'C');
+        $pdf->output();     
     }
 
 
