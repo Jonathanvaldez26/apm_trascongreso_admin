@@ -543,35 +543,58 @@ html;
                 {
                     foreach (GeneralDao::getBuscarEstatusCompraEmail($value['usuario'] ) as $key => $value_busca_compra) { //IR A BUSCAR EL ESTATUS DE PAGO
 
-                        if(empty($value_busca_compra['status']))//Se pregunta si esta vacia, significa que solo se registro y no ha pagadp
+                        if($value_busca_compra['status'] == 3)//Se pregunta si esta vacia, significa que solo se registro y no ha pagadp
                         {
                             $permiso_impresion .= <<<html
                             <div>
                                 <span class="badge badge-success" style="background-color: #d2aaf3; color:black "><strong>REGISTRO P/PAGO</strong></span>  
                                 <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - DIRIGIR A CAJA A PAGAR</strong></span>
+                                iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
                             </div>
-                        
 html;
                         }
                         else
                         {
-                            if($value_busca_compra['url_archivo'] == '')//Si no ha subido comproabnte decir que no ha subido
+                            if($value_busca_compra['url_archivo'] == '' && $value_busca_compra['status'] == 0)//Si no ha subido comproabnte decir que no ha subido
                             {
                                 $permiso_impresion .= <<<html
-                        <span class="badge badge-success" style="background-color: #0ae9ff; color:white "><strong>REGISTRO P/PAGO</strong></span>  
-                        <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - NO HA SUBIDO COMPROBANTE DE PAGO DIRIGIR A CAJA A PAGAR</strong></span>  
+                                <div>
+                                    <span class="badge badge-success" style="background-color: #0ae9ff; color:white "><strong>REGISTRO P/PAGO</strong></span>  
+                                    <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - NO HA SUBIDO COMPROBANTE DE PAGO DIRIGIR A CAJA A PAGAR</strong></span> 
+                                </div>
 html;
                             }
                             else
                             {
-                                if($value_busca_compra['url_archivo'] != '' && $value_busca_compra['status'] == 0) //Si ya subio comprobante de pago poner que se tiene que pedir la validacio a apm
+                                if($value_busca_compra['url_archivo'] != '' && $value_busca_compra['status'] == 1) //yA SUBIO cOMPROBANTE DE PAGO CORRECTO
                                 {
                                     $permiso_impresion .= <<<html
                                     <div>
                                         <span class="badge badge-success" style="background-color: #d2aaf3; color:black "><strong>REGISTRO P/PAGO</strong></span>  
-                                        <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - PREGUNTAR A APM DE VALIDACIÓN DE PAGO </strong></span>
+                                        <span class="badge badge-success" style="background-color:  #033901; color:white "><strong>OK - HABILITADO PARA IMPRESIÓN DE GAFETE - PAGADO Y VALIDADO POR APM </strong></span>
                                     </div>
 html;
+                                }
+                                else
+                                {
+                                    if($value_busca_compra['url_archivo'] == '' && $value_busca_compra['status'] == 2) //Si ya subio comprobante pero se volvio a solicitar
+                                    {
+                                        $permiso_impresion .= <<<html
+                                    <div>
+                                        <span class="badge badge-success" style="background-color: #d2aaf3; color:black "><strong>REGISTRO P/PAGO</strong></span>  
+                                        <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - SUBIO COMPROBANTE DE PAGO ERRONEO, PEDIR COMPROBANTE VALIDO Y DIRIGIR A EVELYN </strong></span>
+                                    </div>
+html;
+                                    }
+                                    else
+                                    {
+                                        $permiso_impresion .= <<<html
+                                    <div>
+                                        <span class="badge badge-success" style="background-color: #d2aaf3; color:black "><strong>REGISTRO P/PAGO</strong></span>  
+                                        <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - SUBIO COMPROBANTE DE PAGO ERRONEO, PEDIR COMPROBANTE VALIDO Y DIRIGIR A EVELYN </strong></span>
+                                    </div> 
+html;
+                                    }
                                 }
                             }
                         }
@@ -588,7 +611,7 @@ html;
 html;
                 }
             }
-            
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -689,7 +712,7 @@ html;
                             </div>
                             
                             <div class="d-flex flex-column justify-content-center">
-                                <u><a  href="mailto:{$value['email']}"><h6 class="mb-0 text-sm text-move text-black"><span class="fa fa-mail-bulk" style="font-size: 13px"></span> {$value['usuario']}</h6></a></u>
+                                <u><h6 class="mb-0 text-sm text-move text-black"><span class="fa fa-mail-bulk" style="font-size: 13px"></span> {$value['usuario']}</h6></u>
                                 <h6 class="mb-0 text-sm text-black"><span class="fa fa-map-pin" style="font-size: 13px"></span> {$value['pais']}</h6>
                             </div>
                             <hr>
