@@ -539,6 +539,7 @@ html;
                 {
                     foreach (GeneralDao::getBuscarEstatusCompraEmail($value['usuario'] ) as $key => $value_busca_compra) { //IR A BUSCAR EL ESTATUS DE PAGO
                         var_dump($value_busca_compra);
+                        exit();
                         if($value_busca_compra['status'])//Se pregunta si esta vacia, significa que solo se registro y no ha pagadp
                         {
 
