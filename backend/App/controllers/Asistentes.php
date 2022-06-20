@@ -494,46 +494,48 @@ html;
             $tipo_user = '';
             $permiso_impresion = '';
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            if($value['scholarship'] != '')
+            if($value['scholarship'] != '')//si la beca es diferente de vacio entonces
             {
-                if($value['amout_due'] == '')
+                if($value['amout_due'] == '')//preguntar si no tiene registrado algun costo es becado
                 {
                     $permiso_impresion .= <<<html
                     <span class="badge badge-success" style="background-color: #033901; color:white "><strong>OK - HABILITADO PARA IMPRESIÓN DE GAFETE </strong></span>  
 html;
                 }
-            }
-            else
-            {
-                foreach (GeneralDao::getBuscarBeca($value['usuario'] ) as $key => $value_busca_beca) { //IR A BUSCAR EL ESTATUS DE PAGO
-                    if($value_busca_beca['status'] == 1 && $value_busca_beca['fecha_liberado'] != '')//Si ya esta validado se muestra
-                    {
-                        $permiso_impresion .= <<<html
-                        <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>OK - HABILITADO PARA IMPRESIÓN DE GAFETE </strong></span>  
-html;
-                    }
-                    else
-                    {
-                        if($value_busca_beca['url_archivo'] == '')//Si no ha subido comproabnte decir que no ha subido
+                else
+                {
+                    foreach (GeneralDao::getBuscarBeca($value['usuario'] ) as $key => $value_busca_beca) { //IR A BUSCAR EL ESTATUS DE PAGO
+                        if($value_busca_beca['status'] == 1 && $value_busca_beca['fecha_liberado'] != '')//Si ya esta validado se muestra
                         {
                             $permiso_impresion .= <<<html
-                        <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO - EL BECADO NO HA SUBIDO COMPROBANTE DE PAGO DIRIGIR A CAJA A PAGAR</strong></span>  
+                        <span class="badge badge-success" style="background-color: #033901; color:white "><strong>OK - HABILITADO PARA IMPRESIÓN DE GAFETE </strong></span>  
 html;
                         }
                         else
                         {
-                            if($value_busca_beca['url_archivo'] != '' && $value_busca_beca['status'] == 0) //Si ya subio comprobante de pago poner que se tiene que pedir la validacio a apm
+                            if($value_busca_beca['url_archivo'] == '')//Si no ha subido comproabnte decir que no ha subido
                             {
                                 $permiso_impresion .= <<<html
+                        <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO - BECADO al 50 %, NO HA SUBIDO COMPROBANTE DE PAGO DIRIGIR A CAJA A PAGAR</strong></span>  
+html;
+                            }
+                            else
+                            {
+                                if($value_busca_beca['url_archivo'] != '' && $value_busca_beca['status'] == 0) //Si ya subio comprobante de pago poner que se tiene que pedir la validacio a apm
+                                {
+                                    $permiso_impresion .= <<<html
                                     <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO - PREGUNTAR A APM DE VALIDACIÓN DE PAGO </strong></span>  
 html;
+                                }
                             }
                         }
                     }
+
                 }
-
-
             }
+
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
