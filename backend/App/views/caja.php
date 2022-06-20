@@ -497,10 +497,10 @@
                                     console.log(respuesta);
 
                                     if (respuesta == 'success') {
-                                        $('#generar_gafete')[0].click();
+                                        
                                         $('#imprimir_comprobante')[0].click();
                                         Swal.fire('Pago generado correctamente.', '', 'success').then(() => {
-                                            
+                                            $('#generar_gafete')[0].click();
                                             setTimeout(function() {
                                                 location.reload();
                                             }, 1000);
@@ -595,17 +595,39 @@
 
                     $.each(respuesta.productos, function(key, value) {
                         var precio = 0;
+                        var socio = "";
                         // console.log("funcioina");
                         // console.log(value.es_congreso);
                         // console.log(value.es_servicio);
                         // console.log(value.es_curso);
 
-                        if (value.es_congreso == 1) {
+                        // if (value.es_congreso == 1) {
+                        //     precio = value.amout_due;
+                        // } else if (value.es_servicio == 1) {
+                        //     precio = value.precio_publico;
+                        // } else if (value.es_curso == 1) {
+                        //     precio = value.precio_publico;
+                        // }
+
+                        if(value.es_congreso == 1 && value.clave_socio == ""){
                             precio = value.amout_due;
-                        } else if (value.es_servicio == 1) {
+                            socio = "";
+                        }else if(value.es_congreso == 1 && value.clave_socio != ""){
+                            precio = value.amout_due;
+                            socio = "";
+                        }
+                        else if(value.es_servicio == 1 && $value.clave_socio == ""){
                             precio = value.precio_publico;
-                        } else if (value.es_curso == 1) {
+                            socio = "";
+                        }else if(value.es_servicio == 1 && $value.clave_socio != ""){
+                            precio = 0;
+                            socio = "Socio APM - Sin Costo";
+                        }
+                        else if(value.es_curso == 1  && value.clave_socio == ""){
                             precio = value.precio_publico;
+                        }else if(value.es_curso == 1  && value.clave_socio != ""){
+                            precio = 0;
+                            socio = "Socio APM - Sin Costo";
                         }
 
                         table += `<tr>

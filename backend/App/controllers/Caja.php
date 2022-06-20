@@ -248,12 +248,33 @@ html;
 
         foreach($productos as $key => $value){  
             
-            if($value['es_congreso'] == 1){
+            // if($value['es_congreso'] == 1){
+            //     $precio = $value['amout_due'];
+            // }else if($value['es_servicio'] == 1){
+            //     $precio = $value['precio_publico'];
+            // }else if($value['es_curso'] == 1){
+            //     $precio = $value['precio_publico'];
+            // }
+
+            if($value['es_congreso'] == 1 && $value['clave_socio'] == ""){
                 $precio = $value['amout_due'];
-            }else if($value['es_servicio'] == 1){
+                $socio = "";
+            }else if($value['es_congreso'] == 1 && $value['clave_socio'] != ""){
+                $precio = $value['amout_due'];
+                $socio = "";
+            }
+            else if($value['es_servicio'] == 1 && $value['clave_socio'] == ""){
                 $precio = $value['precio_publico'];
-            }else if($value['es_curso'] == 1){
+                $socio = "";
+            }else if($value['es_servicio'] == 1 && $value['clave_socio'] != ""){
+                $precio = 0;
+                $socio = "Socio APM - Sin Costo";
+            }
+            else if($value['es_curso'] == 1  && $value['clave_socio'] == ""){
                 $precio = $value['precio_publico'];
+            }else if($value['es_curso'] == 1  && $value['clave_socio'] != ""){
+                $precio = 0;
+                $socio = "Socio APM - Sin Costo";
             }
             
             $reference = $value['reference'];
