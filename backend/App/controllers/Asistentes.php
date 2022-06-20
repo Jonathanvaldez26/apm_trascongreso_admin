@@ -690,8 +690,7 @@ html;
                             </div>
                             
                             <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm text-black"><span class="fa fa-calendar" style="font-size: 13px"></span> Se registro como socio APM: $miembro_apm</h6>
-                                 {$clave_socio}
+                                <h6 class="mb-0 text-sm text-black"><span class="fa fa-calendar" style="font-size: 13px"></span> Se registro como socio APM: $miembro_apm  {$clave_socio}</h6> 
                             </div>
                             <div class="d-flex flex-column justify-content-center">
                                  {$permiso_impresion}
