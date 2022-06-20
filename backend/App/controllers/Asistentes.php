@@ -499,7 +499,9 @@ html;
                 if($value['amout_due'] == '')//preguntar si no tiene registrado algun costo es becado
                 {
                     $permiso_impresion .= <<<html
-                    <span class="badge badge-success" style="background-color: #033901; color:white "><strong>OK - HABILITADO PARA IMPRESIÓN DE GAFETE </strong></span>  
+                    <div>
+                        <span class="badge badge-success" style="background-color: #033901; color:white "><strong>OK - HABILITADO PARA IMPRESIÓN DE GAFETE </strong></span>  
+                    </div>
 html;
                 }
                 else
@@ -508,7 +510,9 @@ html;
                         if($value_busca_beca['status'] == 1 && $value_busca_beca['fecha_liberado'] != '')//Si ya esta validado se muestra
                         {
                             $permiso_impresion .= <<<html
-                        <span class="badge badge-success" style="background-color: #033901; color:white "><strong>OK - HABILITADO PARA IMPRESIÓN DE GAFETE </strong></span>  
+                            <div>
+                                <span class="badge badge-success" style="background-color: #033901; color:white "><strong>OK - HABILITADO PARA IMPRESIÓN DE GAFETE </strong></span>  
+                            </div>
 html;
                         }
                         else
