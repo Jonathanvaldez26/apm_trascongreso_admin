@@ -394,8 +394,10 @@ html;
 
         $this->generaterQr($clave);
         $datos_user = AsistentesDao::getRegistroAccesoByClaveRA($clave)[0];
-
-        $nombre_completo = mb_strtoupper($datos_user['nombre']) . "\n\n" . mb_strtoupper($datos_user['apellido_paterno']);
+        $nombre = html_entity_decode($datos_user['nombre'], ENT_QUOTES, "UTF-8");
+        $apellido = html_entity_decode($datos_user['apellido_paterno'], ENT_QUOTES, "UTF-8");
+        $nombre_completo = mb_strtoupper($nombre) . "\n\n" . mb_strtoupper($apellido);
+        // $nombre_completo = mb_strtoupper($datos_user['nombre']) . " " . mb_strtoupper($datos_user['segundo_nombre']) . "\n\n" . mb_strtoupper($datos_user['apellido_paterno']) . "\n\n" . mb_strtoupper($datos_user['apellido_materno']);
 
         
 
