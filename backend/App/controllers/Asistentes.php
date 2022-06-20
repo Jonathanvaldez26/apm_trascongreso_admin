@@ -537,37 +537,33 @@ html;
             {
                 if($value['amout_due'] != '' && $value['scholarship'] == '' )//Si el colaborador tiene amout_due y no tiene beca es una compra
                 {
-                    foreach (GeneralDao::getBuscarEstatusCompraEmail($value['usuario'] ) as $key => $value_busca_compra) { //IR A BUSCAR EL ESTATUS DE PAGO
-
-                        if(empty($value_busca_compra['status']))//Se pregunta si esta vacia, significa que solo se registro y no ha pagadp
+                    foreach (GeneralDao::getBuscarEstatusCompraEmail($value['usuario'] ) as $key => $value_busca_compra)
+                    { //IR A BUSCAR EL ESTATUS DE PAGO
+                        if($value_busca_compra['url_archivo'] == '')//Si no ha subido comproabnte decir que no ha subido
                         {
                             $permiso_impresion .= <<<html
                         <span class="badge badge-success" style="background-color: #0ae9ff; color:white "><strong>REGISTRO P/PAGO</strong></span>  
-                        <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - DIRIGIR A CAJA A PAGAR</strong></span>
+                        <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - NO HA SUBIDO COMPROBANTE DE PAGO DIRIGIR A CAJA A PAGAR</strong></span>  
 html;
                         }
                         else
                         {
-                            if($value_busca_compra['url_archivo'] == '')//Si no ha subido comproabnte decir que no ha subido
+                            if($value_busca_compra['url_archivo'] != '' && $value_busca_compra['status'] == 0) //Si ya subio comprobante de pago poner que se tiene que pedir la validacio a apm
                             {
                                 $permiso_impresion .= <<<html
-                        <span class="badge badge-success" style="background-color: #0ae9ff; color:white "><strong>REGISTRO P/PAGO</strong></span>  
-                        <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - NO HA SUBIDO COMPROBANTE DE PAGO DIRIGIR A CAJA A PAGAR</strong></span>  
+                                    <span class="badge badge-success" style="background-color: #0ae9ff; color:white "><strong>REGISTRO P/PAGO</strong></span>  
+                                    <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - PREGUNTAR A APM DE VALIDACIÓN DE PAGO </strong></span>  
 html;
                             }
                             else
                             {
-                                if($value_busca_compra['url_archivo'] != '' && $value_busca_compra['status'] == 0) //Si ya subio comprobante de pago poner que se tiene que pedir la validacio a apm
-                                {
-                                    $permiso_impresion .= <<<html
-                                    <span class="badge badge-success" style="background-color: #0ae9ff; color:white "><strong>REGISTRO P/PAGO</strong></span>  
-                                    <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO - PREGUNTAR A APM DE VALIDACIÓN DE PAGO </strong></span>  
+                                $permiso_impresion .= <<<html
+                        <span class="badge badge-success" style="background-color: #0ae9ff; color:white "><strong>REGISTRO P/PAGO</strong></span>  
+                        <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - DIRIGIR A CAJA A PAGAR</strong></span>
 html;
-                                }
                             }
                         }
                     }
-
                 }
             }
 
