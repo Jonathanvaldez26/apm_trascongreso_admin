@@ -646,9 +646,10 @@ html;
                                 <h6 class="mb-0 text-sm text-black"><span class="fa fa-calendar" style="font-size: 13px"></span> Se registro como socio APM: $miembro_apm</h6>
                                  {$clave_socio}
                             </div>
-                            <div class="d-flex flex-column justify-content-center">
+                            
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
                                  {$permiso_impresion}
-                            </div>
                         </div>
                     </div>
                 </td>
