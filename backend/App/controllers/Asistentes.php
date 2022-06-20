@@ -535,7 +535,7 @@ html;
             }
             else
             {
-                if($value['amout_due'] != '' && $value['scholarship'] == 0 )//Si el colaborador tiene amout_due y no tiene beca es una compra
+                if($value['amout_due'] != '' && $value['scholarship'] == NULL || $value['scholarship'] == 0 || $value['scholarship'] == '' )//Si el colaborador tiene amout_due y no tiene beca es una compra
                 {
                     foreach (GeneralDao::getBuscarEstatusCompraEmail($value['usuario'] ) as $key => $value_busca_compra)
                     { //IR A BUSCAR EL ESTATUS DE PAGO
