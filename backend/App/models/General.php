@@ -42,6 +42,17 @@ sql;
     return $mysqli->queryAll($query);
   }
 
+    public static function getBuscarBeca($search){
+        $mysqli = Database::getInstance();
+        $query =<<<sql
+    SELECT ua.user_id, ua.usuario, p.status, p.fecha_liberado, p.url_archivo FROM pendiente_pago p 
+    INNER JOIN utilerias_administradores ua on ua.user_id = p.user_id 
+    WHERE ua.usuario = '$search';
+sql;
+
+        return $mysqli->queryAll($query);
+    }
+
 
     public static function getBecas($codigo){
         $mysqli = Database::getInstance();
