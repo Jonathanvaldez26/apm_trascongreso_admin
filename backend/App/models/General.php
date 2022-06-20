@@ -53,6 +53,17 @@ sql;
         return $mysqli->queryAll($query);
     }
 
+    public static function getBuscarEstatusCompraEmail($search){
+        $mysqli = Database::getInstance();
+        $query =<<<sql
+    SELECT ua.user_id, ua.usuario, p.status, p.fecha_liberado, p.url_archivo, p.id_producto 
+    FROM pendiente_pago p INNER JOIN utilerias_administradores ua on ua.user_id = p.user_id 
+    WHERE ua.usuario = '$search' and p.id_producto = 1;
+sql;
+
+        return $mysqli->queryAll($query);
+    }
+
   public static function getAllTalleres(){
     $mysqli = Database::getInstance();
     $query =<<<sql
