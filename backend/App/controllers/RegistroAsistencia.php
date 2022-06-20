@@ -28,10 +28,10 @@ class RegistroAsistencia
         $extraHeader = <<<html
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="apple-touch-icon" sizes="76x76" href="https://foromusa.com/assets/images/Musa0-01.png">
-        <link rel="icon" type="image/png" href="https://foromusa.com/assets/images/Musa0-01.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="https://foromusa.com/assets/images/Mus-01.png">
+        <link rel="icon" type="image/png" href="https://foromusa.com/assets/images/Mu0-01.png">
         <title>
-            Asistencia CONAVE Convención 2022 ASOFARMA
+            Asistencia APM
         </title>
         <!--     Fonts and icons     -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -154,6 +154,7 @@ html;
         }
 
 
+
         if ($flag == true) {
             View::set('tabla', $tabla);
             View::set('nombre', $nombre);
@@ -224,6 +225,18 @@ html;
         //     $a_tiempo = 2;
         //     $aqui = 4;
         // }
+
+            $asigna_producto = RegistroAsistenciaDao::getAsignaProductoByUser($user_clave['user_id'],$asistencia['id_producto']);
+            if($asigna_producto){
+                $msg_asigna_pro = "";
+                $status_asigna_pro = 0;
+            }else{
+                $msg_asigna_pro = "El usuario no compro este curso";
+                $status_asigna_pro = 1;
+            }
+            
+
+
             if ($user_clave) {
                 $hay_asistente = RegistroAsistenciaDao::findAsistantById($user_clave['user_id'], $asistencia['id_asistencia'])[0];
                 // if ($hay_asistente) {
@@ -241,6 +254,8 @@ html;
                     'asistencia' => $asistencia,
                     'hora_actual' => $hora_actual,
                     'a_tiempo' => $a_tiempo,
+                    'status_asigna_pro' => $status_asigna_pro,
+                    'msg_asigna_pro' => $msg_asigna_pro,
                     // 'aqui' => $aqui,
                     'hora_actual' => intval(substr($hora_actual, 0, 2)),
                     'hora_fin' => intval(substr($asistencia['hora_asistencia_fin'], 0, 2)),

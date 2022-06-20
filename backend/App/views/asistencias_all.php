@@ -151,6 +151,7 @@
                             <div class="h-100">
                                 <h5 class="mb-1">
                                     Listas de Asistencias
+                                  
                                 </h5>
                                 <p class="mb-0 font-weight-bold text-sm">
                                 </p>
@@ -266,10 +267,22 @@
                                         <textarea id="descripcion" name="descripcion" maxlength="1000" class="form-control" placeholder="Descripción"></textarea>
                                     </div>
                                 </div>
+
+                                
+                                <div class="row mb-3">
+                                    <label class="form-label">Taller </label>
+                                    <div class="input-group">
+                                       <select class="form-control" id="id_producto" name="id_producto">
+                                        <option value="" disabled selected>Selecciona una Opción</option>
+                                            <?php echo $productos?>
+                                       </select>
+                                    </div>
+                                </div>
+
                                 <div class="row mb-3">
                                     <label class="form-label">Fecha *</label>
                                     <div class="input-group">
-                                        <input id="fecha_asistencia" name="fecha_asistencia" maxlength="29" class="form-control" type="date" min required="" onfocus="focused(this)" onfocusout="defocused(this)"" style=" text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                                        <input id="fecha_asistencia" name="fecha_asistencia" maxlength="29" class="form-control" type="date" min required="" onfocus="focused(this)" onfocusout="defocused(this)" style=" text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
                                 </div>
 

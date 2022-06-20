@@ -549,7 +549,7 @@ html;
                             <div>
                                 <span class="badge badge-success" style="background-color: #d2aaf3; color:black "><strong>REGISTRO P/PAGO</strong></span>  
                                 <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - DIRIGIR A CAJA A PAGAR</strong></span>
-                                iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+                                
                             </div>
 html;
                         }
@@ -605,17 +605,13 @@ html;
                 {
                     $permiso_impresion .= <<<html
                         <div>
-                            <span class="badge badge-success" style="background-color: #0ae9ff; color:white "><strong>REGISTRO P/PAGO</strong></span>  
+                            <span class="badge badge-success" style="background-color: #d2aaf3; color:white "><strong>REGISTRO P/PAGO</strong></span>  
                             <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - DIRIGIR A CAJA A PAGAR</strong></span>
                         </div>
 html;
                 }
             }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
+            
             if($value['apm_member'] == 1)
             {
                 $miembro_apm = 'SI';

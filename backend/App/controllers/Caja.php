@@ -253,7 +253,7 @@ html;
             // }else if($value['es_servicio'] == 1){
             //     $precio = $value['precio_publico'];
             // }else if($value['es_curso'] == 1){
-            //     $precio = $value['precio_publico'];
+            //     $precio = $value['precio_publico']; 
             // }
 
             if($value['es_congreso'] == 1 && $value['clave_socio'] == ""){
