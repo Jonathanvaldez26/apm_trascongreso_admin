@@ -62,7 +62,7 @@ sql;
             WHERE ua.usuario = '$search' and p.id_producto = 1
         UNION
         SELECT user_id, usuario, 3 as status, '' as fecha_liberado, '' as url_archivo, 1 as id_producto FROM utilerias_administradores
-            WHERE user_id NOT IN (SELECT user_id FROM pendiente_pago WHERE id_producto = 1) and scholarship =  '';
+            WHERE user_id NOT IN (SELECT user_id FROM pendiente_pago WHERE id_producto = 1) and scholarship =  '' and usuario = '$search'; 
 sql;
 
         return $mysqli->queryAll($query);
