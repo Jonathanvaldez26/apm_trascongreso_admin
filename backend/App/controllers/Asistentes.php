@@ -578,6 +578,7 @@ html;
                 else
                 {
                     $tipo_user .= <<<html
+                    <span class="badge badge-success" style="background-color:  #149777; color:white "><strong>Beca #{$value['scholarship']} </strong></span> 
                     <span class="badge badge-success" style="background-color:  #B49C21; color:white "><strong>No Socio APM </strong></span>  
 html;
                 }
