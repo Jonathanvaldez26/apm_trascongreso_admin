@@ -19,11 +19,22 @@ sql;
     public static function getById($id){
          
     }
+
+    
+    public static function getProductos(){
+      $mysqli = Database::getInstance();
+      $query=<<<sql
+      SELECT * FROM productos
+sql;
+      return $mysqli->queryAll($query);
+        
+    }
+    
     public static function insert($data){
         $mysqli = Database::getInstance(1);
         $query=<<<sql
-            INSERT INTO asistencias(id_asistencia, clave, nombre, descripcion, fecha_asistencia, hora_asistencia_inicio, hora_asistencia_fin, url, utilerias_administrador_id)
-            VALUES(null, :clave, :nombre, :descripcion, :fecha_asistencia, :hora_asistencia_inicio, :hora_asistencia_fin, :url, :utilerias_administrador_id);
+            INSERT INTO asistencias(id_asistencia, clave, nombre, descripcion, fecha_asistencia, hora_asistencia_inicio, hora_asistencia_fin, url, utilerias_administrador_id,id_producto)
+            VALUES(null, :clave, :nombre, :descripcion, :fecha_asistencia, :hora_asistencia_inicio, :hora_asistencia_fin, :url, :utilerias_administrador_id,:id_producto);
 sql;
 
 
@@ -36,7 +47,8 @@ sql;
             ':hora_asistencia_inicio'=>$data->_hora_asistencia_inicio,
             ':hora_asistencia_fin'=>$data->_hora_asistencia_fin,
             ':url'=> $data->_url,
-            ':utilerias_administrador_id'=> $data->_utilerias_administrador_id
+            ':utilerias_administrador_id'=> $data->_utilerias_administrador_id,
+            ':id_producto' =>$data->_id_producto
            
             );
  

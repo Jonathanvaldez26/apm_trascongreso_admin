@@ -17,6 +17,14 @@ sql;
         return $mysqli->queryAll($query);
     }
 
+    public static function getAsignaProductoByUser($user_id,$id_producto){
+        $mysqli = Database::getInstance();
+        $query=<<<sql
+        SELECT * FROM asigna_producto WHERE user_id = '$user_id' and id_producto = '$id_producto';
+sql;
+        return $mysqli->queryOne($query);
+    }
+
     public static function getByIdDirectivos($id){
         $mysqli = Database::getInstance();
         $query=<<<sql

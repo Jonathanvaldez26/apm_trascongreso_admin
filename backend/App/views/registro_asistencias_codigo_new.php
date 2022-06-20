@@ -10,7 +10,7 @@
                 <div class="card card-body mt-n6 overflow-hidden m-5">
                     <div class="row mb-0" >
                         <div class="col-auto">
-                            <div class="bg-gradient-musa avatar avatar-xl position-relative">
+                            <div class="bg-gradient-pink avatar avatar-xl position-relative">
                                 <!-- <img src="../../assets/img/bruce-mars.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm"> -->
                                 <span class="fa fa-bell" style="font-size: xx-large;"></span>
                             </div>
@@ -111,7 +111,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="text-center">
-                                                            <button onclick="focus_input()" class="btn bg-gradient-pink w-100 my-0 mb-5 ms-auto" type="submit" id="btn_registro_email">Verifica tu Código</button>
+                                                            <button onclick="focus_input()" class="btn bg-gradient-pink w-100 my-0 mb-5 ms-auto" type="submit" id="btn_registro_email" style="color: #fff;">Verifica tu Código</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -363,6 +363,7 @@
         
         
         $("#codigo_registro").on('change',function(){
+            
 
             clave_user = $('#codigo_registro').val();
             clave_asistencia = $('#clave_asistencia').val();
@@ -380,7 +381,12 @@
                 },
                 success: function(respuesta) {
                     console.log(respuesta);
+
+      
+
                     if (respuesta.status == 'success') {
+
+                        
                         // console.log(respuesta);
                         // console.log(respuesta.msg_insert);
                         let nombre_completo = respuesta.datos.name_user+' '+respuesta.datos.middle_name+' '+respuesta.datos.surname +' '+respuesta.datos.second_surname;
@@ -424,7 +430,23 @@
                                 $("#codigo_registro").focus();
                             })
                         } else {
-                            Swal.fire("Asistencia regisrada","","success");
+                                var es_socio = '';
+                            if(respuesta.datos.clave_socio == ""){
+                                var es_socio = "Este usuario no es socio";
+                            }else{
+                                var es_socio = "pero es socio (con clave socio APM "+respuesta.datos.clave_socio+"), mandar al socio a registro en sitio ó registrarse desde el sistema, los cursos transcongreso son gratis para los socios.";
+                            }
+
+                            if(respuesta.status_asigna_pro == 1){
+                                Swal.fire(respuesta.msg_asigna_pro+" "+es_socio,"","error").then(()=>{
+                                    Swal.fire("Asistencia registrada","","success");
+                                });
+
+                            }else{
+
+                                Swal.fire("Asistencia registrada, el usuario compro correctamente el curso "+respuesta.asistencia.nombre ,"","success");
+                            }
+                            
                             // window.location.replace("/RegistroAsistencia/codigo/"+clave_a);
                         }
                     } else  {

@@ -35,6 +35,7 @@ sql;
         
     }
 
+
     public static function getAllRegisterSinHabitacion(){
       $mysqli = Database::getInstance();
       $query=<<<sql

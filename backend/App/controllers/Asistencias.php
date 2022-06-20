@@ -342,6 +342,14 @@ html;
 // html;
       // }
 
+      
+      $productos = '';
+      foreach (AsistenciasDao::getProductos() as $key => $value) {
+          $productos .=<<<html
+      <option value="{$value['id_producto']}"> {$value['nombre']}</option>
+html;
+      }
+
 
       // View::set('lineas',$lineas);
       View::set('tabla',$tabla);
@@ -349,6 +357,7 @@ html;
       View::set('asideMenu',$this->_contenedor->asideMenu());
       View::set('header',$this->_contenedor->header($extraHeader));
       View::set('footer',$this->_contenedor->footer($extraFooter));
+      View::set('productos',$productos);
       View::render("asistencias_all");
     }
   
@@ -362,6 +371,7 @@ html;
       $data->_fecha_asistencia = MasterDom::getData('fecha_asistencia');
       $data->_hora_asistencia_inicio = MasterDom::getData('hora_asistencia_inicio');
       $data->_hora_asistencia_fin = MasterDom::getData('hora_asistencia_fin');
+      $data->_id_producto = MasterDom::getData('id_producto');
       $data->_utilerias_administrador_id = $_SESSION['utilerias_administradores_id'];
       $data->_url = "/RegistroAsistencia/codigo/".$data->_clave;
   
