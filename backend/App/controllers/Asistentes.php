@@ -573,11 +573,12 @@ html;
                                         <span class="badge badge-success" style="background-color: #d2aaf3; color:black "><strong>REGISTRO P/PAGO</strong></span>  
                                         <span class="badge badge-success" style="background-color:  #033901; color:white "><strong>OK - HABILITADO PARA IMPRESIÓN DE GAFETE - PAGADO Y VALIDADO POR APM </strong></span>
                                     </div>
+                                    ************************************
 html;
                                 }
                                 else
                                 {
-                                    if($value_busca_compra['url_archivo'] != '' && $value_busca_compra['status'] == 2) //Si ya subio comprobante pero se volvio a solicitar
+                                    if($value_busca_compra['url_archivo'] == '' && $value_busca_compra['status'] == 2) //Si ya subio comprobante pero se volvio a solicitar
                                     {
                                         $permiso_impresion .= <<<html
                                     <div>
