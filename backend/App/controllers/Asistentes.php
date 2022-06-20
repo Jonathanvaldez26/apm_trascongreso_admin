@@ -571,6 +571,7 @@ html;
                                         <span class="badge badge-success" style="background-color: #d2aaf3; color:black "><strong>REGISTRO P/PAGO</strong></span>  
                                         <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - PREGUNTAR A APM DE VALIDACIÓN DE PAGO </strong></span>
                                     </div>
+html;
                                 }
                             }
                         }
