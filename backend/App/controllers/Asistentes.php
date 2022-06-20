@@ -627,12 +627,15 @@ html;
                         <div>
                             <span class="badge badge-success" style="background-color: color:#ea5b9b; "><strong>{$value['clave']} </strong></span>
                         </div>
-                            <a href="/Asistentes/Detalles/{$value['clave']}" target="_blank">
-                                <h6 class="mb-0 text-sm text-move text-black">
-                                    <span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} {$value['segundo_nombre']} {$value['apellido_paterno']} {$value['apellido_materno']} </span> {$value['nombre_ejecutivo']} {$tipo_user}                  
-                                    {$industria}
-                                </h6>
-                            </a>
+                            <div class="d-flex flex-column justify-content-center">
+                                <a href="/Asistentes/Detalles/{$value['clave']}" target="_blank">
+                                    <h6 class="mb-0 text-sm text-move text-black">
+                                        <span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} {$value['segundo_nombre']} {$value['apellido_paterno']} {$value['apellido_materno']} </span> {$value['nombre_ejecutivo']} {$tipo_user}                  
+                                        {$industria}
+                                    </h6>
+                                </a>
+                            </div>
+                            
                             <div class="d-flex flex-column justify-content-center">
                                 <u><a  href="mailto:{$value['email']}"><h6 class="mb-0 text-sm text-move text-black"><span class="fa fa-mail-bulk" style="font-size: 13px"></span> {$value['usuario']}</h6></a></u>
                                 <h6 class="mb-0 text-sm text-black"><span class="fa fa-map-pin" style="font-size: 13px"></span> {$value['pais']}</h6>
@@ -646,10 +649,9 @@ html;
                                 <h6 class="mb-0 text-sm text-black"><span class="fa fa-calendar" style="font-size: 13px"></span> Se registro como socio APM: $miembro_apm</h6>
                                  {$clave_socio}
                             </div>
-                            
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
+                            <div class="d-flex flex-column justify-content-center">
                                  {$permiso_impresion}
+                            </div>
                         </div>
                     </div>
                 </td>
