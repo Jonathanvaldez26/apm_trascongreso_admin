@@ -343,7 +343,7 @@ sql;
     public static function getPerfilUsuario($usuario){
       $mysqli = Database::getInstance();
       $query=<<<sql
-      SELECT * FROM utilerias_administradores WHERE usuario LIKE '$usuario'   
+      SELECT * FROM utilerias_administradores_admin WHERE usuario LIKE '$usuario'   
 sql;
       return $mysqli->queryOne($query);
     }
