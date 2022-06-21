@@ -7,26 +7,15 @@ use \App\interfaces\Crud;
 use \App\controllers\UtileriasLog;
 
 class Administradores implements Crud{
-//     public static function getAll(){
-//         $mysqli = Database::getInstance();
-//         $query=<<<sql
-//             SELECT a.utilerias_administradores_id, a.nombre, a.usuario, a.perfil_id, a.descripcion, a.status, a.code, s.nombre AS nombre_status, p.nombre AS nombre_perfil
-//             FROM utilerias_administradores AS a
-//             INNER JOIN utilerias_permisos AS per ON (a.usuario = per.usuario)
-//             INNER JOIN catalogo_status AS s ON (a.status = s.catalogo_status_id)
-//             INNER JOIN utilerias_perfiles AS p ON(a.perfil_id = p.perfil_id)
-//             WHERE a.usuario = per.usuario AND a.status = 1
-// sql;
-//         return $mysqli->queryAll($query);
-//     }
+
 
     public static function getAll(){
       $mysqli = Database::getInstance();
       $query=<<<sql
-      SELECT a.utilerias_administradores_id, a.nombre, a.usuario, a.perfil_id, a.descripcion, a.status, a.code, p.nombre AS nombre_perfil
-      FROM utilerias_administradores AS a
-      INNER JOIN utilerias_perfiles AS p ON(a.perfil_id = p.perfil_id)
-      WHERE  a.status = 1
+      SELECT a.utilerias_administradores_id, a.nombre, a.usuario, a.perfil_id, 
+      a.descripcion, a.status, a.code, p.nombre AS nombre_perfil 
+      FROM utilerias_administradores_admin AS a 
+      INNER JOIN utilerias_perfiles AS p ON(a.perfil_id = p.perfil_id) WHERE a.status = 1;
 sql;
       return $mysqli->queryAll($query);
   }
