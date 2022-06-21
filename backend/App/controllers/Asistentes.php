@@ -583,7 +583,7 @@ html;
                                     <div>
                                         <span class="badge badge-success" style="background-color: #d2aaf3; color:black "><strong>REGISTRO P/PAGO</strong></span>  
                                         <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - SUBIO COMPROBANTE DE PAGO ERRONEO, PEDIR COMPROBANTE VALIDO Y DIRIGIR A EVELYN </strong></span>
-                                    </div>
+                                    </div>AQUI 1
 html;
                                     }
                                     else
@@ -592,7 +592,7 @@ html;
                                     <div>
                                         <span class="badge badge-success" style="background-color: #d2aaf3; color:black "><strong>REGISTRO P/PAGO</strong></span>  
                                         <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - SUBIO COMPROBANTE DE PAGO ERRONEO, PEDIR COMPROBANTE VALIDO Y DIRIGIR A EVELYN </strong></span>
-                                    </div> 
+                                    </div> AQUI 2
 html;
                                     }
                                 }
@@ -611,7 +611,7 @@ html;
 html;
                 }
             }
-            
+
             if($value['apm_member'] == 1)
             {
                 $miembro_apm = 'SI';
