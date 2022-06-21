@@ -322,7 +322,6 @@ html;
         <td class="text-center">
         <a href='{$value['url']}' style='' class='mx-2' data-bs-toggle="tooltip" target="_blank" data-bs-placement="left" data-bs-original-title="Asistencia Web - {$value['nombre']}"><i class='fas fa-globe'></i></a>
         <a href='/ListaAsistencia/codigo/{$value['clave']}' style='' class='mx-2' target="_blank"><i class='fas fa-list-alt' data-bs-toggle="tooltip" data-bs-placement="left" data-bs-original-title="Lista de Asistencia - {$value['nombre']}"></i></a>
-        <a href='https://asistencias.foromusa.com/?asistencia={$value['clave']}' class='mx-2' target="_blank" style='' target='_blank' data-bs-toggle="tooltip" data-bs-placement="left" data-bs-original-title="Asistencia Móvil - {$value['nombre']}"><i class='fas fa-mobile-alt'></i></a>
         </td>
       </tr>
  
