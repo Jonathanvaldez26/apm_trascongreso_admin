@@ -593,8 +593,8 @@ html;
                                             $permiso_impresion .= <<<html
                                     <div>
                                         <span class="badge badge-success" style="background-color: #d2aaf3; color:black "><strong>REGISTRO P/PAGO</strong></span>  
-                                        <span class="badge badge-success" style="background-color: #033901; color:white "><strong>OK IMPRIMIR - PAGO EN CAJA/SITIO </strong></span>
-                                    </div>AQUI 1
+                                        <span class="badge badge-success" style="background-color: #033901; color:white "><strong>OK IMPRIMIR - PAGO EN CAJA REGISTRO (SITIO) </strong></span>
+                                    </div>
 html;
                                         }
                                     }
