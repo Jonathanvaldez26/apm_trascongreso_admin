@@ -63,6 +63,7 @@ html;
       View::set('asideMenu',$this->_contenedor->asideMenu());
       View::set('header',$this->_contenedor->header($extraHeader));
       View::set('footer',$this->_contenedor->footer($extraFooter));
+      View::set('permiso_caja',Controller::getPermisoUser($this->__usuario)['menu_caja']);
       View::render("principal_all");
     }
 

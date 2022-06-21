@@ -566,6 +566,7 @@
                             // console.log(Object.keys(respuesta).length);
                             // crearTabla(respuesta);
                            location.reload();
+                           console.log("refrescar");
                         }
                     },
                     error: function(respuesta) {
