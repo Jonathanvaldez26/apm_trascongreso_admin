@@ -562,7 +562,11 @@
 
                             crearTabla(respuesta);
 
-                        } 
+                        } else{
+                            // console.log(Object.keys(respuesta).length);
+                            // crearTabla(respuesta);
+                           location.reload();
+                        }
                     },
                     error: function(respuesta) {
                         Swal.fire('No se encontro ningun registro para este codigo','','error');
@@ -579,6 +583,8 @@
                 var table = '';
                 var total_usd = 0;
                 var total_pesos = 0;
+
+                console.log("tamaño "+Object.keys(respuesta).length);
 
                 if(Object.keys(respuesta).length > 0){
                     
