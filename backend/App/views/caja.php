@@ -652,7 +652,7 @@
                     });
 
                     $("#total_usd").html(total_usd);
-                    $("#total_pesos").html(format2(total_pesos,''));
+                    $("#total_pesos").html(total_pesos);
 
                     $("#lista_productos").find('tbody').html(table);
 
