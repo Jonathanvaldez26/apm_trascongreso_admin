@@ -588,12 +588,15 @@ html;
                                     }
                                     else
                                     {
-                                        $permiso_impresion .= <<<html
+                                        if($value_busca_compra['url_archivo'] == '' && $value_busca_compra['status'] == 1) //Si ya subio comprobante pero se volvio a solicitar
+                                        {
+                                            $permiso_impresion .= <<<html
                                     <div>
                                         <span class="badge badge-success" style="background-color: #d2aaf3; color:black "><strong>REGISTRO P/PAGO</strong></span>  
-                                        <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - SUBIO COMPROBANTE DE PAGO ERRONEO, PEDIR COMPROBANTE VALIDO Y DIRIGIR A EVELYN </strong></span>
-                                    </div> 
+                                        <span class="badge badge-success" style="background-color: #033901; color:white "><strong>OK IMPRIMIR - PAGO EN CAJA REGISTRO (SITIO) </strong></span>
+                                    </div>
 html;
+                                        }
                                     }
                                 }
                             }
@@ -611,7 +614,7 @@ html;
 html;
                 }
             }
-            
+
             if($value['apm_member'] == 1)
             {
                 $miembro_apm = 'SI';
