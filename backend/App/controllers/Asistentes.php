@@ -543,7 +543,7 @@ html;
                 {
                     foreach (GeneralDao::getBuscarEstatusCompraEmail($value['usuario'] ) as $key => $value_busca_compra) { //IR A BUSCAR EL ESTATUS DE PAGO
 
-                        if($value_busca_compra['status'] == 3)//Se pregunta si esta vacia, significa que solo se registro y no ha pagadp
+                        if($value_busca_compra['status'] == 3 && $value_busca_compra['url_archivo'] == '')//Se pregunta si esta vacia, significa que solo se registro y no ha pagadp
                         {
                             $permiso_impresion .= <<<html
                             <div>
@@ -610,7 +610,7 @@ html;
                     $permiso_impresion .= <<<html
                         <div>
                             <span class="badge badge-success" style="background-color: #d2aaf3; color:white "><strong>REGISTRO P/PAGO</strong></span>  
-                            <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - DIRIGIR A CAJA A PAGAR CASO 2</strong></span>
+                            <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - DIRIGIR A CAJA A PAGAR CASO 2 ***</strong></span>
                         </div>
 html;
                 }
