@@ -739,7 +739,7 @@ html;
                             <div class="d-flex flex-column justify-content-center text-black">
                                 <img src="{$img_user}" class="avatar me-2" alt="image">                            
                             </div>
-                           
+                           <hr>
                             <div class="d-flex flex-column justify-content-center text-black">
                                   <a href="/RegistroAsistencia/abrirpdfGafete/{$value['clave']}/{$value['ticket_virtual']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Imprimir Gafetes" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Imprimir Gafetes" target="_blank"><i class="fas fa-print"> </i></a>     
                             </div>
