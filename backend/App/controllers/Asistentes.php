@@ -744,6 +744,7 @@ html;
                                  <button class="btn bg-turquoise btn-icon-only text-white" data-toggle="modal" data-target="#modal-etiquetas-{$value['id_registro_acceso']}" id="btn-etiqueta-{$value['id_registro_acceso']}" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-original-title="Imprimir Etiquetas" title="Imprimir Etiquetas"><i class="fas fa-tag"></i></button>
                             </div>
                         </div>
+                        <div class="d-flex flex-column justify-content-center text-black">
                         <div>
                             <span class="badge badge-success" style="background-color: color:#ea5b9b; "><strong>{$value['clave']}</strong></span>                              <span class="badge badge-success" style="background-color: color:#ea5b9b; "><strong>{$value['user_id']} </strong></span>
                         </div>
