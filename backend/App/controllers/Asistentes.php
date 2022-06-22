@@ -731,7 +731,7 @@ html;
                         </div>
                         <div class="d-flex flex-column justify-content-center text-black">
                         <div>
-                            <span class="badge badge-success" style="background-color: color:#ea5b9b; "><strong>{$value['clave']}</strong></span>                              <span class="badge badge-success" style="background-color: color:#ea5b9b; "><strong>FOLIO LAHE: {$value['user_id']} </strong></span>
+                            <span class="badge badge-success" style="background-color: color:#ea5b9b; "><strong>{$value['clave']}</strong></span>                              <span class="badge badge-success" style="background-color: color:#ea5b9b; "><strong>{$value['user_id']} </strong></span>
                         </div>
                             <div class="d-flex flex-column justify-content-center">
                                 <a href="/Asistentes/Detalles/{$value['clave']}" target="_blank">
