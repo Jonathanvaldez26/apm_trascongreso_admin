@@ -170,7 +170,7 @@
                                             <thead class="thead-light">
                                                 <tr>
                                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Usuario</th>
-                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pagos Cursos Transcongresos</th>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pagos Cursos Transcongresos - Impresión Constancia</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
