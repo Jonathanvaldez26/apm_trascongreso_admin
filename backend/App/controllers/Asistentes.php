@@ -601,6 +601,8 @@ html;
                                     $permiso_impresion .= <<<html
                                     <div>
                                         <span class="badge badge-success" style="background-color: #d2aaf3; color:black "><strong>REGISTRO P/PAGO</strong></span>  
+                                     </div>
+                                     <div>   
                                         <span class="badge badge-success" style="background-color:  #033901; color:white "><strong>OK - HABILITADO PARA IMPRESIÓN DE GAFETE - PAGADO Y VALIDADO POR APM </strong></span>
                                     </div>
 html;
