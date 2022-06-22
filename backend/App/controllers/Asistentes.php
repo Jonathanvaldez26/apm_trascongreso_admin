@@ -782,8 +782,6 @@ html;
                         </div>
                     </div>
                 </td>
-
-              
                 <td>
                     <div class="d-flex px-1 py-1">
                         <div class="d-flex flex-column justify-content-center text-black">
@@ -793,13 +791,7 @@ html;
                         </div>
                     </div>
                 </td>
-
-    
-          
-          <td style="text-align:center; vertical-align:middle;">
-            
-          </td>
-        </tr>
+            </tr>
 html;
         }
        
