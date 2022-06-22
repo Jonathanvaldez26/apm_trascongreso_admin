@@ -757,6 +757,9 @@ html;
                             <div class="d-flex flex-column justify-content-center">
                                  {$permiso_impresion}
                             </div>
+                            <div class="d-flex flex-column justify-content-center">
+                                 {$value['amout_due']}
+                            </div>
                         </div>
                     </div>
                 </td>
