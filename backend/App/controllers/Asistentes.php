@@ -758,7 +758,7 @@ html;
                                  {$permiso_impresion}
                             </div>
                             <div class="d-flex flex-column justify-content-center">
-                                 {$value['amout_due']}
+                                 <span class="badge badge-warning" color:white "><strong>Beca #{$value['modality']} </strong></span> 
                             </div>
                         </div>
                     </div>
