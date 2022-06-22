@@ -558,12 +558,39 @@ html;
                         {
                             if($value_busca_compra['url_archivo'] == '' && $value_busca_compra['status'] == 0)//Si no ha subido comproabnte decir que no ha subido
                             {
-                                $permiso_impresion .= <<<html
-                                <div>
-                                    <span class="badge badge-success" style="background-color: #0ae9ff; color:white "><strong>REGISTRO P/PAGO</strong></span>  
-                                    <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - NO HA SUBIDO COMPROBANTE DE PAGO DIRIGIR A CAJA A PAGAR</strong></span> 
-                                </div>
+                                if($value_busca_compra['url_archivo'] == '' && $value_busca_compra['status'] == 0 && $value_busca_compra['comprado_en'] == 1)//Si no ha subido comproabnte decir que no ha subido
+                                {
+                                    $permiso_impresion .= <<<html
+                                        <div>
+                                            <span class="badge badge-success" style="background-color: #0ae9ff; color:white "><strong>REGISTRO P/PAGO</strong></span>  
+                                            <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - NO HA SUBIDO COMPROBANTE DE PAGO DIRIGIR A CAJA A PAGAR</strong></span> 
+                                        </div>
 html;
+                                }
+                                else
+                                {
+                                    if($value_busca_compra['url_archivo'] == '' && $value_busca_compra['status'] == 2 && $value_busca_compra['comprado_en'] == 1)//Si no ha subido comproabnte decir que no ha subido
+                                    {
+                                        $permiso_impresion .= <<<html
+                                        <div>
+                                            <span class="badge badge-success" style="background-color: #0ae9ff; color:white "><strong>REGISTRO P/PAGO</strong></span>  
+                                            <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - SUBIO MAL SU COMPROBANTE Y SE VOLVIO A SOLICITAR</strong></span> 
+                                        </div>
+html;
+                                    }
+                                    else
+                                    {
+                                        if($value_busca_compra['url_archivo'] == '' && $value_busca_compra['status'] == 1 && $value_busca_compra['comprado_en'] == 2)//Si no ha subido comproabnte decir que no ha subido
+                                        {
+                                            $permiso_impresion .= <<<html
+                                        <div>
+                                            <span class="badge badge-success" style="background-color: #0ae9ff; color:white "><strong>REGISTRO P/PAGO</strong></span>  
+                                            <span class="badge badge-success" style="background-color: #0c6300; color:white "><strong>OK IMPRIMIR - SE PAGO EN CAJA</strong></span> 
+                                        </div>********
+html;
+                                        }
+                                    }
+                                }
                             }
                             else
                             {
@@ -610,7 +637,7 @@ html;
                     $permiso_impresion .= <<<html
                         <div>
                             <span class="badge badge-success" style="background-color: #d2aaf3; color:white "><strong>REGISTRO P/PAGO</strong></span>  
-                            <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - DIRIGIR A CAJA A PAGAR</strong></span>
+                            <span class="badge badge-success" style="background-color: #ff1d1d; color:white "><strong>NO IMPRIMIR - DIRIGIR A CAJA A PAGAR CASO 2 ***</strong></span>
                         </div>
 html;
                 }
