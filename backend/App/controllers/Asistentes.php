@@ -493,6 +493,7 @@ html;
             $clave_socio = '';
             $tipo_user = '';
             $permiso_impresion = '';
+            $modalidad = '';
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             if($value['scholarship'] != '')//si la beca es diferente de vacio entonces
             {
@@ -721,6 +722,12 @@ html;
             } else {
                 $img_user = "https://registro.foromusa.com/img/users_musa/{$value['img']}";
             }
+
+            $modalidad .= <<<html
+            <div>
+                 <span class="badge badge-warning" style="color:#f1a300"><strong>Modalidad - {$value['modality']} </strong></span> 
+            </div>
+html;
            
             $html .= <<<html
             <tr>
@@ -758,7 +765,7 @@ html;
                                  {$permiso_impresion}
                             </div>
                             <div class="d-flex flex-column justify-content-center">
-                                 <span class="badge badge-warning" style="color:#f1a300"><strong>Beca #{$value['modality']} </strong></span> 
+                                 {$modalidad}
                             </div>
                         </div>
                     </div>
