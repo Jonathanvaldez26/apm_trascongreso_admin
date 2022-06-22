@@ -738,7 +738,7 @@ html;
                         <div>
                             <div class="d-flex flex-column justify-content-center text-black">
                                 <img src="{$img_user}" class="avatar me-2" alt="image">    
-                                <hr>                        
+                                ***                      
                             </div>
                            
                             <div class="d-flex flex-column justify-content-center text-black">
