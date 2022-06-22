@@ -758,7 +758,7 @@ html;
                                  {$permiso_impresion}
                             </div>
                             <div class="d-flex flex-column justify-content-center">
-                                 <span class="badge badge-warning" color:white "><strong>Beca #{$value['modality']} </strong></span> 
+                                 <span class="badge badge-warning" style="color:#f1a300"><strong>Beca #{$value['modality']} </strong></span> 
                             </div>
                         </div>
                     </div>
