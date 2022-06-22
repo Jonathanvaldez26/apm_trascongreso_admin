@@ -415,6 +415,13 @@ html;
         // $nombre_completo = mb_strtoupper($datos_user['nombre']) . " " . mb_strtoupper($datos_user['segundo_nombre']) . "\n\n" . mb_strtoupper($datos_user['apellido_paterno']) . "\n\n" . mb_strtoupper($datos_user['apellido_materno']);
 
         
+        
+        $data = new \stdClass();
+        $data->_user_id = $datos_user['user_id'];
+        $data->_utilerias_administrador = $_SESSION['utilerias_administradores_id'];
+
+        $insertImpresionGafete = RegistroAsistenciaDao::insertImpGafete($data);
+
 
         $pdf = new \FPDF($orientation = 'P', $unit = 'mm', array(300, 210));
         $pdf->AddPage();

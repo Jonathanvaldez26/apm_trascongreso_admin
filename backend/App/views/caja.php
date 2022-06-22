@@ -623,10 +623,10 @@
                             precio = value.amout_due;
                             socio = "";
                         }
-                        else if(value.es_servicio == 1 && $value.clave_socio == ""){
+                        else if(value.es_servicio == 1 && value.clave_socio == ""){
                             precio = value.precio_publico;
                             socio = "";
-                        }else if(value.es_servicio == 1 && $value.clave_socio != ""){
+                        }else if(value.es_servicio == 1 && value.clave_socio != ""){
                             precio = 0;
                             socio = "Socio APM - Sin Costo";
                         }
@@ -659,6 +659,10 @@
                 }
 
 
+            }
+
+            function format2(n, currency) {
+                return currency + n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
             }
 
             $("table#lista_productos").on("click", "button.btn-delete", function() {

@@ -402,6 +402,21 @@ sql;
         return $id_user;
     }
 
+    public static function insertImpGafete($data){
+        $mysqli = Database::getInstance();
+        $query=<<<sql
+        INSERT INTO impresion_gafete ( `user_id`, `fecha_hora`, `utilerias_administrador`) 
+        VALUES (':user_id',NOW(),':utilerias_administrador')
+sql;
+        $parametros = array(
+            ':user_id'=>$data->_user_id,
+            ':utilerias_administrador'=>$data->_utilerias_administrador
+        );
+
+        $id = $mysqli->insert($query,$parametros);
+        return $id;
+    }
+
     public static function getIdRegistrosAsistenciasByCode($code){
         $mysqli = Database::getInstance();
         $query=<<<sql
