@@ -702,7 +702,7 @@ html;
                 {
                     $curso_1 .= <<<html
                     <div>
-                          <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>VI CONGRESO MUNDIAL - {} - {$value_cursos_pagados['tipo_pago']} </strong></span>{$color_curso_pago}
+                          <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>VI CONGRESO MUNDIAL - {$value_cursos_pagados['tipo_pago']} </strong></span>{$color_curso_pago}
                     </div>
 html;
                 }
