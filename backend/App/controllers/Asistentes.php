@@ -679,7 +679,7 @@ html;
             }
 
             ////////////////////////////////////////////////////////////////////
-            
+
             foreach (GeneralDao::getBuscarCursos($value['user_id'] ) as $key => $value_cursos_pagados) { //IR A BUSCAR EL ESTATUS DE PAGO DE TODOS LOS PRODUCTOS APM SELECCIONADOS POR EL USUARIO
                 if($value_cursos_pagados['id_producto'] == 1)//Si ya esta validado se muestra
                 {
@@ -689,13 +689,7 @@ html;
                     </div>
 html;
                 }
-                else{
-                    $curso_1 .= <<<html
-                    <div>
-                          <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>VI CONGRESO MUNDIAL - NO LO COMPRO </strong></span>  
-                    </div>
-html;
-                }
+
                 if($value_cursos_pagados['id_producto'] == 2)//NEUROBIOLOGIA DE LAS ADDCIONES
                 {
                     $curso_2 .= <<<html
@@ -704,14 +698,7 @@ html;
                     </div>
 html;
                 }
-                else
-                {
-                    $curso_2 .= <<<html
-                    <div>
-                          <span class="badge badge-success" style="background-color: #ff953a; color:white "><strong>I NEURO ADICCION - NO LO COMPRO</strong></span>  
-                    </div>
-html;
-                }
+
                 if($value_cursos_pagados['id_producto'] == 3)//SUEÑO Y SUSTANCIAS
                 {
                     $curso_3 .= <<<html
@@ -720,14 +707,7 @@ html;
                     </div>
 html;
                 }
-                else
-                {
-                    $curso_3 .= <<<html
-                    <div>
-                          <span class="badge badge-success" style="background-color: #fce53e; color:white "><strong>II SUEÑO Y SUSTANCIAS- NO LO COMPRO </strong></span>  
-                    </div>
-html;
-                }
+
                 if($value_cursos_pagados['id_producto'] == 4)//CACTERIZACION DE LOS ENDOFENOTIPOS
                 {
                     $curso_4 .= <<<html
@@ -736,14 +716,7 @@ html;
                     </div>
 html;
                 }
-                else
-                {
-                    $curso_4 .= <<<html
-                    <div>
-                          <span class="badge badge-success" style="background-color: #91fd3e; color:white "><strong>III CARACTE ENDOFENOTIP - NO LO COMPRO </strong></span>  
-                    </div>
-html;
-                }
+
                 if($value_cursos_pagados['id_producto'] == 5)//TRASTORNO POR CONSUMO
                 {
                     $curso_5 .= <<<html
@@ -752,14 +725,7 @@ html;
                     </div>
 html;
                 }
-                else
-                {
-                    $curso_5 .= <<<html
-                    <div>
-                          <span class="badge badge-success" style="background-color: #8ffcc3; color:white "><strong>IV TRSTORN POR CONSUMO - NO LO COMPRO </strong></span>  
-                    </div>
-html;
-                }
+
                 if($value_cursos_pagados['id_producto'] == 6)//CONUSMO DE SUSTANCIAS POR SECUELAS EFECTIVAs
                 {
                     $curso_6 .= <<<html
@@ -768,14 +734,7 @@ html;
                     </div>
 html;
                 }
-                else
-                {
-                    $curso_6 .= <<<html
-                    <div>
-                          <span class="badge badge-success" style="background-color: #46abe2; color:white "><strong>V CONSUMO DE SUSTANCIAS - NO LO COMPRO </strong></span>  
-                    </div>
-html;
-                }
+
                 if($value_cursos_pagados['id_producto'] == 7)//VIOLENCIA DE GENERO Y PATOLOGIA DUAL
                 {
                     $curso_7 .= <<<html
@@ -784,27 +743,12 @@ html;
                     </div>
 html;
                 }
-                else
-                {
-                    $curso_7 .= <<<html
-                    <div>
-                          <span class="badge badge-success" style="background-color: #396bc1; color:white "><strong>VI VIOLENCIA DE GENERO - NO LO COMPRO </strong></span>  
-                    </div>
-html;
-                }
+
                 if($value_cursos_pagados['id_producto'] == 8)//ADICCIONES EN PSICOGERIATRIA
                 {
                     $curso_8 .= <<<html
                     <div>
                           <span class="badge badge-success" style="background-color: #bc7be3; color:white "><strong>VII ADICCIONES PSICOGERIATRÍA - {$value_cursos_pagados['estatus_compra']} - {$value_cursos_pagados['tipo_pago']} </strong></span>  
-                    </div>
-html;
-                }
-                else
-                {
-                    $curso_8 .= <<<html
-                    <div>
-                          <span class="badge badge-success" style="background-color: #bc7be3; color:white "><strong>VII ADICCIONES PSICOGERIATRÍA - NO LO COMPRO </strong></span>  
                     </div>
 html;
                 }
@@ -817,14 +761,7 @@ html;
                     </div>
 html;
                 }
-                else
-                {
-                    $curso_9 .= <<<html
-                    <div>
-                          <span class="badge badge-success" style="background-color: #31d5b1; color:white "><strong>VIII CLARO/OBSCURO - NO LO COMPRO </strong></span>  
-                    </div>
-html;
-                }
+
 
             }
 
