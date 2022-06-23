@@ -302,6 +302,15 @@ sql;
       return $mysqli->insert($query);
     }
 
+    public static function insertImpresionConstancia($user_id,$tipo_constancia,$id_producto){
+      $mysqli = Database::getInstance(true);
+      $query=<<<sql
+      INSERT INTO  impresion_constancia (user_id, tipo_constancia, id_producto,fecha_descarga) VALUES('$user_id', '$tipo_constancia','$id_producto',NOW())
+sql;
+
+      return $mysqli->insert($query);
+    }
+
     public static function update($data){
       $mysqli = Database::getInstance(true);
       $query=<<<sql
