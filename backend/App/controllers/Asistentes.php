@@ -694,7 +694,7 @@ html;
                 else
                 {
                     $color_curso_pago = <<<html
-                          <span class="badge badge-danger"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
+                          <span class="badge badge-danger"><strong> {$value_cursos_pagados['estatus_compra']} - NO FINALIZO COMPRA</strong></span>  
 
 html;
                 }
