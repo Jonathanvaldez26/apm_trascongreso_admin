@@ -684,20 +684,7 @@ html;
 
             foreach (GeneralDao::getBuscarCursos($value['user_id'] ) as $key => $value_cursos_pagados) { //IR A BUSCAR EL ESTATUS DE PAGO DE TODOS LOS PRODUCTOS APM SELECCIONADOS POR EL USUARIO
 
-                if($value_cursos_pagados['estatus_compra'] == 'CON ACCESO')
-                {
-                    $color_curso_pago .= <<<html
-                        <span class="badge badge-success"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
-                   
-html;
-                }
-                else
-                {
-                    $color_curso_pago .= <<<html
-                          <span class="badge badge-warning"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
 
-html;
-                }
 
 
                 if($value_cursos_pagados['id_producto'] == 1)//Si ya esta validado se muestra
@@ -710,6 +697,20 @@ html;
                     {
                         $tipo_pago = $value_cursos_pagados['tipo_pago'];
                     }
+                    if($value_cursos_pagados['estatus_compra'] == 'CON ACCESO')
+                    {
+                        $color_curso_pago .= <<<html
+                        <span class="badge badge-success"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
+                   
+html;
+                    }
+                    else
+                    {
+                        $color_curso_pago .= <<<html
+                          <span class="badge badge-warning"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
+
+html;
+                    }
                     $curso_1 .= <<<html
                     <div>
                           <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>VI CONGRESO MUNDIAL</strong></span>
@@ -721,6 +722,20 @@ html;
 
                 if($value_cursos_pagados['id_producto'] == 2)//NEUROBIOLOGIA DE LAS ADDCIONES
                 {
+                    if($value_cursos_pagados['estatus_compra'] == 'CON ACCESO')
+                    {
+                        $color_curso_pago .= <<<html
+                        <span class="badge badge-success"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
+                   
+html;
+                    }
+                    else
+                    {
+                        $color_curso_pago .= <<<html
+                          <span class="badge badge-warning"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
+
+html;
+                    }
                     if($value_cursos_pagados['tipo_pago'] == '' )
                     {
                         $tipo_pago =  'Becado';
@@ -740,6 +755,20 @@ html;
 
                 if($value_cursos_pagados['id_producto'] == 3)//SUEÑO Y SUSTANCIAS
                 {
+                    if($value_cursos_pagados['estatus_compra'] == 'CON ACCESO')
+                    {
+                        $color_curso_pago .= <<<html
+                        <span class="badge badge-success"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
+                   
+html;
+                    }
+                    else
+                    {
+                        $color_curso_pago .= <<<html
+                          <span class="badge badge-warning"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
+
+html;
+                    }
                     if($value_cursos_pagados['tipo_pago'] == '' )
                     {
                         $tipo_pago =  'Becado';
@@ -759,6 +788,20 @@ html;
 
                 if($value_cursos_pagados['id_producto'] == 4)//CACTERIZACION DE LOS ENDOFENOTIPOS
                 {
+                    if($value_cursos_pagados['estatus_compra'] == 'CON ACCESO')
+                    {
+                        $color_curso_pago .= <<<html
+                        <span class="badge badge-success"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
+                   
+html;
+                    }
+                    else
+                    {
+                        $color_curso_pago .= <<<html
+                          <span class="badge badge-warning"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
+
+html;
+                    }
                     if($value_cursos_pagados['tipo_pago'] == '' )
                     {
                         $tipo_pago =  'Becado';
@@ -778,6 +821,20 @@ html;
 
                 if($value_cursos_pagados['id_producto'] == 5)//TRASTORNO POR CONSUMO
                 {
+                    if($value_cursos_pagados['estatus_compra'] == 'CON ACCESO')
+                    {
+                        $color_curso_pago .= <<<html
+                        <span class="badge badge-success"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
+                   
+html;
+                    }
+                    else
+                    {
+                        $color_curso_pago .= <<<html
+                          <span class="badge badge-warning"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
+
+html;
+                    }
                     if($value_cursos_pagados['tipo_pago'] == '' )
                     {
                         $tipo_pago =  'Becado';
@@ -797,6 +854,20 @@ html;
 
                 if($value_cursos_pagados['id_producto'] == 6)//CONUSMO DE SUSTANCIAS POR SECUELAS EFECTIVAs
                 {
+                    if($value_cursos_pagados['estatus_compra'] == 'CON ACCESO')
+                    {
+                        $color_curso_pago .= <<<html
+                        <span class="badge badge-success"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
+                   
+html;
+                    }
+                    else
+                    {
+                        $color_curso_pago .= <<<html
+                          <span class="badge badge-warning"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
+
+html;
+                    }
                     if($value_cursos_pagados['tipo_pago'] == '' )
                     {
                         $tipo_pago =  'Becado';
@@ -816,6 +887,20 @@ html;
 
                 if($value_cursos_pagados['id_producto'] == 7)//VIOLENCIA DE GENERO Y PATOLOGIA DUAL
                 {
+                    if($value_cursos_pagados['estatus_compra'] == 'CON ACCESO')
+                    {
+                        $color_curso_pago .= <<<html
+                        <span class="badge badge-success"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
+                   
+html;
+                    }
+                    else
+                    {
+                        $color_curso_pago .= <<<html
+                          <span class="badge badge-warning"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
+
+html;
+                    }
                     if($value_cursos_pagados['tipo_pago'] == '' )
                     {
                         $tipo_pago =  'Becado';
@@ -835,6 +920,20 @@ html;
 
                 if($value_cursos_pagados['id_producto'] == 8)//ADICCIONES EN PSICOGERIATRIA
                 {
+                    if($value_cursos_pagados['estatus_compra'] == 'CON ACCESO')
+                    {
+                        $color_curso_pago .= <<<html
+                        <span class="badge badge-success"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
+                   
+html;
+                    }
+                    else
+                    {
+                        $color_curso_pago .= <<<html
+                          <span class="badge badge-warning"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
+
+html;
+                    }
                     if($value_cursos_pagados['tipo_pago'] == '' )
                     {
                         $tipo_pago =  'Becado';
@@ -854,6 +953,20 @@ html;
 
                 if($value_cursos_pagados['id_producto'] == 9)//CLARO OBSCURO DEL USO DE LA MARIHUANA
                 {
+                    if($value_cursos_pagados['estatus_compra'] == 'CON ACCESO')
+                    {
+                        $color_curso_pago .= <<<html
+                        <span class="badge badge-success"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
+                   
+html;
+                    }
+                    else
+                    {
+                        $color_curso_pago .= <<<html
+                          <span class="badge badge-warning"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
+
+html;
+                    }
                     if($value_cursos_pagados['tipo_pago'] == '' )
                     {
                         $tipo_pago =  'Becado';
