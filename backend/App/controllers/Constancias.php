@@ -567,6 +567,8 @@ html;
 
         // echo $nombre_completo;
         // exit;
+
+        $insert_impresion_constancia = AsistentesDao::insertImpresionConstancia($datos_user['user_id'],'Fisica',$id_producto);
         
 
         $pdf = new \FPDF($orientation = 'L', $unit = 'mm', $format = 'A4');
@@ -664,6 +666,7 @@ html;
 
         // echo $nombre_completo;
         // exit;
+        $insert_impresion_constancia = AsistentesDao::insertImpresionConstancia($datos_user['user_id'],'Digital',$id_producto);
         
 
         $pdf = new \FPDF($orientation = 'L', $unit = 'mm', $format = 'A4');
