@@ -494,6 +494,15 @@ html;
             $tipo_user = '';
             $permiso_impresion = '';
             $modalidad = '';
+            $curso_1 = '';
+            $curso_2 = '';
+            $curso_3 = '';
+            $curso_4 = '';
+            $curso_5 = '';
+            $curso_6 = '';
+            $curso_7 = '';
+            $curso_8 = '';
+            $curso_9 = '';
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             if($value['scholarship'] != '')//si la beca es diferente de vacio entonces
             {
@@ -669,10 +678,154 @@ html;
                 $miembro_apm = 'NO';
             }
 
+            ////////////////////////////////////////////////////////////////////
+            foreach (GeneralDao::getBuscarCursos($value['user_id'] ) as $key => $value_cursos_pagados) { //IR A BUSCAR EL ESTATUS DE PAGO DE TODOS LOS PRODUCTOS APM SELECCIONADOS POR EL USUARIO
+                if($value_cursos_pagados['id_producto'] == 1)//Si ya esta validado se muestra
+                {
+                    $curso_1 .= <<<html
+                    <div>
+                          <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>VI CONGRESO MUNDIAL - {$value_cursos_pagados['estatus_compra']} - {$value_cursos_pagados['tipo_pago']} </strong></span>  
+                    </div>
+html;
+                }
+                else{
+                    $curso_1 .= <<<html
+                    <div>
+                          <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>VI CONGRESO MUNDIAL - NO LO COMPRO </strong></span>  
+                    </div>
+html;
+                }
+                if($value_cursos_pagados['id_producto'] == 2)//NEUROBIOLOGIA DE LAS ADDCIONES
+                {
+                    $curso_2 .= <<<html
+                    <div>
+                          <span class="badge badge-success" style="background-color: #ff953a; color:white "><strong>I NEURO ADICCION - {$value_cursos_pagados['estatus_compra']} - {$value_cursos_pagados['tipo_pago']} </strong></span>  
+                    </div>
+html;
+                }
+                else
+                {
+                    $curso_2 .= <<<html
+                    <div>
+                          <span class="badge badge-success" style="background-color: #ff953a; color:white "><strong>I NEURO ADICCION - NO LO COMPRO</strong></span>  
+                    </div>
+html;
+                }
+                if($value_cursos_pagados['id_producto'] == 3)//SUEÑO Y SUSTANCIAS
+                {
+                    $curso_3 .= <<<html
+                    <div>
+                          <span class="badge badge-success" style="background-color: #fce53e; color:white "><strong>II SUEÑO Y SUSTANCIAS- {$value_cursos_pagados['estatus_compra']} - {$value_cursos_pagados['tipo_pago']} </strong></span>  
+                    </div>
+html;
+                }
+                else
+                {
+                    $curso_3 .= <<<html
+                    <div>
+                          <span class="badge badge-success" style="background-color: #fce53e; color:white "><strong>II SUEÑO Y SUSTANCIAS- NO LO COMPRO </strong></span>  
+                    </div>
+html;
+                }
+                if($value_cursos_pagados['id_producto'] == 4)//CACTERIZACION DE LOS ENDOFENOTIPOS
+                {
+                    $curso_4 .= <<<html
+                    <div>
+                          <span class="badge badge-success" style="background-color: #91fd3e; color:white "><strong>III CARACTE ENDOFENOTIP - {$value_cursos_pagados['estatus_compra']} - {$value_cursos_pagados['tipo_pago']} </strong></span>  
+                    </div>
+html;
+                }
+                else
+                {
+                    $curso_4 .= <<<html
+                    <div>
+                          <span class="badge badge-success" style="background-color: #91fd3e; color:white "><strong>III CARACTE ENDOFENOTIP - NO LO COMPRO </strong></span>  
+                    </div>
+html;
+                }
+                if($value_cursos_pagados['id_producto'] == 5)//TRASTORNO POR CONSUMO
+                {
+                    $curso_5 .= <<<html
+                    <div>
+                          <span class="badge badge-success" style="background-color: #8ffcc3; color:white "><strong>IV TRSTORN POR CONSUMO - {$value_cursos_pagados['estatus_compra']} - {$value_cursos_pagados['tipo_pago']} </strong></span>  
+                    </div>
+html;
+                }
+                else
+                {
+                    $curso_5 .= <<<html
+                    <div>
+                          <span class="badge badge-success" style="background-color: #8ffcc3; color:white "><strong>IV TRSTORN POR CONSUMO - NO LO COMPRO </strong></span>  
+                    </div>
+html;
+                }
+                if($value_cursos_pagados['id_producto'] == 6)//CONUSMO DE SUSTANCIAS POR SECUELAS EFECTIVAs
+                {
+                    $curso_6 .= <<<html
+                    <div>
+                          <span class="badge badge-success" style="background-color: #46abe2; color:white "><strong>V CONSUMO DE SUSTANCIAS - {$value_cursos_pagados['estatus_compra']} - {$value_cursos_pagados['tipo_pago']} </strong></span>  
+                    </div>
+html;
+                }
+                else
+                {
+                    $curso_6 .= <<<html
+                    <div>
+                          <span class="badge badge-success" style="background-color: #46abe2; color:white "><strong>V CONSUMO DE SUSTANCIAS - NO LO COMPRO </strong></span>  
+                    </div>
+html;
+                }
+                if($value_cursos_pagados['id_producto'] == 7)//VIOLENCIA DE GENERO Y PATOLOGIA DUAL
+                {
+                    $curso_7 .= <<<html
+                    <div>
+                          <span class="badge badge-success" style="background-color: #396bc1; color:white "><strong>VI VIOLENCIA DE GENERO - {$value_cursos_pagados['estatus_compra']} - {$value_cursos_pagados['tipo_pago']} </strong></span>  
+                    </div>
+html;
+                }
+                else
+                {
+                    $curso_7 .= <<<html
+                    <div>
+                          <span class="badge badge-success" style="background-color: #396bc1; color:white "><strong>VI VIOLENCIA DE GENERO - NO LO COMPRO </strong></span>  
+                    </div>
+html;
+                }
+                if($value_cursos_pagados['id_producto'] == 8)//ADICCIONES EN PSICOGERIATRIA
+                {
+                    $curso_8 .= <<<html
+                    <div>
+                          <span class="badge badge-success" style="background-color: #bc7be3; color:white "><strong>VII ADICCIONES PSICOGERIATRÍA - {$value_cursos_pagados['estatus_compra']} - {$value_cursos_pagados['tipo_pago']} </strong></span>  
+                    </div>
+html;
+                }
+                else
+                {
+                    $curso_8 .= <<<html
+                    <div>
+                          <span class="badge badge-success" style="background-color: #bc7be3; color:white "><strong>VII ADICCIONES PSICOGERIATRÍA - NO LO COMPRO </strong></span>  
+                    </div>
+html;
+                }
 
+                if($value_cursos_pagados['id_producto'] == 9)//CLARO OBSCURO DEL USO DE LA MARIHUANA
+                {
+                    $curso_9 .= <<<html
+                    <div>
+                          <span class="badge badge-success" style="background-color: #31d5b1; color:white "><strong>VIII CLARO/OBSCURO - {$value_cursos_pagados['estatus_compra']} - {$value_cursos_pagados['tipo_pago']} </strong></span>  
+                    </div>
+html;
+                }
+                else
+                {
+                    $curso_9 .= <<<html
+                    <div>
+                          <span class="badge badge-success" style="background-color: #31d5b1; color:white "><strong>VIII CLARO/OBSCURO - NO LO COMPRO </strong></span>  
+                    </div>
+html;
+                }
 
-
-
+            }
 
 
             if($value['scholarship'] != '')
@@ -787,7 +940,35 @@ html;
                         <div class="d-flex flex-column justify-content-center text-black">
                             <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm text-black"><span class="fas fa-dollar-sign" style="font-size: 13px"></span> {$value['amout_due']} DLRS </h6>
+                            <hr>
+                            <div>
+                                {$curso_1}
                             </div>
+                            <div>
+                                {$curso_2}
+                            </div>
+                            <div>
+                                {$curso_3}
+                            </div>
+                            <div>
+                                {$curso_4}
+                            </div>
+                            <div>
+                                {$curso_5}
+                            </div>
+                            <div>
+                                {$curso_6}
+                            </div>
+                            <div>
+                                {$curso_7}
+                            </div>
+                            <div>
+                                {$curso_8}
+                            </div>
+                            <div>
+                                {$curso_9}
+                            </div>
+                            
                         </div>
                     </div>
                 </td>

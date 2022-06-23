@@ -90,7 +90,7 @@
                         <div class="col-auto my-auto">
                             <div class="h-100">
                                 <h5 class="mb-1">
-                                    Invitados APM
+                                    Congresistas APM
                                 </h5>
                                 <p class="mb-0 font-weight-bold text-sm">
                                 </p>
@@ -160,7 +160,7 @@
                             </div>
 
                             <hr>
-                            
+
                         </div>
                         <div class="card-body px-0 pb-0">
                             <div class="tab-content" id="v-pills-tabContent">

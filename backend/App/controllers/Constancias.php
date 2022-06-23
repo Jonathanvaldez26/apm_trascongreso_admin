@@ -841,7 +841,7 @@ html;
                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Constancias</th>
             </tr>
         </thead>
-        html;
+html;
         foreach (GeneralDao::getAllTalleres() as $key => $value) {
            
             $html .= <<<html
@@ -923,7 +923,7 @@ html;
                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Constancias</th>
             </tr>
         </thead>
-        html;
+html;
         
         foreach (GeneralDao::getAllUsuariosTalleres($id_producto) as $key => $value) {
            
