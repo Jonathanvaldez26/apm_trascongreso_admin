@@ -504,6 +504,7 @@ html;
             $curso_8 = '';
             $curso_9 = '';
             $color_curso_pago = '';
+            $tipo_pago = '';
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             if($value['scholarship'] != '')//si la beca es diferente de vacio entonces
             {
@@ -698,11 +699,23 @@ html;
 html;
                 }
 
+                if($value_cursos_pagados['tipo_pago'] == '' )
+                {
+                    $tipo_pago =  'Becado';
+                }
+                else
+                {
+                    $tipo_pago = $value_cursos_pagados['tipo_pago'];
+                }
+
+
                 if($value_cursos_pagados['id_producto'] == 1)//Si ya esta validado se muestra
                 {
                     $curso_1 .= <<<html
                     <div>
-                          <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>VI CONGRESO MUNDIAL - {$value_cursos_pagados['tipo_pago']} </strong></span>{$color_curso_pago}
+                          <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>VI CONGRESO MUNDIAL - {$value_cursos_pagados['tipo_pago']} </strong></span>
+                          <span class="badge badge-success" style="background-color: #eed543; color:white "><strong>{$tipo_pago} </strong></span> 
+                          {$color_curso_pago}
                     </div>
 html;
                 }
