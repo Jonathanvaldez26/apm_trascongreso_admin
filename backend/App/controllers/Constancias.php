@@ -524,6 +524,7 @@ html;
         if ($id_producto == 1) {
             $attend = '';
             $progreso = $progresos_productos_congreso;
+            $nombre_constancia = '';
         } 
         else if ($id_producto == 2) {
             $attend = 'Trans-Congress Course I';
@@ -542,12 +543,15 @@ html;
             $progreso = $progresos_productos;
         } 
         else if ($id_producto == 7) {
+            $attend = 'Trans-Congress Course VI';
             // $nombre_imagen = 'constancia_transcongreso_7.png';
             $progreso = $progresos_productos;
         } else if ($id_producto == 8) {
+            $attend = 'Trans-Congress Course VII';
             // $nombre_imagen = 'constancia_transcongreso_8.png';
             $progreso = $progresos_productos;
         } else if ($id_producto == 9) {
+            $attend = 'Trans-Congress Course VIII';
             // $nombre_imagen = 'constancia_transcongreso_9.png';
             $progreso = $progresos_productos;
         }
@@ -561,8 +565,10 @@ html;
         $nombre_completo = mb_strtoupper($nombre_completo);
 
         $nombre = html_entity_decode($datos_user['name_user']);
+        $segundo_nombre = html_entity_decode($datos_user['middle_name']);
         $apellido = html_entity_decode($datos_user['surname']);
-        $nombre_completo = ($nombre)." ".($apellido);
+        $segundo_apellido = html_entity_decode($datos_user['second_surname']);
+        $nombre_completo = ($nombre)." ".($segundo_nombre)." ".($apellido)." ".($segundo_apellido);
         $nombre_completo = mb_strtoupper($nombre_completo);
 
         // echo $nombre_completo;
@@ -586,20 +592,47 @@ html;
         //$nombre = utf8_decode("Jonathan Valdez Martinez");
         //$num_linea =utf8_decode("Línea: 39");
         //$num_linea2 =utf8_decode("Línea: 39");
-
-        $pdf->SetXY(15, 70);
+        if($id_producto == 1){
+        $pdf->SetXY(15, 80);
+        
         $pdf->SetFont('Arial', 'B', 30);
         #4D9A9B
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->Multicell(273, 25, utf8_decode($nombre_completo), 0, 'C');
+        $pdf->Multicell(273, 30, utf8_decode($nombre_completo), 0, 'C');
         $pdf->SetFont('Arial', 'B', 15);
-        $pdf->Multicell(275, 10, utf8_decode('Attended the:'), 0, 'C');
+        $pdf->Multicell(275, 25, utf8_decode('Attended the:'), 0, 'C');
         $pdf->SetFont('Arial', '',20);
+        if($id_producto == 1){
+            $pdf->Multicell(275, 10, utf8_decode($attend).' '.utf8_decode("$nombre_constancia").' ', 0, 'C');
+        }else{
         $pdf->Multicell(275, 10, utf8_decode($attend).' "'.utf8_decode("$nombre_constancia").'"', 0, 'C');
-        $pdf->SetFont('Arial', 'B',10);
-        $pdf->SetXY(156, 170.5);
-        $pdf->Multicell(10, 10, utf8_decode(round($progreso['segundos']/3600)), 0, 'C');
+        }
+        // $pdf->SetFont('Arial', 'B',10);
+        // $pdf->SetXY(156, 170.5);
+        // $pdf->Multicell(10, 10, utf8_decode(round($progreso['segundos']/3600)), 0, 'C');
         $pdf->Output();
+        }
+        else{
+        $pdf->SetXY(15, 66);
+        
+        $pdf->SetFont('Arial', 'B', 30);
+        #4D9A9B
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->Multicell(273, 20, utf8_decode($nombre_completo), 0, 'C');
+        $pdf->SetFont('Arial', 'B', 15);
+        $pdf->Multicell(275, 20, utf8_decode('Attended the:'), 0, 'C');
+        $pdf->SetFont('Arial', '',20);
+        if($id_producto == 1){
+            $pdf->Multicell(275, 10, utf8_decode($attend).' '.utf8_decode("$nombre_constancia").' ', 0, 'C');
+        }else{
+        $pdf->Multicell(275, 10, utf8_decode($attend).' "'.utf8_decode("$nombre_constancia").'"', 0, 'C');
+        }
+        // $pdf->SetFont('Arial', 'B',10);
+        // $pdf->SetXY(156, 170.5);
+        // $pdf->Multicell(10, 10, utf8_decode(round($progreso['segundos']/3600)), 0, 'C');
+        $pdf->Output();
+            
+        }
         // $pdf->Output('F','constancias/'.$clave.$id_curso.'.pdf');
 
         // $pdf->Output('F', 'C:/pases_abordar/'. $clave.'.pdf');
@@ -623,6 +656,7 @@ html;
         if ($id_producto == 1) {
             $attend = '';
             $progreso = $progresos_productos_congreso;
+            $nombre_constancia = '';
         } 
         else if ($id_producto == 2) {
             $attend = 'Trans-Congress Course I';
@@ -641,12 +675,15 @@ html;
             $progreso = $progresos_productos;
         } 
         else if ($id_producto == 7) {
+            $attend = 'Trans-Congress Course VI';
             // $nombre_imagen = 'constancia_transcongreso_7.png';
             $progreso = $progresos_productos;
         } else if ($id_producto == 8) {
+            $attend = 'Trans-Congress Course VII';
             // $nombre_imagen = 'constancia_transcongreso_8.png';
             $progreso = $progresos_productos;
         } else if ($id_producto == 9) {
+            $attend = 'Trans-Congress Course VIII';
             // $nombre_imagen = 'constancia_transcongreso_9.png';
             $progreso = $progresos_productos;
         }
@@ -660,8 +697,10 @@ html;
         $nombre_completo = mb_strtoupper($nombre_completo);
 
         $nombre = html_entity_decode($datos_user['name_user']);
+        $segundo_nombre = html_entity_decode($datos_user['middle_name']);
         $apellido = html_entity_decode($datos_user['surname']);
-        $nombre_completo = ($nombre)." ".($apellido);
+        $segundo_apellido = html_entity_decode($datos_user['second_surname']);
+        $nombre_completo = ($nombre)." ".($segundo_nombre)." ".($apellido)." ".($segundo_apellido);
         $nombre_completo = mb_strtoupper($nombre_completo);
 
         // echo $nombre_completo;
@@ -684,20 +723,48 @@ html;
         //$nombre = utf8_decode("Jonathan Valdez Martinez");
         //$num_linea =utf8_decode("Línea: 39");
         //$num_linea2 =utf8_decode("Línea: 39");
-
-        $pdf->SetXY(15, 70);
-        $pdf->SetFont('Arial', 'B', 30);
-        #4D9A9B
-        $pdf->SetTextColor(0, 0, 0);
-        $pdf->Multicell(273, 25, utf8_decode($nombre_completo), 0, 'C');
-        $pdf->SetFont('Arial', 'B', 15);
-        $pdf->Multicell(275, 10, utf8_decode('Attended the:'), 0, 'C');
-        $pdf->SetFont('Arial', '',20);
-        $pdf->Multicell(275, 10, utf8_decode($attend).' "'.utf8_decode("$nombre_constancia").'"', 0, 'C');
-        $pdf->SetFont('Arial', 'B',10);
-        $pdf->SetXY(156, 170.5);
-        $pdf->Multicell(10, 10, utf8_decode(round($progreso['segundos']/3600)), 0, 'C');
-        $pdf->Output();
+        
+        if($id_producto == 1){
+            $pdf->SetXY(15, 80);
+            
+            $pdf->SetFont('Arial', 'B', 30);
+            #4D9A9B
+            $pdf->SetTextColor(0, 0, 0);
+            $pdf->Multicell(273, 30, utf8_decode($nombre_completo), 0, 'C');
+            $pdf->SetFont('Arial', 'B', 15);
+            $pdf->Multicell(275, 25, utf8_decode('Attended the:'), 0, 'C');
+            $pdf->SetFont('Arial', '',20);
+            if($id_producto == 1){
+                $pdf->Multicell(275, 10, utf8_decode($attend).' '.utf8_decode("$nombre_constancia").' ', 0, 'C');
+            }else{
+            $pdf->Multicell(275, 10, utf8_decode($attend).' "'.utf8_decode("$nombre_constancia").'"', 0, 'C');
+            }
+            // $pdf->SetFont('Arial', 'B',10);
+            // $pdf->SetXY(156, 170.5);
+            // $pdf->Multicell(10, 10, utf8_decode(round($progreso['segundos']/3600)), 0, 'C');
+            $pdf->Output();
+            }
+            else{
+            $pdf->SetXY(15, 66);
+            
+            $pdf->SetFont('Arial', 'B', 30);
+            #4D9A9B
+            $pdf->SetTextColor(0, 0, 0);
+            $pdf->Multicell(273, 20, utf8_decode($nombre_completo), 0, 'C');
+            $pdf->SetFont('Arial', 'B', 15);
+            $pdf->Multicell(275, 20, utf8_decode('Attended the:'), 0, 'C');
+            $pdf->SetFont('Arial', '',20);
+            if($id_producto == 1){
+                $pdf->Multicell(275, 10, utf8_decode($attend).' '.utf8_decode("$nombre_constancia").' ', 0, 'C');
+            }else{
+            $pdf->Multicell(275, 10, utf8_decode($attend).' "'.utf8_decode("$nombre_constancia").'"', 0, 'C');
+            }
+            // $pdf->SetFont('Arial', 'B',10);
+            // $pdf->SetXY(156, 170.5);
+            // $pdf->Multicell(10, 10, utf8_decode(round($progreso['segundos']/3600)), 0, 'C');
+            $pdf->Output();
+                
+            }
         // $pdf->Output('F','constancias/'.$clave.$id_curso.'.pdf');
 
         // $pdf->Output('F', 'C:/pases_abordar/'. $clave.'.pdf');

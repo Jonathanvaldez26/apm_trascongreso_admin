@@ -683,6 +683,7 @@ html;
             ////////////////////////////////////////////////////////////////////
 
             foreach (GeneralDao::getBuscarCursos($value['user_id'] ) as $key => $value_cursos_pagados) { //IR A BUSCAR EL ESTATUS DE PAGO DE TODOS LOS PRODUCTOS APM SELECCIONADOS POR EL USUARIO
+                
 
                 if($value_cursos_pagados['estatus_compra'] == 'CON ACCESO')
                 {
@@ -716,7 +717,11 @@ html;
                           <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>VI CONGRESO MUNDIAL</strong></span>
                           <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
                           {$color_curso_pago}
-                    </div>
+
+                          <a href="/Constancias/abrirConstancia/{$value['clave']}/{$value_cursos_pagados['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Impresa" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Impresa" target="_blank"><i class="fas fa-print"> </i></a>
+                          
+                          <a href="/Constancias/abrirConstanciaDigital/{$value['clave']}/{$value_cursos_pagados['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Digital" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Digital" target="_blank"><i class="fas fa-print"> </i></a>
+                        
 html;
                 }
 
@@ -727,6 +732,9 @@ html;
                           <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>I NEURO ADICCION</strong></span>
                           <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
                           {$color_curso_pago}
+                          <a href="/Constancias/abrirConstancia/{$value['clave']}/{$value_cursos_pagados['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Impresa" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Impresa" target="_blank"><i class="fas fa-print"> </i></a>
+                          
+                          <a href="/Constancias/abrirConstanciaDigital/{$value['clave']}/{$value_cursos_pagados['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Digital" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Digital" target="_blank"><i class="fas fa-print"> </i></a>
                     </div>
 html;
                 }
@@ -738,6 +746,10 @@ html;
                           <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>II SUEÑO Y SUSTANCIAS</strong></span>
                           <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
                           {$color_curso_pago}
+
+                          <a href="/Constancias/abrirConstancia/{$value['clave']}/{$value_cursos_pagados['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Impresa" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Impresa" target="_blank"><i class="fas fa-print"> </i></a>
+                          
+                          <a href="/Constancias/abrirConstanciaDigital/{$value['clave']}/{$value_cursos_pagados['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Digital" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Digital" target="_blank"><i class="fas fa-print"> </i></a>
                     </div>
 html;
                 }
@@ -749,6 +761,10 @@ html;
                           <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>III CARACTE ENDOFENOTIP</strong></span>
                           <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
                           {$color_curso_pago}
+
+                          <a href="/Constancias/abrirConstancia/{$value['clave']}/{$value_cursos_pagados['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Impresa" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Impresa" target="_blank"><i class="fas fa-print"> </i></a>
+                          
+                          <a href="/Constancias/abrirConstanciaDigital/{$value['clave']}/{$value_cursos_pagados['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Digital" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Digital" target="_blank"><i class="fas fa-print"> </i></a>
                     </div>
 html;
                 }
@@ -760,6 +776,10 @@ html;
                           <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>IV TRSTORN POR CONSUMO</strong></span>
                           <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
                           {$color_curso_pago}
+
+                          <a href="/Constancias/abrirConstancia/{$value['clave']}/{$value_cursos_pagados['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Impresa" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Impresa" target="_blank"><i class="fas fa-print"> </i></a>
+                          
+                          <a href="/Constancias/abrirConstanciaDigital/{$value['clave']}/{$value_cursos_pagados['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Digital" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Digital" target="_blank"><i class="fas fa-print"> </i></a>
                     </div>
 html;
                 }
@@ -771,6 +791,10 @@ html;
                           <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>V CONSUMO DE SUSTANCIAS</strong></span>
                           <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
                           {$color_curso_pago}
+
+                          <a href="/Constancias/abrirConstancia/{$value['clave']}/{$value_cursos_pagados['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Impresa" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Impresa" target="_blank"><i class="fas fa-print"> </i></a>
+                          
+                          <a href="/Constancias/abrirConstanciaDigital/{$value['clave']}/{$value_cursos_pagados['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Digital" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Digital" target="_blank"><i class="fas fa-print"> </i></a>
                     </div>
 html;
                 }
@@ -782,6 +806,10 @@ html;
                           <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>VI VIOLENCIA DE GENERO</strong></span>
                           <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
                           {$color_curso_pago}
+
+                          <a href="/Constancias/abrirConstancia/{$value['clave']}/{$value_cursos_pagados['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Impresa" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Impresa" target="_blank"><i class="fas fa-print"> </i></a>
+                          
+                          <a href="/Constancias/abrirConstanciaDigital/{$value['clave']}/{$value_cursos_pagados['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Digital" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Digital" target="_blank"><i class="fas fa-print"> </i></a>
                     </div>
 html;
                 }
@@ -793,6 +821,10 @@ html;
                           <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>VII ADICCIONES PSICOGERIATRÍA</strong></span>
                           <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
                           {$color_curso_pago}
+
+                          <a href="/Constancias/abrirConstancia/{$value['clave']}/{$value_cursos_pagados['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Impresa" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Impresa" target="_blank"><i class="fas fa-print"> </i></a>
+                          
+                          <a href="/Constancias/abrirConstanciaDigital/{$value['clave']}/{$value_cursos_pagados['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Digital" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Digital" target="_blank"><i class="fas fa-print"> </i></a>
                     </div>
 html;
                 }
@@ -804,6 +836,10 @@ html;
                           <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>VIII CLARO/OBSCURO</strong></span>
                           <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
                           {$color_curso_pago}
+
+                          <a href="/Constancias/abrirConstancia/{$value['clave']}/{$value_cursos_pagados['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Impresa" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Impresa" target="_blank"><i class="fas fa-print"> </i></a>
+                          
+                          <a href="/Constancias/abrirConstanciaDigital/{$value['clave']}/{$value_cursos_pagados['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Digital" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Digital" target="_blank"><i class="fas fa-print"> </i></a>
                     </div>
 html;
                 }
