@@ -503,6 +503,7 @@ html;
             $curso_7 = '';
             $curso_8 = '';
             $curso_9 = '';
+            $color_curso_pago = '';
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             if($value['scholarship'] != '')//si la beca es diferente de vacio entonces
             {
@@ -681,11 +682,29 @@ html;
             ////////////////////////////////////////////////////////////////////
 
             foreach (GeneralDao::getBuscarCursos($value['user_id'] ) as $key => $value_cursos_pagados) { //IR A BUSCAR EL ESTATUS DE PAGO DE TODOS LOS PRODUCTOS APM SELECCIONADOS POR EL USUARIO
+
+                if($value_cursos_pagados['estatus_compra'] == 'CON ACCESO')
+                {
+                    $color_curso_pago .= <<<html
+                    <div>
+                          <span class="badge badge-success"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
+                    </div>
+html;
+                }
+                else
+                {
+                    $color_curso_pago .= <<<html
+                    <div>
+                          <span class="badge badge-warning"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
+                    </div>
+html;
+                }
+
                 if($value_cursos_pagados['id_producto'] == 1)//Si ya esta validado se muestra
                 {
                     $curso_1 .= <<<html
                     <div>
-                          <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>VI CONGRESO MUNDIAL - {$value_cursos_pagados['estatus_compra']} - {$value_cursos_pagados['tipo_pago']} </strong></span>  
+                          <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>VI CONGRESO MUNDIAL - {} - {$value_cursos_pagados['tipo_pago']} </strong></span>{$color_curso_pago}
                     </div>
 html;
                 }
