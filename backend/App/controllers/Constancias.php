@@ -596,7 +596,7 @@ html;
         $pdf->Multicell(275, 10, utf8_decode($attend).' "'.utf8_decode("$nombre_constancia").'"', 0, 'C');
         $pdf->SetFont('Arial', 'B',10);
         $pdf->SetXY(156, 170.5);
-        $pdf->Multicell(10, 10, utf8_decode($progreso['segundos']/3600), 0, 'C');
+        $pdf->Multicell(10, 10, utf8_decode(round($progreso['segundos']/3600)), 0, 'C');
         $pdf->Output();
         // $pdf->Output('F','constancias/'.$clave.$id_curso.'.pdf');
 
