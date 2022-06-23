@@ -699,9 +699,9 @@ html;
 html;
                 }
 
-                if($value_cursos_pagados['tipo_pago'] == '' )
+                if($value_cursos_pagados['tipo_pago'] == '' && $value_cursos_pagados['estatus_pendiente_pago'] == 'PENDIETE' )
                 {
-                    $tipo_pago =  'Becado';
+                    $tipo_pago =  'En espera de pago';
                 }
                 else
                 {
