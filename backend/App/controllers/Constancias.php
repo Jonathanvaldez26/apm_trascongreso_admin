@@ -613,14 +613,14 @@ html;
         $pdf->Output();
         }
         else{
-        $pdf->SetXY(15, 70);
+        $pdf->SetXY(15, 66);
         
         $pdf->SetFont('Arial', 'B', 30);
         #4D9A9B
         $pdf->SetTextColor(0, 0, 0);
         $pdf->Multicell(273, 20, utf8_decode($nombre_completo), 0, 'C');
         $pdf->SetFont('Arial', 'B', 15);
-        $pdf->Multicell(275, 25, utf8_decode('Attended the:'), 0, 'C');
+        $pdf->Multicell(275, 20, utf8_decode('Attended the:'), 0, 'C');
         $pdf->SetFont('Arial', '',20);
         if($id_producto == 1){
             $pdf->Multicell(275, 10, utf8_decode($attend).' '.utf8_decode("$nombre_constancia").' ', 0, 'C');
@@ -745,14 +745,14 @@ html;
             $pdf->Output();
             }
             else{
-            $pdf->SetXY(15, 70);
+            $pdf->SetXY(15, 66);
             
             $pdf->SetFont('Arial', 'B', 30);
             #4D9A9B
             $pdf->SetTextColor(0, 0, 0);
             $pdf->Multicell(273, 20, utf8_decode($nombre_completo), 0, 'C');
             $pdf->SetFont('Arial', 'B', 15);
-            $pdf->Multicell(275, 25, utf8_decode('Attended the:'), 0, 'C');
+            $pdf->Multicell(275, 20, utf8_decode('Attended the:'), 0, 'C');
             $pdf->SetFont('Arial', '',20);
             if($id_producto == 1){
                 $pdf->Multicell(275, 10, utf8_decode($attend).' '.utf8_decode("$nombre_constancia").' ', 0, 'C');
