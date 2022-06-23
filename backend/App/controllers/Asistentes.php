@@ -711,7 +711,7 @@ html;
 
                 if($value_cursos_pagados['id_producto'] == 1)//Si ya esta validado se muestra
                 {
-                    $curso_1 .= <<<html
+                    $curso_1 = <<<html
                     <div>
                           <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>VI CONGRESO MUNDIAL</strong></span>
                           <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
@@ -722,7 +722,7 @@ html;
 
                 if($value_cursos_pagados['id_producto'] == 2)//NEUROBIOLOGIA DE LAS ADDCIONES
                 {
-                    $curso_2 .= <<<html
+                    $curso_2 = <<<html
                     <div>
                           <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>I NEURO ADICCION</strong></span>
                           <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
@@ -733,7 +733,7 @@ html;
 
                 if($value_cursos_pagados['id_producto'] == 3)//SUEÑO Y SUSTANCIAS
                 {
-                    $curso_3 .= <<<html
+                    $curso_3 = <<<html
                     <div>
                           <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>II SUEÑO Y SUSTANCIAS</strong></span>
                           <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
@@ -744,7 +744,7 @@ html;
 
                 if($value_cursos_pagados['id_producto'] == 4)//CACTERIZACION DE LOS ENDOFENOTIPOS
                 {
-                    $curso_4 .= <<<html
+                    $curso_4 = <<<html
                     <div>
                           <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>III CARACTE ENDOFENOTIP</strong></span>
                           <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
@@ -755,7 +755,7 @@ html;
 
                 if($value_cursos_pagados['id_producto'] == 5)//TRASTORNO POR CONSUMO
                 {
-                    $curso_5 .= <<<html
+                    $curso_5 = <<<html
                     <div>
                           <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>IV TRSTORN POR CONSUMO</strong></span>
                           <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
@@ -766,7 +766,7 @@ html;
 
                 if($value_cursos_pagados['id_producto'] == 6)//CONUSMO DE SUSTANCIAS POR SECUELAS EFECTIVAs
                 {
-                    $curso_6 .= <<<html
+                    $curso_6 = <<<html
                     <div>
                           <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>V CONSUMO DE SUSTANCIAS</strong></span>
                           <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
@@ -777,7 +777,7 @@ html;
 
                 if($value_cursos_pagados['id_producto'] == 7)//VIOLENCIA DE GENERO Y PATOLOGIA DUAL
                 {
-                    $curso_7 .= <<<html
+                    $curso_7 = <<<html
                     <div>
                           <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>VI VIOLENCIA DE GENERO</strong></span>
                           <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
@@ -788,7 +788,7 @@ html;
 
                 if($value_cursos_pagados['id_producto'] == 8)//ADICCIONES EN PSICOGERIATRIA
                 {
-                    $curso_8 .= <<<html
+                    $curso_8 = <<<html
                     <div>
                           <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>VII ADICCIONES PSICOGERIATRÍA</strong></span>
                           <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
@@ -799,7 +799,7 @@ html;
 
                 if($value_cursos_pagados['id_producto'] == 9)//CLARO OBSCURO DEL USO DE LA MARIHUANA
                 {
-                    $curso_9 .= <<<html
+                    $curso_9 = <<<html
                     <div>
                           <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>VIII CLARO/OBSCURO</strong></span>
                           <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
