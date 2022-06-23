@@ -679,6 +679,8 @@ html;
             }
 
             ////////////////////////////////////////////////////////////////////
+            var_dump(GeneralDao::getBuscarCursos(19));
+            exit();
             foreach (GeneralDao::getBuscarCursos($value['user_id'] ) as $key => $value_cursos_pagados) { //IR A BUSCAR EL ESTATUS DE PAGO DE TODOS LOS PRODUCTOS APM SELECCIONADOS POR EL USUARIO
                 if($value_cursos_pagados['id_producto'] == 1)//Si ya esta validado se muestra
                 {
