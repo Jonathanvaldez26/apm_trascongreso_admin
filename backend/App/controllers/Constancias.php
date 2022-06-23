@@ -511,37 +511,159 @@ html;
 
         // $this->generaterQr($clave_ticket);
         // echo $clave;
-        // echo $id_producto;
+
+        $productos = AsistentesDao::getProductosById($id_producto);
+        $progresos_productos = AsistentesDao::getProgresosById($id_producto,$clave);
+        $progresos_productos_congreso = AsistentesDao::getProgresosCongresoById($id_producto,$clave);
+
+        // echo $progresos_productos_congreso['segundos'];
         // exit;
 
-        // if ($id_producto == 1) {
-        //     $nombre_imagen = 'constancia_congreso_1.jpeg';
-        // } 
-        // else if ($id_producto == 2) {
-        //     $nombre_imagen = 'constancia_transcongreso_2.png';
-        // } else if ($id_producto == 3) {
-        //     $nombre_imagen = 'constancia_transcongreso_3.png';
-        // } else if ($id_producto == 4) {
-        //     $nombre_imagen = 'constancia_transcongreso_4.png';
-        // } else if ($id_producto == 5) {
-        //     $nombre_imagen = 'constancia_transcongreso_5.png';
-        // } else if ($id_producto == 6) {
-        //     $nombre_imagen = 'constancia_transcongreso_6.png';
-        // } else if ($id_producto == 7) {
-        //     $nombre_imagen = 'constancia_transcongreso_7.png';
-        // } else if ($id_producto == 8) {
-        //     $nombre_imagen = 'constancia_transcongreso_8.png';
-        // } else if ($id_producto == 9) {
-        //     $nombre_imagen = 'constancia_transcongreso_9.png';
-        // }
+        $nombre_constancia = $productos['nombre_ingles'];
+
+        if ($id_producto == 1) {
+            $attend = '';
+            $progreso = $progresos_productos_congreso;
+        } 
+        else if ($id_producto == 2) {
+            $attend = 'Trans-Congress Course I';
+            $progreso = $progresos_productos;
+        } else if ($id_producto == 3) {
+            $attend = 'Trans-Congress Course II';
+            $progreso = $progresos_productos;
+        } else if ($id_producto == 4) {
+            $attend = 'Trans-Congress Course III';
+            $progreso = $progresos_productos;
+        } else if ($id_producto == 5) {
+            $attend = 'Trans-Congress Course IV';
+            $progreso = $progresos_productos;
+        } else if ($id_producto == 6) {
+            $attend = 'Trans-Congress Course V';
+            $progreso = $progresos_productos;
+        } 
+        else if ($id_producto == 7) {
+            // $nombre_imagen = 'constancia_transcongreso_7.png';
+            $progreso = $progresos_productos;
+        } else if ($id_producto == 8) {
+            // $nombre_imagen = 'constancia_transcongreso_8.png';
+            $progreso = $progresos_productos;
+        } else if ($id_producto == 9) {
+            // $nombre_imagen = 'constancia_transcongreso_9.png';
+            $progreso = $progresos_productos;
+        }
 
         $datos_user = GeneralDao::getUserRegisterByClave($clave,$id_producto)[0];
 
         // $nombre = explode(" ", $datos_user['nombre']);
 
         // $nombre_completo = $datos_user['prefijo'] . " " . $nombre[0] . " " . $datos_user['apellidop']. " " . $datos_user['apellidom'];
-        $nombre_completo = $datos_user['name_user'] . " " . $datos_user['middle_name']. " " . $datos_user['surname']." ".$datos_user['second_surname'];
+        $nombre_completo = $datos_user['name_user']." ".$datos_user['middle_name']." ".$datos_user['surname']." ".$datos_user['second_surname'];
         $nombre_completo = mb_strtoupper($nombre_completo);
+
+        $nombre = html_entity_decode($datos_user['name_user']);
+        $apellido = html_entity_decode($datos_user['surname']);
+        $nombre_completo = ($nombre)." ".($apellido);
+        $nombre_completo = mb_strtoupper($nombre_completo);
+
+        // echo $nombre_completo;
+        // exit;
+        
+
+        $pdf = new \FPDF($orientation = 'L', $unit = 'mm', $format = 'A4');
+        $pdf->AddPage();
+        $pdf->SetFont('Arial', 'B', 8);    //Letra Arial, negrita (Bold), tam. 20
+        $pdf->setY(1);
+        $pdf->SetFont('Arial', 'B', 16);
+        // $pdf->Image('constancias/plantillas/constancia_congreso_1.jpeg', 0, 0, 296, 210);
+        // $pdf->Image('constancias/plantillas/'.$nombre_imagen, 0, 0, 296, 210);
+        // $pdf->SetFont('Arial', 'B', 25);
+        // $pdf->Multicell(133, 80, $clave_ticket, 0, 'C');
+
+        //$pdf->Image('1.png', 1, 0, 190, 190);
+        $pdf->SetFont('Arial', 'B', 5);    //Letra Arial, negrita (Bold), tam. 20
+        //$nombre = utf8_decode("Jonathan Valdez Martinez");
+        //$num_linea =utf8_decode("Línea: 39");
+        //$num_linea2 =utf8_decode("Línea: 39");
+
+        $pdf->SetXY(15, 70);
+        $pdf->SetFont('Arial', 'B', 30);
+        #4D9A9B
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->Multicell(273, 25, utf8_decode($nombre_completo), 0, 'C');
+        $pdf->SetFont('Arial', 'B', 15);
+        $pdf->Multicell(275, 10, utf8_decode('Attended the:'), 0, 'C');
+        $pdf->SetFont('Arial', '',20);
+        $pdf->Multicell(275, 10, utf8_decode($attend).' "'.utf8_decode("$nombre_constancia").'"', 0, 'C');
+        $pdf->SetFont('Arial', 'B',10);
+        $pdf->SetXY(156, 170.5);
+        $pdf->Multicell(10, 10, utf8_decode(round($progreso['segundos']/3600)), 0, 'C');
+        $pdf->Output();
+        // $pdf->Output('F','constancias/'.$clave.$id_curso.'.pdf');
+
+        // $pdf->Output('F', 'C:/pases_abordar/'. $clave.'.pdf');
+    }
+
+    public function abrirConstanciaDigital($clave, $id_producto)
+    {
+
+        // $this->generaterQr($clave_ticket);
+        // echo $clave;
+
+        $productos = AsistentesDao::getProductosById($id_producto);
+        $progresos_productos = AsistentesDao::getProgresosById($id_producto,$clave);
+        $progresos_productos_congreso = AsistentesDao::getProgresosCongresoById($id_producto,$clave);
+
+        // echo $progresos_productos_congreso['segundos'];
+        // exit;
+
+        $nombre_constancia = $productos['nombre_ingles'];
+
+        if ($id_producto == 1) {
+            $attend = '';
+            $progreso = $progresos_productos_congreso;
+        } 
+        else if ($id_producto == 2) {
+            $attend = 'Trans-Congress Course I';
+            $progreso = $progresos_productos;
+        } else if ($id_producto == 3) {
+            $attend = 'Trans-Congress Course II';
+            $progreso = $progresos_productos;
+        } else if ($id_producto == 4) {
+            $attend = 'Trans-Congress Course III';
+            $progreso = $progresos_productos;
+        } else if ($id_producto == 5) {
+            $attend = 'Trans-Congress Course IV';
+            $progreso = $progresos_productos;
+        } else if ($id_producto == 6) {
+            $attend = 'Trans-Congress Course V';
+            $progreso = $progresos_productos;
+        } 
+        else if ($id_producto == 7) {
+            // $nombre_imagen = 'constancia_transcongreso_7.png';
+            $progreso = $progresos_productos;
+        } else if ($id_producto == 8) {
+            // $nombre_imagen = 'constancia_transcongreso_8.png';
+            $progreso = $progresos_productos;
+        } else if ($id_producto == 9) {
+            // $nombre_imagen = 'constancia_transcongreso_9.png';
+            $progreso = $progresos_productos;
+        }
+
+        $datos_user = GeneralDao::getUserRegisterByClave($clave,$id_producto)[0];
+
+        // $nombre = explode(" ", $datos_user['nombre']);
+
+        // $nombre_completo = $datos_user['prefijo'] . " " . $nombre[0] . " " . $datos_user['apellidop']. " " . $datos_user['apellidom'];
+        $nombre_completo = $datos_user['name_user']." ".$datos_user['middle_name']." ".$datos_user['surname']." ".$datos_user['second_surname'];
+        $nombre_completo = mb_strtoupper($nombre_completo);
+
+        $nombre = html_entity_decode($datos_user['name_user']);
+        $apellido = html_entity_decode($datos_user['surname']);
+        $nombre_completo = ($nombre)." ".($apellido);
+        $nombre_completo = mb_strtoupper($nombre_completo);
+
+        // echo $nombre_completo;
+        // exit;
         
 
         $pdf = new \FPDF($orientation = 'L', $unit = 'mm', $format = 'A4');
@@ -560,11 +682,18 @@ html;
         //$num_linea =utf8_decode("Línea: 39");
         //$num_linea2 =utf8_decode("Línea: 39");
 
-        $pdf->SetXY(10, 84);
+        $pdf->SetXY(15, 70);
         $pdf->SetFont('Arial', 'B', 30);
         #4D9A9B
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->Multicell(270, 10, utf8_decode($nombre_completo), 0, 'C');
+        $pdf->Multicell(273, 25, utf8_decode($nombre_completo), 0, 'C');
+        $pdf->SetFont('Arial', 'B', 15);
+        $pdf->Multicell(275, 10, utf8_decode('Attended the:'), 0, 'C');
+        $pdf->SetFont('Arial', '',20);
+        $pdf->Multicell(275, 10, utf8_decode($attend).' "'.utf8_decode("$nombre_constancia").'"', 0, 'C');
+        $pdf->SetFont('Arial', 'B',10);
+        $pdf->SetXY(156, 170.5);
+        $pdf->Multicell(10, 10, utf8_decode(round($progreso['segundos']/3600)), 0, 'C');
         $pdf->Output();
         // $pdf->Output('F','constancias/'.$clave.$id_curso.'.pdf');
 
@@ -946,7 +1075,8 @@ html;
                 </td>
 
                 <td style="text-align:center; vertical-align:middle;">
-                    <a href="/Constancias/abrirConstancia/{$value['clave']}/{$value['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Constancias del curso" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Constancias del curso" target="_blank"><i class="fas fa-print"> </i></a>
+                    <a href="/Constancias/abrirConstancia/{$value['clave']}/{$value['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Impresa" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Impresa" target="_blank"><i class="fas fa-print"> </i></a>
+                    <a href="/Constancias/abrirConstanciaDigital/{$value['clave']}/{$value['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Digital" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Digital" target="_blank"><i class="fas fa-print"> </i></a>
                 </td>
             </tr>
 html;
