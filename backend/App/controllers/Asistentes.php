@@ -699,7 +699,7 @@ html;
 html;
                 }
 
-                if($value_cursos_pagados['tipo_pago'] == '' && $value_cursos_pagados['estatus_pendiente_pago'] == 'PENDIETE' )
+                if($value_cursos_pagados['tipo_pago'] == '' && $value_cursos_pagados['estatus_pendiente_pago'] == 'PENDIENTE' )
                 {
                     $tipo_pago =  'En espera de pago';
                 }
