@@ -713,8 +713,8 @@ html;
                 {
                     $curso_1 .= <<<html
                     <div>
-                          <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>VI CONGRESO MUNDIAL - {$value_cursos_pagados['tipo_pago']} </strong></span>
-                          <span class="badge badge-success" style="background-color: #eed543; color:white "><strong>{$tipo_pago} </strong></span> 
+                          <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>VI CONGRESO MUNDIAL</strong></span>
+                          <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
                           {$color_curso_pago}
                     </div>
 html;
@@ -724,7 +724,9 @@ html;
                 {
                     $curso_2 .= <<<html
                     <div>
-                          <span class="badge badge-success" style="background-color: #ff953a; color:white "><strong>I NEURO ADICCION - {$value_cursos_pagados['estatus_compra']} - {$value_cursos_pagados['tipo_pago']} </strong></span>  
+                          <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>I NEURO ADICCION</strong></span>
+                          <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
+                          {$color_curso_pago}
                     </div>
 html;
                 }
@@ -733,7 +735,9 @@ html;
                 {
                     $curso_3 .= <<<html
                     <div>
-                          <span class="badge badge-success" style="background-color: #fce53e; color:white "><strong>II SUEÑO Y SUSTANCIAS- {$value_cursos_pagados['estatus_compra']} - {$value_cursos_pagados['tipo_pago']} </strong></span>  
+                          <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>II SUEÑO Y SUSTANCIAS</strong></span>
+                          <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
+                          {$color_curso_pago}
                     </div>
 html;
                 }
@@ -742,7 +746,9 @@ html;
                 {
                     $curso_4 .= <<<html
                     <div>
-                          <span class="badge badge-success" style="background-color: #91fd3e; color:white "><strong>III CARACTE ENDOFENOTIP - {$value_cursos_pagados['estatus_compra']} - {$value_cursos_pagados['tipo_pago']} </strong></span>  
+                          <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>III CARACTE ENDOFENOTIP</strong></span>
+                          <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
+                          {$color_curso_pago}
                     </div>
 html;
                 }
@@ -751,7 +757,9 @@ html;
                 {
                     $curso_5 .= <<<html
                     <div>
-                          <span class="badge badge-success" style="background-color: #8ffcc3; color:white "><strong>IV TRSTORN POR CONSUMO - {$value_cursos_pagados['estatus_compra']} - {$value_cursos_pagados['tipo_pago']} </strong></span>  
+                          <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>IV TRSTORN POR CONSUMO</strong></span>
+                          <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
+                          {$color_curso_pago}
                     </div>
 html;
                 }
@@ -760,7 +768,9 @@ html;
                 {
                     $curso_6 .= <<<html
                     <div>
-                          <span class="badge badge-success" style="background-color: #46abe2; color:white "><strong>V CONSUMO DE SUSTANCIAS - {$value_cursos_pagados['estatus_compra']} - {$value_cursos_pagados['tipo_pago']} </strong></span>  
+                          <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>V CONSUMO DE SUSTANCIAS</strong></span>
+                          <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
+                          {$color_curso_pago}
                     </div>
 html;
                 }
@@ -769,7 +779,9 @@ html;
                 {
                     $curso_7 .= <<<html
                     <div>
-                          <span class="badge badge-success" style="background-color: #396bc1; color:white "><strong>VI VIOLENCIA DE GENERO - {$value_cursos_pagados['estatus_compra']} - {$value_cursos_pagados['tipo_pago']} </strong></span>  
+                          <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>VI VIOLENCIA DE GENERO</strong></span>
+                          <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
+                          {$color_curso_pago}
                     </div>
 html;
                 }
@@ -778,7 +790,9 @@ html;
                 {
                     $curso_8 .= <<<html
                     <div>
-                          <span class="badge badge-success" style="background-color: #bc7be3; color:white "><strong>VII ADICCIONES PSICOGERIATRÍA - {$value_cursos_pagados['estatus_compra']} - {$value_cursos_pagados['tipo_pago']} </strong></span>  
+                          <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>VII ADICCIONES PSICOGERIATRÍA</strong></span>
+                          <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
+                          {$color_curso_pago}
                     </div>
 html;
                 }
@@ -787,7 +801,9 @@ html;
                 {
                     $curso_9 .= <<<html
                     <div>
-                          <span class="badge badge-success" style="background-color: #31d5b1; color:white "><strong>VIII CLARO/OBSCURO - {$value_cursos_pagados['estatus_compra']} - {$value_cursos_pagados['tipo_pago']} </strong></span>  
+                          <span class="badge badge-success" style="background-color: #0d6c57; color:white "><strong>VIII CLARO/OBSCURO</strong></span>
+                          <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
+                          {$color_curso_pago}
                     </div>
 html;
                 }
