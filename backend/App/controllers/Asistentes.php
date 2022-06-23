@@ -686,14 +686,14 @@ html;
 
                 if($value_cursos_pagados['estatus_compra'] == 'CON ACCESO')
                 {
-                    $color_curso_pago .= <<<html
+                    $color_curso_pago = <<<html
                         <span class="badge badge-success"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
                    
 html;
                 }
                 else
                 {
-                    $color_curso_pago .= <<<html
+                    $color_curso_pago = <<<html
                           <span class="badge badge-warning"><strong> {$value_cursos_pagados['estatus_compra']} </strong></span>  
 
 html;
