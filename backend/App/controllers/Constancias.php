@@ -524,6 +524,7 @@ html;
         if ($id_producto == 1) {
             $attend = '';
             $progreso = $progresos_productos_congreso;
+            $nombre_constancia = '';
         } 
         else if ($id_producto == 2) {
             $attend = 'Trans-Congress Course I';
@@ -542,12 +543,15 @@ html;
             $progreso = $progresos_productos;
         } 
         else if ($id_producto == 7) {
+            $attend = 'Trans-Congress Course VI';
             // $nombre_imagen = 'constancia_transcongreso_7.png';
             $progreso = $progresos_productos;
         } else if ($id_producto == 8) {
+            $attend = 'Trans-Congress Course VII';
             // $nombre_imagen = 'constancia_transcongreso_8.png';
             $progreso = $progresos_productos;
         } else if ($id_producto == 9) {
+            $attend = 'Trans-Congress Course VIII';
             // $nombre_imagen = 'constancia_transcongreso_9.png';
             $progreso = $progresos_productos;
         }
@@ -595,10 +599,14 @@ html;
         $pdf->SetFont('Arial', 'B', 15);
         $pdf->Multicell(275, 10, utf8_decode('Attended the:'), 0, 'C');
         $pdf->SetFont('Arial', '',20);
+        if($id_producto == 1){
+            $pdf->Multicell(275, 10, utf8_decode($attend).' '.utf8_decode("$nombre_constancia").' ', 0, 'C');
+        }else{
         $pdf->Multicell(275, 10, utf8_decode($attend).' "'.utf8_decode("$nombre_constancia").'"', 0, 'C');
-        $pdf->SetFont('Arial', 'B',10);
-        $pdf->SetXY(156, 170.5);
-        $pdf->Multicell(10, 10, utf8_decode(round($progreso['segundos']/3600)), 0, 'C');
+        }
+        // $pdf->SetFont('Arial', 'B',10);
+        // $pdf->SetXY(156, 170.5);
+        // $pdf->Multicell(10, 10, utf8_decode(round($progreso['segundos']/3600)), 0, 'C');
         $pdf->Output();
         // $pdf->Output('F','constancias/'.$clave.$id_curso.'.pdf');
 
@@ -623,6 +631,7 @@ html;
         if ($id_producto == 1) {
             $attend = '';
             $progreso = $progresos_productos_congreso;
+            $nombre_constancia = '';
         } 
         else if ($id_producto == 2) {
             $attend = 'Trans-Congress Course I';
@@ -641,12 +650,15 @@ html;
             $progreso = $progresos_productos;
         } 
         else if ($id_producto == 7) {
+            $attend = 'Trans-Congress Course VI';
             // $nombre_imagen = 'constancia_transcongreso_7.png';
             $progreso = $progresos_productos;
         } else if ($id_producto == 8) {
+            $attend = 'Trans-Congress Course VII';
             // $nombre_imagen = 'constancia_transcongreso_8.png';
             $progreso = $progresos_productos;
         } else if ($id_producto == 9) {
+            $attend = 'Trans-Congress Course VIII';
             // $nombre_imagen = 'constancia_transcongreso_9.png';
             $progreso = $progresos_productos;
         }
@@ -693,10 +705,14 @@ html;
         $pdf->SetFont('Arial', 'B', 15);
         $pdf->Multicell(275, 10, utf8_decode('Attended the:'), 0, 'C');
         $pdf->SetFont('Arial', '',20);
+        if($id_producto == 1){
+            $pdf->Multicell(275, 10, utf8_decode($attend).' '.utf8_decode("$nombre_constancia").' ', 0, 'C');
+        }else{
         $pdf->Multicell(275, 10, utf8_decode($attend).' "'.utf8_decode("$nombre_constancia").'"', 0, 'C');
-        $pdf->SetFont('Arial', 'B',10);
-        $pdf->SetXY(156, 170.5);
-        $pdf->Multicell(10, 10, utf8_decode(round($progreso['segundos']/3600)), 0, 'C');
+        }
+        // $pdf->SetFont('Arial', 'B',10);
+        // $pdf->SetXY(156, 170.5);
+        // $pdf->Multicell(10, 10, utf8_decode(round($progreso['segundos']/3600)), 0, 'C');
         $pdf->Output();
         // $pdf->Output('F','constancias/'.$clave.$id_curso.'.pdf');
 
