@@ -565,8 +565,10 @@ html;
         $nombre_completo = mb_strtoupper($nombre_completo);
 
         $nombre = html_entity_decode($datos_user['name_user']);
+        $segundo_nombre = html_entity_decode($datos_user['middle_name']);
         $apellido = html_entity_decode($datos_user['surname']);
-        $nombre_completo = ($nombre)." ".($apellido);
+        $segundo_apellido = html_entity_decode($datos_user['second_surname']);
+        $nombre_completo = ($nombre)." ".($segundo_nombre)." ".($apellido)." ".($segundo_apellido);
         $nombre_completo = mb_strtoupper($nombre_completo);
 
         // echo $nombre_completo;
@@ -672,8 +674,10 @@ html;
         $nombre_completo = mb_strtoupper($nombre_completo);
 
         $nombre = html_entity_decode($datos_user['name_user']);
+        $segundo_nombre = html_entity_decode($datos_user['middle_name']);
         $apellido = html_entity_decode($datos_user['surname']);
-        $nombre_completo = ($nombre)." ".($apellido);
+        $segundo_apellido = html_entity_decode($datos_user['second_surname']);
+        $nombre_completo = ($nombre)." ".($segundo_nombre)." ".($apellido)." ".($segundo_apellido);
         $nombre_completo = mb_strtoupper($nombre_completo);
 
         // echo $nombre_completo;
