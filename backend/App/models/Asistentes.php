@@ -315,7 +315,7 @@ sql;
         $mysqli = Database::getInstance(true);
         $query=<<<sql
           UPDATE utilerias_administradores 
-          SET name_user = '$data->_nombre', middle_name = '$data->_segundo_nombre', surname = '$data->_apellido_paterno', second_surname = '$data->_apellido_materno'
+          SET name_user = '$data->_nombre', middle_name = '$data->_segundo_nombre', surname = '$data->_apellido_paterno', second_surname = '$data->_apellido_materno', clave_socio = '$data->_clave_socio'
           WHERE usuario = '$data->_email';
 sql;
 
