@@ -324,7 +324,7 @@ sql;
             ':segundo_nombre'=>$data->_segundo_nombre,
             ':apellido_paterno'=>$data->_apellido_paterno,
             ':apellido_materno'=>$data->_apellido_materno,
-            ':email'=>$data->_email
+            ':email'=>$data->_email    
         );
 
         $accion = new \stdClass();
