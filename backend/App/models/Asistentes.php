@@ -316,7 +316,7 @@ sql;
         $query=<<<sql
       UPDATE utilerias_administradores 
       SET name_user = :nombre, middle_name = :segundo_nombre, surname = :apellido_paterno, second_surname = :apellido_materno
-      WHERE user_id = :id_registro;
+      WHERE usuario = :email;
 sql;
         $parametros = array(
             ':id_registro'=>$data->_id_registro,
@@ -324,7 +324,7 @@ sql;
             ':segundo_nombre'=>$data->_segundo_nombre,
             ':apellido_paterno'=>$data->_apellido_paterno,
             ':apellido_materno'=>$data->_apellido_materno,
-            ':apellido_materno'=>$data->_apellido_materno
+            ':email'=>$data->_email
         );
 
         $accion = new \stdClass();
