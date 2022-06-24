@@ -695,8 +695,11 @@ html;
 
                           <button data-toggle="modal" data-target="#modal-constancia-{$value['id_registro_acceso']}" id="btn-constancia-{$value['id_registro_acceso']}" data-id-producto="{$value_cursos_pagados['id_producto']}"
                            class="btn bg-pink btn-icon-only morado-musa-text" title="Impresa" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Impresa" target="_blank"><i class="fas fa-print"> </i></button>
+
+                           <button data-toggle="modal" data-target="#modal-constancia-{$value['id_registro_acceso']}" id="btn-constancia-digit-{$value['id_registro_acceso']}" data-id-producto="{$value_cursos_pagados['id_producto']}"
+                           class="btn bg-pink btn-icon-only morado-musa-text" title="Impresa" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Impresa" target="_blank"><i class="fas fa-print"> </i></button>
                           
-                          <a href="/Constancias/abrirConstanciaDigital/{$value['clave']}/{$value_cursos_pagados['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Digital" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Digital" target="_blank"><i class="fas fa-print"> </i></a>
+                        
                         
 html;
                 }
@@ -1020,6 +1023,17 @@ html;
                     $("#no_horas{$datos['id_registro_acceso']}").on("keyup",function(){
                         var no_horas = $(this).val();
                         $(".btn_imprimir_etiquetas_{$datos['id_registro_acceso']}").attr('href','/Constancias/abrirConstancia/{$datos['clave']}/'+id_producto+'/'+no_horas);
+                    })
+                    
+                });
+
+                $('#btn-constancia-digit-{$datos['id_registro_acceso']}').on("click", function(event) {
+                    var id_producto = $(this).attr('data-id-producto');
+                    $(".btn_imprimir_etiquetas_{$datos['id_registro_acceso']}").attr('href','/Constancias/abrirConstanciaDigital/{$datos['clave']}/'+id_producto);
+
+                    $("#no_horas{$datos['id_registro_acceso']}").on("keyup",function(){
+                        var no_horas = $(this).val();
+                        $(".btn_imprimir_etiquetas_{$datos['id_registro_acceso']}").attr('href','/Constancias/abrirConstanciaDigital/{$datos['clave']}/'+id_producto+'/'+no_horas);
                     })
                     
                 });
