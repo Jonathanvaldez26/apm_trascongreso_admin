@@ -609,11 +609,11 @@ html;
         }
         //TIEMPO
         $pdf->SetFont('Arial', 'B',10);
-        $pdf->SetXY(148, 175.5);
+        $pdf->SetXY(148, 175);
         $pdf->Multicell(10, 10, utf8_decode($no_horas), 0, 'C');
         //FECHA
         $pdf->SetFont('Arial', '',10);
-        $pdf->SetXY(8, 179);
+        $pdf->SetXY(5, 179);
         $pdf->Multicell(275, 10, utf8_decode('June, 21 to 24, 2022'), 0, 'C');
         $pdf->Output();
         }
@@ -754,11 +754,11 @@ html;
             // $pdf->Multicell(10, 10, utf8_decode(round($progreso['segundos']/3600)), 0, 'C');
             //TIEMPO
             $pdf->SetFont('Arial', 'B',10);
-            $pdf->SetXY(148, 175.5);
+            $pdf->SetXY(148, 174.5);
             $pdf->Multicell(10, 10, utf8_decode($no_horas), 0, 'C');
             //FECHA
             $pdf->SetFont('Arial', '',10);
-            $pdf->SetXY(8, 179);
+            $pdf->SetXY(5, 179);
             $pdf->Multicell(275, 10, utf8_decode('June, 21 to 24, 2022'), 0, 'C');
             $pdf->Output();
             }
