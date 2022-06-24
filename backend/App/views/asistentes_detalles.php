@@ -204,73 +204,6 @@
         $('#asistentes a').addClass('active');
         $('#asistentes .fa-users').addClass('text-white');
 
-        $("#form_etiquetas").on("submit", function(event) {
-            event.preventDefault();
-            var formData = new FormData(document.getElementById("form_etiquetas"));
-
-            no_habitacion = $("#no_habitacion").val();
-            clave_ra = $("#clave_ra").val();
-            no_etiquetas = $("#no_etiquetas").val();
-
-            console.log(no_habitacion);
-            console.log(clave_ra);
-            console.log(no_etiquetas);
-
-            $("#a_abrir_etiqueta").attr("href", "/Asistentes/abrirpdf/" + clave_ra + "/" + no_etiquetas + "/" + no_habitacion);
-            $("#a_abrir_etiqueta")[0].click();
-
-        });
-
-        var app = (function() {
-            var canvas = document.getElementById('canvas_ticket');
-            context = canvas.getContext('2d');
-
-            var imgTicketFondo = new Image();
-            imgTicketFondo.src = '/img/boleto_musa.jpg';
-
-            imgTicketFondo.onload = function() {
-                context.drawImage(imgTicketFondo, 0, 0);
-            }
-
-            // API
-            public = {};
-
-            public.loadPicture = function() {
-
-                context = canvas.getContext('2d');
-
-                var imgCodeQr = new Image();
-                imgCodeQr.src = $('#codigo-qr').val();
-
-                imgCodeQr.onload = function() {
-                    context.drawImage(imgTicketFondo, 0, 0);
-                    context.drawImage(imgCodeQr, 870, 90);
-                
-
-                    var centerX = canvas.width/2;
-                    var centerY = canvas.height/2;
-
-                    context = canvas.getContext('2d');
-
-                    context.font="20pt Verdana";
-                    context.fillStyle = "black";
-
-                    context.fillText($('#nombre-canvas').val(),280, centerY+80);
-
-                    context.font="20pt Verdana";
-                    context.fillStyle = "black";
-
-                    context.fillText($('#apellidos-canvas').val(),280, centerY+110);
-                }
-
-            };
-
-            return public;
-        }());
-
-        document.getElementById('main_ticket').removeAttribute('hidden');
-        app.loadPicture();
-
 
         $('#generar_clave').on('click', function(event) {
 
@@ -326,6 +259,10 @@
         });
 
         $("#update_detalles").on("submit", function(event) {
+            event.preventDefault();
+
+            // alert("Hola");
+
             var formData = new FormData(document.getElementById("update_detalles"));
             for (var value of formData.values()) {
                 console.log(value);
@@ -340,64 +277,31 @@
                 processData: false,
                 beforeSend: function() {
                     console.log("Procesando....");
+
+
                 },
                 success: function(respuesta) {
-                    console.log(respuesta)
+                    // alert("Successs");
+
                     if (respuesta == 'success') {
-                        Swal.fire({
-                            title: "!Se actualizaron tus datos correctamente!",
-                            html: '',
-                            icon:"success",
-                            timer: 1250,
-                        }).
+                        swal("!Se actualizaron tus datos correctamente!", "", "success").
                         then((value) => {
                             window.location.reload();
                         });
                     } else {
-                        Swal.fire({
-                            title: '!Usted No Actualizó Nada!',
-                            html: '',
-                            icon: 'warning',
-                            timer: 1000,
-                        }).
+                        swal("!Usted No Actualizó Nada!", "", "warning").
                         then((value) => {
                             //window.location.replace("/Asistentes")
                         });
                     }
-                    alert("SIII");
                 },
                 error: function(respuesta) {
                     console.log(respuesta);
-                    alert("NOOO");
                 }
 
             });
         });
 
-
-        $('input:radio[name="confirm_alergia"]').change(function() {
-            if ($("#confirm_alergia_no").is(':checked')) {
-                $(".medicamento_cual").css("display", "none");
-                // $("#alergia_medicamento_cual").val("");
-                $('#alergia_medicamento_cual').removeAttr('required');
-            }
-
-            if ($("#confirm_alergia_si").is(':checked')) {
-                $(".medicamento_cual").css("display", "block");
-                $("#alergia_medicamento_cual").attr('required', 'required');
-            }
-        });
-
-        $('input:radio[name="restricciones_alimenticias"]').change(function() {
-            if ($("#res_ali_5").is(':checked')) {
-                $(".restricciones_alimenticias").css("display", "block");
-                $("#restricciones_alimenticias_cual").attr('required', 'required');
-            } else {
-                $(".restricciones_alimenticias").css("display", "none");
-                $('#restricciones_alimenticias_cual').removeAttr('required');
-            }
-
-        });
     });
 </script>
 

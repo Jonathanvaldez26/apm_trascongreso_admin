@@ -312,46 +312,28 @@ sql;
     }
 
     public static function update($data){
-      $mysqli = Database::getInstance(true);
-      $query=<<<sql
-      UPDATE utilerias_administradores as ua
-      INNER JOIN paises pa ON (ua.id_country = pa.id_pais)
-      INNER JOIN paises pao ON (ua.organization_country = pao.id_pais)
-      INNER JOIN estados es ON (ua.id_state = es.id_estado)
-      SET ua.name_user = :nombre, ua.middle_name = :segundo_nombre, 
-      ua.second_surname = :apellido_materno, ua.surname = :apellido_paterno, 
-      ua.scholarship = :scholarship, ua.address = :address, ua.telephone = :telephone, 
-      pa.pais = :pais, es.estado = :estado 
-      WHERE ua.usuario = :email;
+        $mysqli = Database::getInstance(true);
+        $query=<<<sql
+      UPDATE utilerias_administradores 
+      SET nombre = :nombre, segundo_nombre = :segundo_nombre, apellido_paterno = :apellido_paterno, apellido_materno = :apellido_materno
+      WHERE email = :id_registro;
 sql;
-      $parametros = array(
-        
-        ':nombre'=>$data->_nombre,
-        ':segundo_nombre'=>$data->_segundo_nombre,
-        ':apellido_paterno'=>$data->_apellido_paterno,
-        ':apellido_materno'=>$data->_apellido_materno,
-        ':scholarship'=>$data->_scholarship,
-        ':telephone'=>$data->_telephone,
-        ':address'=>$data->_address,
-        ':pais'=>$data->_pais,
-        ':estado'=>$data->_estado,
-        // ':alergias'=>$data->_alergias,
-        // ':alergias_otro'=>$data->_alergias_otro,
-        // ':alergia_medicamento'=>$data->_alergia_medicamento,
-        // ':alergia_medicamento_cual'=>$data->_alergia_medicamento_cual,
-        // ':restricciones_alimenticias'=>$data->_restricciones_alimenticias,
-        // ':restricciones_alimenticias_cual'=>$data->_restricciones_alimenticias_cual,
-        ':email'=>$data->_email
-        
-      );
+        $parametros = array(
+            ':id_registro'=>$data->_id_registro,
+            ':nombre'=>$data->_nombre,
+            ':segundo_nombre'=>$data->_segundo_nombre,
+            ':apellido_paterno'=>$data->_apellido_paterno,
+            ':apellido_materno'=>$data->_apellido_materno,
+            ':apellido_materno'=>$data->_apellido_materno
 
-      $accion = new \stdClass();
-      $accion->_sql= $query;
-      $accion->_parametros = $parametros;
-      $accion->_id = $data->_administrador_id;
-      // UtileriasLog::addAccion($accion);
-      return $mysqli->update($query, $parametros);
-  }
+        );
+
+        $accion = new \stdClass();
+        $accion->_sql= $query;
+        $accion->_parametros = $parametros;
+        $accion->_id = $data->_administrador_id;
+        return $mysqli->update($query, $parametros);
+    }
 
     public static function generateCodeOnTable($email,$id_tv){
       $mysqli = Database::getInstance(true);

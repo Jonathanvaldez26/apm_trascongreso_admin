@@ -395,15 +395,12 @@ html;
             $segundo_nombre = $_POST['segundo_nombre'];
             $apellido_paterno = $_POST['apellido_paterno'];
             $apellido_materno = $_POST['apellido_materno'];
-            $telephone = $_POST['telephone'];
 
+            $documento->_id = $id_registro;
             $documento->_nombre = $nombre;
             $documento->_segundo_nombre = $segundo_nombre;
             $documento->_apellido_paterno = $apellido_paterno;
             $documento->_apellido_materno = $apellido_materno;
-            $documento->_address = $address;
-            $documento->_email = $email;
-            $documento->_telephone = $telephone;
 
             $id = AsistentesDao::update($documento);
 
