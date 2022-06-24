@@ -613,7 +613,7 @@ html;
         $pdf->Multicell(10, 10, utf8_decode($no_horas), 0, 'C');
         //FECHA
         $pdf->SetFont('Arial', '',10);
-        $pdf->SetXY(13, 175);
+        $pdf->SetXY(10, 178);
         $pdf->Multicell(275, 10, utf8_decode('June, 21 to 24, 2022'), 0, 'C');
         $pdf->Output();
         }
@@ -638,7 +638,7 @@ html;
         $pdf->Multicell(10, 10, utf8_decode('5'), 0, 'C');
         //FECHA
         $pdf->SetFont('Arial', '',10);
-        $pdf->SetXY(13, 175);
+        $pdf->SetXY(10, 178);
         $pdf->Multicell(275, 10, utf8_decode('June, 21 to 24, 2022'), 0, 'C');
         $pdf->Output();
             
@@ -757,7 +757,7 @@ html;
             $pdf->SetXY(157, 170.5);
             $pdf->Multicell(10, 10, utf8_decode($no_horas), 0, 'C');
             $pdf->SetFont('Arial', '',10);
-            $pdf->SetXY(13, 175);
+            $pdf->SetXY(10, 178);
             $pdf->Multicell(275, 10, utf8_decode('June, 21 to 24, 2022'), 0, 'C');
             $pdf->Output();
             }
@@ -785,7 +785,7 @@ html;
             $pdf->Multicell(10, 10, utf8_decode('5'), 0, 'C');
             //FECHA
             $pdf->SetFont('Arial', '',10);
-            $pdf->SetXY(13, 175);
+            $pdf->SetXY(10, 178);
             $pdf->Multicell(275, 10, utf8_decode('June, 21 to 24, 2022'), 0, 'C');
             $pdf->Output();
                 
