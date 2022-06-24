@@ -53,13 +53,6 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav  justify-content-end">
-                        <!-- <li class="nav-item d-flex align-items-center">
-                            <a href="/Login/" class="nav-link text-body font-weight-bold px-0" >
-                                <i class="fa fa-user me-sm-1"></i>
-                                <span class="d-sm-inline d-none">Sign In</span>
-                            </a>
-                        </li> -->
-
                         <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                             <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                                 <div class="sidenav-toggler-inner">
@@ -72,84 +65,10 @@
                         <li class="nav-item px-2 d-flex align-items-center">
 
                         </li>
-                        <!-- <li class="nav-item dropdown pe-2 d-flex align-items-center">
-                            <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-bell cursor-pointer"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                                <li class="mb-2">
-                                    <a class="dropdown-item border-radius-md" href="javascript:;">
-                                        <div class="d-flex py-1">
-                                            <div class="my-auto">
-                                                <img src="../../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 " alt="user image">
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-sm font-weight-normal mb-1">
-                                                    <span class="font-weight-bold">New message</span> from Laur
-                                                </h6>
-                                                <p class="text-xs text-secondary mb-0">
-                                                    <i class="fa fa-clock me-1"></i>
-                                                    13 minutes ago
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="mb-2">
-                                    <a class="dropdown-item border-radius-md" href="javascript:;">
-                                        <div class="d-flex py-1">
-                                            <div class="my-auto">
-                                                <img src="../../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark  me-3 " alt="logo spotify">
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-sm font-weight-normal mb-1">
-                                                    <span class="font-weight-bold">New album</span> by Travis Scott
-                                                </h6>
-                                                <p class="text-xs text-secondary mb-0">
-                                                    <i class="fa fa-clock me-1"></i>
-                                                    1 day
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item border-radius-md" href="javascript:;">
-                                        <div class="d-flex py-1">
-                                            <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
-                                                <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                    <title>credit-card</title>
-                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                        <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                                                            <g transform="translate(1716.000000, 291.000000)">
-                                                                <g transform="translate(453.000000, 454.000000)">
-                                                                    <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
-                                                                    <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
-                                                                </g>
-                                                            </g>
-                                                        </g>
-                                                    </g>
-                                                </svg>
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-sm font-weight-normal mb-1">
-                                                    Payment successfully completed
-                                                </h6>
-                                                <p class="text-xs text-secondary mb-0">
-                                                    <i class="fa fa-clock me-1"></i>
-                                                    2 days
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li> -->
                     </ul>
                 </div>
             </div>
         </nav>
-        <!-- End Navbar -->
 
         <div class="container-fluid py-4">
             <div class="row">
@@ -159,9 +78,6 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
                                     <h6>Detalles - Asistente APM</h6>
-                                    <!-- <p class="text-sm mb-0">
-                                        No. Asistente: <b><?php echo $id_asistente; ?></b>
-                                    </p> -->
                                     <p class="text-sm mb-0">
                                         Fecha de Alta: <b><?php echo $detalles_registro['date']; ?></b>
                                     </p>
@@ -169,64 +85,11 @@
                                         Usuario: <b><?php echo $detalles['usuario']; ?></b>
                                     </p>
                                 </div>
-                                <!-- <a href="javascript:;" class="btn bg-gradient-secondary ms-auto mb-0">Invoice</a> -->
                             </div>
                         </div>
                         <div class="card-body p-3 pt-0">
                             <div class="row d-flex justify-content-center">
-                                <!-- <div class="col-lg-3 col-md-3 col-12">
-                                    <h6 class="mb-3">Log</h6>
-                                    <div class="timeline timeline-one-side scroll-log">
-                                        <div class="timeline-block mb-4">
-                                            <label for="chk-0" class="timeline-step m-0">
-                                                <i class="fa fa-bell text-warning  text-gradient text-secondary"></i>
-                                            </label>
-                                            <input class="chk" type="checkbox" id="chk-0">
-                                            <label for="chk-0" class="timeline-content">
-                                                <h6 class="text-dark text-sm font-weight-bold mb-0">Asistente received</h6>
-                                            </label><br>
-                                            <label for="chk-0" id="divss" class="timeline-content">
-                                                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">22 DEC 7:20 AM</p>
-                                            </label>
-                                        </div>
-                                        <div class="timeline-block mb-4">
-                                            <label for="chk-1" class="timeline-step m-0">
-                                                <i class="fa fa-pills text-danger text-gradient text-secondary"></i>
-                                            </label>
-                                            <input class="chk" type="checkbox" id="chk-1">
-                                            <label for="chk-1" class="timeline-content">
-                                                <h6 class="text-dark text-sm font-weight-bold mb-0">Generate Asistente id #1832412</h6>
-                                            </label><br>
-                                            <label for="chk-1" id="divss" class="timeline-content">
-                                                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">22 DEC 7:21 AM</p>
-                                            </label>
-                                        </div>
-                                        <div class="timeline-block mb-4">
-                                            <label for="chk-2" class="timeline-step m-0">
-                                                <i class="fa fa-check text-info text-gradient text-secondary"></i>
-                                            </label>
-                                            <input class="chk" type="checkbox" id="chk-2">
-                                            <label for="chk-2" class="timeline-content">
-                                                <h6 class="text-dark text-sm font-weight-bold mb-0">Asistente transmited to courier</h6>
-                                            </label><br>
-                                            <label for="chk-2" id="divss" class="timeline-content">
-                                                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">22 DEC 8:10 AM</p>
-                                            </label>
-                                        </div>
-                                        <div class="timeline-block mb-3">
-                                            <label for="chk-3" class="timeline-step m-0">
-                                                <i class="fa fa-virus text-success text-gradient"></i>
-                                            </label>
-                                            <input class="chk" type="checkbox" id="chk-3">
-                                            <label for="chk-3" class="timeline-content">
-                                                <h6 class="text-dark text-sm font-weight-bold mb-0">Asistente delivered</h6>
-                                            </label><br>
-                                            <label for="chk-3" id="divss" class="timeline-content">
-                                                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">22 DEC 4:54 PM</p>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div> -->
+
                                 <div class="col-md-9 col-12">
                                     <hr class="horizontal dark mt-0 mb-4">
                                     <div class="row">
@@ -238,11 +101,9 @@
                                                 <div>
                                                     <span class="text-lg font-weight-bold mb-2 mt-2"><?php echo $detalles_registro['nombre'] . ' '; echo $detalles_registro['segundo_nombre'] . ' '; echo $detalles_registro['apellido_paterno'] . ' '; echo $detalles_registro['apellido_materno']; ?>
                                                     <u><a  href="mailto:{$value['email']}"><h6 class="mb-2 text-smy text-black"><span class="fa fa-mail-bulk" style="font-size: 13px"></span> CORREO: <?php echo $detalles_registro['usuario'];?> </h6></a></u>
-                                                    <u><a target="_blank" href="https://api.whatsapp.com/send?phone=52{$value['telefono']}&text=Buen%20d%C3%ADa,%20te%20contacto%20de%20parte%20del%20Equipo%20Grupo%20LAHE%20%F0%9F%98%80" target="_blank"><p class="mb-2 text-sm text-black font-weight-bold text-secondary mb-0"><span class="fa fa-whatsapp" style="font-size: 13px; color:green;"></span>TELÉFONO: <?php echo $detalles_registro['telephone'];?></p></a></u>
                                                     <h6 class="mb-2 text-smy text-black"><span class="fa fa-flag" style="font-size: 13px"></span>PAÍS: <?php echo $detalles_registro['pais'];?> </h6>
                                                     <h6 class="mb-2 text-smy text-black"><span class="fa fa-flag" style="font-size: 13px"></span>ESTADO: <?php echo $detalles_registro['estado'];?> </h6>
                                                     <h6 class="mb-2 text-smy text-black"><span class="fas fa-home" style="font-size: 13px"></span>DIRECCIÓN: <?php echo $detalles_registro['address'];?> </h6>
-                                                    <h6 class="mb-2 text-smy text-black"><span class="fa fa-money-check" style="font-size: 13px"></span>CÓDIGO BECA: <?php echo $detalles_registro['scholarship'];?> </h6>
                                                     <br> <br>
                                                     <p class="text-sm mb-3"></p>
                                                 </div>
@@ -255,18 +116,9 @@
                                                 <button class="btn bg-gradient-pink text-white mb-0" type="button" title="Editar Asistente" data-toggle="modal" data-target="#editar-asistente"><i class="fa fa-edit"></i></button>
 
                                                 <input id="input-email" type="text" class="form-control" value="<?php echo $email; ?>" readonly hidden>
-
                                             </form>
-                                            <!-- <p class="text-sm mt-2 mb-0">Do you like the product? Leave us a review <a href="javascript:;">here</a>.</p> -->
                                         </div>
                                     </div>
-                                    <!-- TABLA SECCIONES <hr class="horizontal dark mt-4 mb-4">
-                                    <div class="row">
-
-                                        <div class="col-lg-12 col-md-12 col-12 mt-4 mt-md-0">
-                                            <h6 class="mb-3">Secciones</h6>
-                                        </div> <div class="d-flex justify-conts-2 font-weight-bold">Mediana</span>
-                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -278,7 +130,6 @@
         </div>
         </div>
 
-        <!-- Modal -->
         <div class="modal fade" id="editar-asistente" tabindex="-1" role="dialog" aria-labelledby="editar-asistenteLabel" aria-hidden="true">
             <div class="modal-dialog" role="document" style="max-width: 800px;">
                 <div class="modal-content">
@@ -293,7 +144,6 @@
                             <div class="card-body pt-0">
                                 <div class="row">
                                     <div class="col-12 col-lg-6">
-                                        <!-- <input type="text" id="id_registro" name="id_registro" value="<?= $userData['user_id'] ?> "> -->
                                         <label class="form-label">Nombre *</label>
                                         <div class="input-group">
                                             <input id="nombre" name="nombre" maxlength="29" class="form-control" type="text" placeholder="Alec" required="" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $detalles_registro['nombre'] ?>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
@@ -349,13 +199,6 @@
                                             <input id="address" name="address" maxlength="200" class="form-control" type="text" placeholder="Dirección" required="required" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $detalles_registro['address'] ?>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                         </div>
                                     </div>
-
-                                    <div class="col-lg-6 col-12">
-                                        <label class="form-label mt-2">Número de Telefono *</label>
-                                        <div class="input-group">
-                                            <input id="telephone" name="telephone" minlength="10" maxlength="10" pattern="[0-9]" class="form-control" type="number" placeholder="+40 735 631 620" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $detalles_registro['telephone'] ?>" required>
-                                        </div>
-                                    </div>
                                 </div>
 
                                 <div class="row">
@@ -366,33 +209,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12 col-12">
-                                        <label class="form-label mt-4">Código de beca *</label>
-                                        <div class="input-group">
-                                            <input id="scholarship" name="scholarship" maxlength="49" class="form-control" type="text" placeholder="ASD123" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $detalles_registro['scholarship'] ?>" readonly>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-
-                                    <!-- <?php echo $res_alimenticias; ?> -->
-
-                                    <!-- <div class="col-md-4">
-                                        <label class="form-label mt-4">Alergias *</label>
-                                        <input class="form-control" name="alergias" id="alergias" maxlength="149" name="alergias" data-color="dark" type="text" value="<?= $detalles_registro['alergias'] ?>" placeholder="" />
-                                    
-                                        <label class="form-label mt-4">Alergias Otro *</label>
-                                        <input class="form-control" name="alergias_otro" id="alergias_otro" maxlength="149" name="alergias" data-color="dark" type="text" value="<?= $detalles_registro['alergias_otro'] ?>" placeholder="" />
-                                    </div> -->
-
-
-                                    <!-- <div class="col-md-4">
-                                        <label class="form-label mt-4">Alergias Medicamento *</label>
-                                        <input class="form-control" name="alergia_medicamento_cual" id="alergia_medicamento_cual" maxlength="149" name="alergias" data-color="dark" type="text" value="<?= $detalles_registro['alergia_medicamento_cual'] ?>" placeholder="" />
-                                    </div> -->
-                                </div>
 
                                 <div class="row">
                                     <div class="button-row d-flex mt-4 col-12">
@@ -401,12 +217,7 @@
                                     </div>
                                 </div>
                             </div>
-
                     </div>
-                    <!-- <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -416,9 +227,6 @@
 
 <script>
     $(document).ready(function() {
-        // document.getElementById('main_ticket').removeAttribute('hidden');
-        // app.loadPicture();
-
         $('#asistentes a').addClass('active');
         $('#asistentes .fa-users').addClass('text-white');
 
@@ -453,16 +261,7 @@
             // API
             public = {};
 
-            // Public methods goes here...
-
             public.loadPicture = function() {
-
-                // var imgTicketFondo = new Image();
-                // imgTicketFondo.src = '/img/boleto_musa.jpg';
-
-                // imgTicketFondo.onload = function() {
-                //     context.drawImage(imgTicketFondo, 0, 0);
-                // }
 
                 context = canvas.getContext('2d');
 
@@ -564,10 +363,6 @@
         });
 
         $("#update_detalles").on("submit", function(event) {
-            event.preventDefault();
-
-            alert("Hola");
-
             var formData = new FormData(document.getElementById("update_detalles"));
             for (var value of formData.values()) {
                 console.log(value);
@@ -584,7 +379,6 @@
                     console.log("Procesando....");
                 },
                 success: function(respuesta) {
-                    // alert("Successs");
                     console.log(respuesta)
                     if (respuesta == 'success') {
                         Swal.fire({

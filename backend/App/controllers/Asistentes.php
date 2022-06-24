@@ -395,47 +395,22 @@ html;
             $segundo_nombre = $_POST['segundo_nombre'];
             $apellido_paterno = $_POST['apellido_paterno'];
             $apellido_materno = $_POST['apellido_materno'];
-            $address = $_POST['address'];
-            $pais = $_POST['pais'];
-            $estado = $_POST['estado'];
-            $email = $_POST['email'];
             $telephone = $_POST['telephone'];
-            // $alergias = $_POST['select_alergico'];
-            // $alergias_otro = $_POST['alergias_otro'];
-            // $alergia_medicamento = $_POST['confirm_alergia'];
-            // if (isset($_POST['alergia_medicamento_cual'])) {
-            //     $alergia_medicamento_cual = $_POST['alergia_medicamento_cual'];
-            // } else {
-            //     $alergia_medicamento_cual = '';
-            // }
-            // $alergia_medicamento_cual = $_POST['alergia_medicamento_cual'];
-            // $restricciones_alimenticias = $_POST['restricciones_alimenticias'];
-            // $restricciones_alimenticias_cual = $_POST['restricciones_alimenticias_cual'];
 
             $documento->_nombre = $nombre;
             $documento->_segundo_nombre = $segundo_nombre;
             $documento->_apellido_paterno = $apellido_paterno;
             $documento->_apellido_materno = $apellido_materno;
             $documento->_address = $address;
-            $documento->_pais = $pais;
-            $documento->_estado = $estado;
             $documento->_email = $email;
             $documento->_telephone = $telephone;
-            // $documento->_alergias = $alergias;
-            // $documento->_alergias_otro = $alergias_otro;
-            // $documento->_alergia_medicamento = $alergia_medicamento;
-            // $documento->_alergia_medicamento_cual = $alergia_medicamento_cual;
-            // $documento->_restricciones_alimenticias = $restricciones_alimenticias;
-            // $documento->_restricciones_alimenticias_cual = $restricciones_alimenticias_cual;
 
-            // var_dump($documento);
             $id = AsistentesDao::update($documento);
 
             if ($id) {
                 echo "success";
             } else {
                 echo "fail";
-                // header("Location: /Home/");
             }
         } else {
             echo 'fail REQUEST';
