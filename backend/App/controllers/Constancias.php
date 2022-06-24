@@ -598,9 +598,9 @@ html;
         $pdf->SetFont('Arial', 'B', 30);
         #4D9A9B
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->Multicell(273, 30, utf8_decode($nombre_completo), 0, 'C');
+        $pdf->Multicell(273, 35, utf8_decode($nombre_completo), 0, 'C');
         $pdf->SetFont('Arial', 'B', 15);
-        $pdf->Multicell(275, 25, utf8_decode('Attended the:'), 0, 'C');
+        $pdf->Multicell(268, 25, utf8_decode('Attended the:'), 0, 'C');
         $pdf->SetFont('Arial', '',20);
         if($id_producto == 1){
             $pdf->Multicell(275, 10, utf8_decode($attend).' '.utf8_decode("$nombre_constancia").' ', 0, 'C');
@@ -609,11 +609,11 @@ html;
         }
         //TIEMPO
         $pdf->SetFont('Arial', 'B',10);
-        $pdf->SetXY(157, 170.5);
+        $pdf->SetXY(148, 175.5);
         $pdf->Multicell(10, 10, utf8_decode($no_horas), 0, 'C');
         //FECHA
         $pdf->SetFont('Arial', '',10);
-        $pdf->SetXY(10, 178);
+        $pdf->SetXY(8, 179);
         $pdf->Multicell(275, 10, utf8_decode('June, 21 to 24, 2022'), 0, 'C');
         $pdf->Output();
         }
@@ -638,7 +638,7 @@ html;
         $pdf->Multicell(10, 10, utf8_decode('5'), 0, 'C');
         //FECHA
         $pdf->SetFont('Arial', '',10);
-        $pdf->SetXY(10, 178);
+        $pdf->SetXY(8, 179);
         $pdf->Multicell(275, 10, utf8_decode('June, 21 to 24, 2022'), 0, 'C');
         $pdf->Output();
             
@@ -754,10 +754,11 @@ html;
             // $pdf->Multicell(10, 10, utf8_decode(round($progreso['segundos']/3600)), 0, 'C');
             //TIEMPO
             $pdf->SetFont('Arial', 'B',10);
-            $pdf->SetXY(157, 170.5);
+            $pdf->SetXY(148, 175.5);
             $pdf->Multicell(10, 10, utf8_decode($no_horas), 0, 'C');
+            //FECHA
             $pdf->SetFont('Arial', '',10);
-            $pdf->SetXY(10, 178);
+            $pdf->SetXY(8, 179);
             $pdf->Multicell(275, 10, utf8_decode('June, 21 to 24, 2022'), 0, 'C');
             $pdf->Output();
             }
@@ -785,7 +786,7 @@ html;
             $pdf->Multicell(10, 10, utf8_decode('5'), 0, 'C');
             //FECHA
             $pdf->SetFont('Arial', '',10);
-            $pdf->SetXY(10, 178);
+            $pdf->SetXY(8, 179);
             $pdf->Multicell(275, 10, utf8_decode('June, 21 to 24, 2022'), 0, 'C');
             $pdf->Output();
                 
