@@ -614,7 +614,7 @@ html;
         //FECHA
         $pdf->SetFont('Arial', 'B',10);
         $pdf->SetXY(50, 179.9);
-        $pdf->Multicell(275, 10, utf8_decode('June, 21 to 24, 2022'), 0, 'C');
+        $pdf->Multicell(275, 10, utf8_decode('21 to 24 June, 2022'), 0, 'C');
         $pdf->Output();
         }
         else{
@@ -633,13 +633,13 @@ html;
         $pdf->Multicell(275, 10, utf8_decode($attend).' "'.utf8_decode("$nombre_constancia").'"', 0, 'C');
         }
         //TIEMPO
-        $pdf->SetFont('Arial', 'B',9);
-        $pdf->SetXY(158, 176.9);
+        $pdf->SetFont('Arial', 'B',10);
+        $pdf->SetXY(144, 179.9);
         $pdf->Multicell(10, 10, utf8_decode('5'), 0, 'C');
         //FECHA
-        $pdf->SetFont('Arial', '',9);
-        $pdf->SetXY(14, 179.99);
-        $pdf->Multicell(275, 10, utf8_decode('June, 21 to 24, 2022'), 0, 'C');
+        $pdf->SetFont('Arial', 'B',10);
+        $pdf->SetXY(50, 179.9);
+        $pdf->Multicell(275, 10, utf8_decode('21 to 24 June, 2022'), 0, 'C');
         $pdf->Output();
             
         }
