@@ -175,9 +175,9 @@
                                     </div>
 
                                 </div>
-                                
+
                                 <div class="row">
-                                    <div class="col-lg-12 col-12">
+                                    <div class="col-lg-12 col-6">
                                         <label class="form-label mt-4">Email Registrado y Verificado *</label>
                                         <div class="input-group">
                                             <input id="email" name="email" maxlength="49" class="form-control" type="email" placeholder="example@email.com" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $detalles_registro['usuario'] ?>" readonly>
