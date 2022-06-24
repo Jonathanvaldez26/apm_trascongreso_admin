@@ -177,15 +177,6 @@
                                 </div>
                                 
                                 <div class="row">
-                                    <div class="col-lg-6 col-12">
-                                        <label class="form-label mt-2">Dirección *</label>
-                                        <div class="input-group">
-                                            <input id="address" name="address" maxlength="200" class="form-control" type="text" placeholder="Dirección" required="required" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $detalles_registro['address'] ?>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
                                     <div class="col-lg-12 col-12">
                                         <label class="form-label mt-4">Email Registrado y Verificado *</label>
                                         <div class="input-group">
