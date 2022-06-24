@@ -143,12 +143,14 @@
                         <form class="form-horizontal" id="update_detalles" action="" method="POST">
                             <div class="card-body pt-0">
                                 <div class="row">
-                                    <div class="col-12 col-lg-6">
+                                    <div class="col-12 col-lg-4">
                                         <label class="form-label">Clave Socio APM *</label>
                                         <div class="input-group">
-                                            <input id="clave_socio" name="clave_socio" maxlength="29" class="form-control" type="text" placeholder="Alec" required="" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $detalles_registro['clave_socio'] ?>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                                            <input id="clave_socio" name="clave_socio" maxlength="29" class="form-control" type="text" placeholder="SA937FD" required="" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $detalles_registro['clave_socio'] ?>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-12 col-lg-6">
                                         <label class="form-label">Nombre *</label>
                                         <div class="input-group">
