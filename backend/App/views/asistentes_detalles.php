@@ -175,23 +175,7 @@
                                     </div>
 
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-lg-6 col-12">
-                                        <label class="form-label mt-2">País *</label>
-                                        <div class="input-group">
-                                            <input id="pais" name="pais" maxlength="200" class="form-control" type="text" placeholder="País" readonly onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $detalles_registro['pais'] ?>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6 col-12">
-                                        <label class="form-label mt-2">Estado *</label>
-                                        <div class="input-group">
-                                            <input id="estado" name="estado" maxlength="200" class="form-control" type="text" placeholder="Estado" readonly onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $detalles_registro['estado'] ?>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
-                                        </div>
-                                    </div>
-                                </div>
-
+                                
                                 <div class="row">
                                     <div class="col-lg-6 col-12">
                                         <label class="form-label mt-2">Dirección *</label>
@@ -297,16 +281,9 @@
         document.getElementById('main_ticket').removeAttribute('hidden');
         app.loadPicture();
 
-        // $('#show_ticket').on('click', function(event) {
-        //     // alert('Mostrar Ticket');
-        //     // console.log('asdasdasdas');
-        //     document.getElementById('main_ticket').removeAttribute('hidden');
-        //     app.loadPicture();
-        // })
 
         $('#generar_clave').on('click', function(event) {
 
-            // Obtener id de utilerias asistentes del link
             var link_a = $(location).attr('href');
             var clave_a = link_a.substr(link_a.indexOf('Detalles/') + 9, link_a.length);
 
@@ -326,17 +303,13 @@
                 // dataType: 'json',
                 beforeSend: function() {
                     console.log("Procesando....");
-
-
                 },
                 success: function(respuesta) {
-                    // console.log(respuesta.status);
 
                     if (respuesta.status == 'success') {
                         if (respuesta.clave == 'ya_tiene') {
                             swal("!Ya tiene una clave generada!", "", "warning").
                             then((value) => {
-                                //window.location.replace("/Asistentes")
                             });
                         } else {
                             swal("!Se generó la clave correctamente!", "", "success").
