@@ -136,7 +136,7 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="editar-asistenteLabel">Editar Asistente</h5>
                         <button type="button" class="btn bg-gradient-danger" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true">X</span>
                         </button>
                     </div>
                     <div class="modal-body">
@@ -173,7 +173,6 @@
                                             <input id="apellido_materno" name="apellido_materno" maxlength="29" class="form-control" type="text" placeholder="Thompson" required="required" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $detalles_registro['apellido_materno'] ?>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                         </div>
                                     </div>
-
                                 </div>
 
                                 <div class="row">

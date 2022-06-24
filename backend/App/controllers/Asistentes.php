@@ -901,7 +901,7 @@ html;
                             <span class="badge badge-success" style="background-color: color:#ea5b9b; "><strong>{$value['clave']}</strong></span>                              <span class="badge badge-success" style="background-color: color:#ea5b9b; "><strong>{$value['user_id']} </strong></span>
                         </div>
                             <div class="d-flex flex-column justify-content-center">
-                                <a href="/Asistentes/Detalles/{$value['user_id']}" target="_blank">
+                                <a href="/Asistentes/Detalles/{$value['clave']}" target="_blank">
                                     <h6 class="mb-0 text-sm text-move text-black">
                                         <span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} {$value['segundo_nombre']} {$value['apellido_paterno']} {$value['apellido_materno']} </span> {$value['nombre_ejecutivo']} {$tipo_user}                  
                                         {$industria}
