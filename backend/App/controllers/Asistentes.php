@@ -223,6 +223,8 @@ html;
         $detalles = AsistentesDao::getByClaveRA($id);
         $detalles_registro = AsistentesDao::getTotalByClaveRA($id);
 
+        
+
         if ($detalles_registro[0]['img'] == '') {
             $img_asistente = <<<html
             <img src="/img/user.png" class="avatar avatar-xxl me-3" title="{$detalles_registro[0]['usuario']}" alt="{$detalles_registro[0]['usuario']}">
