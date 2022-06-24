@@ -693,7 +693,8 @@ html;
                           <span class="badge badge-success" style="background-color: #eed543; color:black "><strong>{$tipo_pago} </strong></span> 
                           {$color_curso_pago}
 
-                          <a href="/Constancias/abrirConstancia/{$value['clave']}/{$value_cursos_pagados['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Impresa" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Impresa" target="_blank"><i class="fas fa-print"> </i></a>
+                          <button data-toggle="modal" data-target="#modal-constancia-{$value['id_registro_acceso']}" id="btn-constancia-{$value['id_registro_acceso']}" data-id-producto="{$value_cursos_pagados['id_producto']}"
+                           class="btn bg-pink btn-icon-only morado-musa-text" title="Impresa" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Impresa" target="_blank"><i class="fas fa-print"> </i></button>
                           
                           <a href="/Constancias/abrirConstanciaDigital/{$value['clave']}/{$value_cursos_pagados['id_producto']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Digital" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Digital" target="_blank"><i class="fas fa-print"> </i></a>
                         
@@ -893,7 +894,7 @@ html;
                                   <a href="/RegistroAsistencia/abrirpdfGafete/{$value['clave']}/{$value['ticket_virtual']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Imprimir Gafetes" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Imprimir Gafetes" target="_blank"><i class="fas fa-print"> </i></a>     
                             </div>
                             <div class="d-flex flex-column justify-content-center text-black">
-                                 <button class="btn bg-turquoise btn-icon-only text-white" data-toggle="modal" data-target="#modal-etiquetas-{$value['id_registro_acceso']}" id="btn-etiqueta-{$value['id_registro_acceso']}" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-original-title="Imprimir Etiquetas" title="Imprimir Etiquetas"><i class="fas fa-tag"></i></button>
+                                 <button class="btn bg-turquoise btn-icon-only text-white" data-toggle="modal" data-target="#modal-constancia-{$value['id_registro_acceso']}" id="btn-etiqueta-{$value['id_registro_acceso']}" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-original-title="Imprimir Etiquetas" title="Imprimir Etiquetas"><i class="fas fa-tag"></i></button>
                             </div>
                         </div>
                         <div class="d-flex flex-column justify-content-center text-black">
@@ -976,11 +977,11 @@ html;
 
     public function generarModal($datos){
         $modal = <<<html
-            <div class="modal fade" id="modal-etiquetas-{$datos['id_registro_acceso']}" role="dialog" aria-labelledby="" aria-hidden="true">
+            <div class="modal fade" id="modal-constancia-{$datos['id_registro_acceso']}" role="dialog" aria-labelledby="" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="modal-ver-pdf-Label">Etiquetas para {$datos['nombre']} {$datos['segundo_nombre']} {$datos['apellido_paterno']} {$datos['apellido_materno']} - {$datos['id_registro_acceso']}</h5>
+                            <h5 class="modal-title" id="modal-ver-pdf-Label"> {$datos['nombre']} {$datos['segundo_nombre']} {$datos['apellido_paterno']} {$datos['apellido_materno']} - {$datos['id_registro_acceso']}</h5>
                             <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -988,51 +989,44 @@ html;
                         <div class="modal-body">
                             <input hidden id="id_registro_acceso" name="id_registro_acceso" type="text" value="{$datos['id_registro_acceso']}" readonly>
                             <div class="row">
-                                <!--form action="" id="form_etiquetas"-->
+                              <!-- <form class="form_etiquetas" type="GET" target="_blank">-->
                                     <div class="row">
-                                    
-                                        <script>
-                                        $(document).ready(function() {
-                                            
-
-                                            $('#btn_imprimir_etiquetas_{$datos['id_registro_acceso']}').on("click", function(event) {
-                                                no_habitacion_{$datos['id_registro_acceso']} = $("#no_habitacion_{$datos['id_registro_acceso']}").val();
-                                                clave_ra_{$datos['id_registro_acceso']} = $("#clave_ra_{$datos['id_registro_acceso']}").val();
-                                                no_etiquetas_{$datos['id_registro_acceso']} = $("#no_etiquetas_{$datos['id_registro_acceso']}").val();
-
-                                                console.log(no_habitacion_{$datos['id_registro_acceso']});
-                                                console.log(no_etiquetas_{$datos['id_registro_acceso']});
-                                                console.log(clave_ra_{$datos['id_registro_acceso']});
-                                                $('#btn_imprimir_etiquetas_{$datos['id_registro_acceso']}').attr("href", "/Asistentes/abrirpdf/" + clave_ra_{$datos['id_registro_acceso']} + "/" + no_etiquetas_{$datos['id_registro_acceso']} + "/" + no_habitacion_{$datos['id_registro_acceso']});
-                                            });
-                                        });
-                                        </script>
-
-                                        <div class="col-md-12">
-                                            <input type="hidden" id="clave_ra_{$datos['id_registro_acceso']}" name="clave_ra_{$datos['id_registro_acceso']}" value="{$datos['clave']}" readonly>
-                                        </div>
-
-                                        <!--div class="col-md-10">
-                                            <label hidden>Número de Habitación</label>
-                                            
-                                        </div-->
 
                                         <div class="col-md-6">
-                                        <input type="number" id="no_habitacion_{$datos['id_registro_acceso']}" value="0" readonly hidden name="no_habitacion_{$datos['id_registro_acceso']}" value="0" readonly hidden class="form-control">
-                                            <label>Número de etiquetas</label>
-                                            <input type="number" id="no_etiquetas_{$datos['id_registro_acceso']}" name="no_etiquetas_{$datos['id_registro_acceso']}" class="form-control">
+                                        
+                                            <label>Ingrese el  número de hrs, si es que lo requeire</label>
+                                            <input type="number" id="no_horas{$datos['id_registro_acceso']}" name="no_horas{$datos['id_registro_acceso']}" class="form-control">
                                         </div>
 
                                         <div class="col-md-3 m-auto">
-                                            <a href="" id="btn_imprimir_etiquetas_{$datos['id_registro_acceso']}" target="_blank" class="btn btn-info mt-4" type="submit">Imprimir Etiquetas</a>
+                                            <a href="" class="btn_imprimir_etiquetas_{$datos['id_registro_acceso']}" target="_blank" class="btn btn-info mt-4" type="submit">Imprimir Constancia</a>
                                         </div>
                                     </div>
-                                <!--/form-->
+                              <!-- </form> -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <script>
+            $(document).ready(function() {
+                
+
+                $('#btn-constancia-{$datos['id_registro_acceso']}').on("click", function(event) {
+                    var id_producto = $(this).attr('data-id-producto');
+                    $(".btn_imprimir_etiquetas_{$datos['id_registro_acceso']}").attr('href','/Constancias/abrirConstancia/{$datos['clave']}/'+id_producto);
+
+                    $("#no_horas{$datos['id_registro_acceso']}").on("keyup",function(){
+                        var no_horas = $(this).val();
+                        $(".btn_imprimir_etiquetas_{$datos['id_registro_acceso']}").attr('href','/Constancias/abrirConstancia/{$datos['clave']}/'+id_producto+'/'+no_horas);
+                    })
+                    
+                });
+            });
+            </script>
+
+       
 html;
 
         return $modal;
