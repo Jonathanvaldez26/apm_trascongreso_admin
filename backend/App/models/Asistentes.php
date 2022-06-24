@@ -315,8 +315,8 @@ sql;
         $mysqli = Database::getInstance(true);
         $query=<<<sql
       UPDATE utilerias_administradores 
-      SET nombre = :nombre, segundo_nombre = :segundo_nombre, apellido_paterno = :apellido_paterno, apellido_materno = :apellido_materno
-      WHERE email = :id_registro;
+      SET name_user = :nombre, middle_name = :segundo_nombre, surname = :apellido_paterno, second_surname = :apellido_materno
+      WHERE usuario = :id_registro;
 sql;
         $parametros = array(
             ':id_registro'=>$data->_id_registro,
@@ -325,7 +325,6 @@ sql;
             ':apellido_paterno'=>$data->_apellido_paterno,
             ':apellido_materno'=>$data->_apellido_materno,
             ':apellido_materno'=>$data->_apellido_materno
-
         );
 
         $accion = new \stdClass();
