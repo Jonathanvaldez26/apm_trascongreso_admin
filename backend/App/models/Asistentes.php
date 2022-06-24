@@ -208,7 +208,7 @@ sql;
       INNER JOIN paises pa ON (ra.id_country = pa.id_pais)
       INNER JOIN paises pao ON (ra.organization_country = pao.id_pais)
       INNER JOIN estados es ON (ra.id_state = es.id_estado)
-      WHERE ra.clave = '$clave'
+      WHERE ra.user_id = '$clave'
 sql;
       return $mysqli->queryAll($query);
   }
