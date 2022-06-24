@@ -382,5 +382,28 @@ sql;
         
     }
 
+    public static function getPendienesPagoUser($user_id){
+      $mysqli = Database::getInstance();
+      $query=<<<sql
+      SELECT pp.id_pendiente_pago,p.id_producto,p.nombre as nombre_producto,ua.name_user as nombre_user,ua.clave_socio
+      FROM pendiente_pago pp
+      INNER JOIN productos p ON (p.id_producto = pp.id_producto)
+      INNER JOIN utilerias_administradores ua ON(pp.user_id = ua.user_id)
+      WHERE  ua.user_id = $user_id and pp.STATUS = 0
+sql;
+      return $mysqli->queryAll($query);
+  } 
+
+  public static function getProductosNotInPendientesPagoAsignaProducto($user_id){
+    $mysqli = Database::getInstance();
+    $query=<<<sql
+    SELECT p.id_producto, p.nombre as nombre_producto, ua.clave_socio, ua.amout_due 
+    FROM productos p
+    INNER JOIN utilerias_administradores ua
+    WHERE id_producto NOT IN (SELECT id_producto FROM pendiente_pago WHERE user_id = $user_id) AND ua.user_id = $user_id and p.es_curso = 1
+sql;
+    return $mysqli->queryAll($query);
+}
+
 
 }

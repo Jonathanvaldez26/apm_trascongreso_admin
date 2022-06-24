@@ -13,6 +13,7 @@ use \App\models\General as GeneralDao;
 use \App\models\PruebasCovidUsuarios as PruebasCovidUsuariosDao;
 use \App\models\ComprobantesVacunacion as ComprobantesVacunacionDao;
 use \App\models\Asistentes as AsistentesDao;
+use \App\models\Caja as CajaDao;
 
 use Generator;
 
@@ -237,20 +238,20 @@ html;
 
         $all_ra = AsistentesDao::getAllRegistrosAcceso();
 
-        foreach ($all_ra as $key => $value) {
-            if ($value['clave'] == '' || $value['clave'] == NULL || $value['clave'] == 'NULL') {
-                $clave_10 = $this->generateRandomString(10);
-                AsistentesDao::updateClaveRA($value['id_registro_acceso'], $clave_10);
-            }
-        }
+        // foreach ($all_ra as $key => $value) {
+        //     if ($value['clave'] == '' || $value['clave'] == NULL || $value['clave'] == 'NULL') {
+        //         $clave_10 = $this->generateRandomString(10);
+        //         AsistentesDao::updateClaveRA($value['id_registro_acceso'], $clave_10);
+        //     }
+        // }
 
-        foreach ($all_ra as $key => $value) {
-            if ($value['ticket_virtual'] == '' || $value['ticket_virtual'] == NULL || $value['ticket_virtual'] == 'NULL') {
-                $clave_6 = $this->generateRandomString(6);
-                $this->generaterQr($all_ra['ticket_virtual']);
-                AsistentesDao::updateTicketVirtualRA($value['id_registro_acceso'], $clave_6);
-            }
-        }
+        // foreach ($all_ra as $key => $value) {
+        //     if ($value['ticket_virtual'] == '' || $value['ticket_virtual'] == NULL || $value['ticket_virtual'] == 'NULL') {
+        //         $clave_6 = $this->generateRandomString(6);
+        //         $this->generaterQr($all_ra['ticket_virtual']);
+        //         AsistentesDao::updateTicketVirtualRA($value['id_registro_acceso'], $clave_6);
+        //     }
+        // }
 
         $email = AsistentesDao::getByClaveRA($id)[0]['usuario'];
         $clave_user = AsistentesDao::getRegistroAccesoByClaveRA($id)[0];
@@ -260,7 +261,7 @@ html;
         if ($clave_user['ticket_virtual'] == '' || $clave_user['ticket_virtual'] == NULL || $clave_user['ticket_virtual'] == 'NULL') {
             $msg_clave = 'No posee ningún código';
             $btn_clave = '';
-            var_dump($clave_user['ticket_virtual']);
+            // var_dump($clave_user['ticket_virtual']);
             $btn_genQr = <<<html
             <!--button type="button" id="generar_clave" title="Generar Ticket Virtual" class="btn bg-gradient-dark mb-0"><i class="fas fa-qrcode"></i></button-->
 html;
@@ -268,7 +269,46 @@ html;
 
         $btn_gafete = "<a href='/RegistroAsistencia/abrirpdfGafete/{$clave_user['clave']}/{$clave_user['clave_ticket']}' target='_blank' id='a_abrir_gafete' class='btn btn-info' data-bs-toggle='tooltip' data-bs-placement='top' data-bs-original-title='Imprimir Gafetes'><i class='fa fal fa-address-card' style='font-size: 18px;'> </i> Presione esté botón para descargar el gafete</a>";
         // $btn_etiquetas = "<a href='/RegistroAsistencia/abrirpdf/{$clave_user['clave']}' target='_blank' id='a_abrir_etiqueta' class='btn btn-info'>Imprimir etiquetas</a>";
-        $this->generaterQr($tv);
+        // $this->generaterQr($tv);
+
+        $tabla_pendientes = '';
+
+        $productos_pendientes_pago = AsistentesDao::getPendienesPagoUser($id);
+
+        $productos_notin_pendientes_pago = AsistentesDao::getProductosNotInPendientesPagoAsignaProducto($id);
+
+        foreach ($productos_pendientes_pago as $key => $value) {
+
+            $tabla_pendientes .= <<<html
+            <tr>
+                <td id="descripcion_asistencia">
+                    {$value['nombre_producto']}
+                </td>
+                <td>
+                    <button class="btn btn-info btn-asignar-producto" id="btn_producto{$value['id_producto']}" value="{$value['id_producto']}" data-id-pendiente-pago="{$value['id_pendiente_pago']}">Asignar</button>
+                </td>
+            </tr>
+html;
+            
+
+        }
+
+        foreach ($productos_notin_pendientes_pago as $key => $value) {
+
+            $tabla_pendientes .= <<<html
+            <tr>
+                <td id="descripcion_asistencia">
+                    {$value['nombre_producto']}
+                </td>
+                <td>
+                <button class="btn btn-info btn-asignar-producto" id="btn_producto{$value['id_producto']}" value="{$value['id_producto']}" data-id-pendiente-pago="">Asignar</button>
+                </td>
+            </tr>
+html;
+            
+        }
+
+
 
 
         $permisoGlobalHidden = (Controller::getPermisoGlobalUsuario($this->__usuario)[0]['permisos_globales']) != 1 ? "style=\"display:none;\"" : "";
@@ -316,7 +356,98 @@ html;
         View::set('footer', $this->_contenedor->footer($extraFooter));
         // View::set('tabla_vacunacion', $this->getComprobanteVacunacionById($id));
         // View::set('tabla_prueba_covid', $this->getPruebasCovidById($id));
+        View::set('tabla_pendientes',$tabla_pendientes);
         View::render("asistentes_detalles");
+    }
+
+    public function AsignarCurso(){
+        $user_id = $_POST['user_id'];
+        $id_producto = $_POST['id_producto'];
+        $id_pendiente_pago = $_POST['id_pendiente_pago'];
+
+        if($id_pendiente_pago != "" ){
+            
+            $existe = CajaDao::getPendientePagoById($id_pendiente_pago);
+            
+            if($existe){
+
+                $reference = $existe['reference']; 
+            
+
+                $updateStatus = CajaDao::updateStatusPendientePago($id_pendiente_pago,'socio');
+
+                if($updateStatus){
+                    $data = new \stdClass();
+                    $data->_user_id = $user_id;
+                    $data->_id_producto = $id_producto;           
+
+                    $insertAsiganProducto = CajaDao::insertAsignaProducto($data);
+
+                    if($insertAsiganProducto){
+                        $data = [
+                            "status" => "success",
+                            "msg" => "Se actualizo pendiente pago y se asigno"
+                        ];
+                    }else{
+                        $data = [
+                            "status" => "fail",
+                            "msg" => "No se actualizo pendiente pago y no se asigno"
+                        ];
+                    }
+                }
+                //acualizar el asigna pendiete pago
+               // insertar en saigna producto
+                // echo "existe";
+            }
+            
+            
+        }else{
+           
+            //  insertar en saigna producto
+            $user_data = AsistentesDao::getByClaveRA($user_id)[0];
+
+
+            $data = new \stdClass();
+            $data->_id_producto = $id_producto;
+            $data->_user_id = $user_id;
+            $data->_reference = $user_data['reference'];
+            $data->_monto = 0;
+            $data->_tipo_pago = 'socio';
+
+            $inserPendientesPago = CajaDao::insertPendientePago($data);
+            
+            if($inserPendientesPago){
+                // insertar en pendientes pago
+                $datos = new \stdClass();
+                $datos->_user_id = $user_id;
+                $datos->_id_producto = $id_producto;              
+                
+
+                $insertAsiganProducto = CajaDao::insertAsignaProducto($datos);
+
+                if($insertAsiganProducto){
+                    $data = [
+                        "status" => "success",
+                        "msg" => "Se inserto pendiente pago y se asigno"
+                    ];
+                }else{
+                    $data = [
+                        "status" => "fail",
+                        "msg" => "No se insertp pendiente pago y no se asigno"
+                    ];
+                }
+            }else{
+                $data = [
+                    "status" => "fail",
+                    "msg" => "No se inserto pendiente pago y no se asigno"
+                ];
+            }
+            
+           
+        }
+
+        echo json_encode($data);
+
     }
 
     public function generaterQr($clave_ticket)

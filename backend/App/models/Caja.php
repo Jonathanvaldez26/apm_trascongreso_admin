@@ -67,6 +67,28 @@ sql;
           
       }
 
+      public static function insertPendientePago($data){
+
+        $mysqli = Database::getInstance();
+        $query = <<<sql
+        INSERT INTO pendiente_pago (id_producto,user_id,reference,fecha,monto,tipo_pago,status,comprado_en) VALUES(:id_producto,:user_id,:reference,:fecha,:monto,:tipo_pago,1,2)                        
+sql;
+  
+        $parametros = array(            
+            ':id_producto' => $data->_id_producto,
+            ':user_id' => $data->_user_id,
+            ':reference' => $data->_reference,
+            ':fecha' => date('Y-m-d'),
+            ':monto' => $data->_monto,
+            ':tipo_pago' => $data->_tipo_pago
+        );
+  
+        $id = $mysqli->insert($query, $parametros);
+  
+        return $id;
+          
+      }
+
 
       public static function insertTransaccion($data){
 
@@ -103,6 +125,14 @@ sql;
         $mysqli = Database::getInstance();
         $query=<<<sql
         SELECT * FROM asigna_producto WHERE user_id = $user_id and id_producto = $id_producto;
+sql;
+        return $mysqli->queryOne($query);
+      }
+
+      public static function getPendientePagoById($id){
+        $mysqli = Database::getInstance();
+        $query=<<<sql
+        SELECT * FROM pendiente_pago WHERE id_pendiente_pago = $id;
 sql;
         return $mysqli->queryOne($query);
       }

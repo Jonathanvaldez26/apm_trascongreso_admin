@@ -126,10 +126,47 @@
                     </div>
                 </div>
             </div>
-        </div>
-        </div>
-        </div>
+            <input type="text" id="user_id" name="user_id" value="<?=$id_asistente?>">
+            <div class="row">
+                <div class="col-lg-12 mx-auto">
+                    <div class="card mb-4">
+                        <div class="card-header p-3 pb-0">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6>Asignar Productos</h6>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-3 pt-0">
+                            <div class="row d-flex justify-content-center">
 
+                                <div class="col-md-9 col-12">
+                                    <div class="table-responsive p-0">
+                                        <table id="table_admin" class="table align-items-center mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                        Nombre
+                                                    </th>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Asignar</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php echo $tabla_pendientes; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+      
         <div class="modal fade" id="editar-asistente" tabindex="-1" role="dialog" aria-labelledby="editar-asistenteLabel" aria-hidden="true">
             <div class="modal-dialog" role="document" style="max-width: 800px;">
                 <div class="modal-content">
@@ -211,6 +248,45 @@
     $(document).ready(function() {
         $('#asistentes a').addClass('active');
         $('#asistentes .fa-users').addClass('text-white');
+
+
+        $(".btn-asignar-producto").on("click",function(){
+            // alert($(this).val());
+            var id_producto = $(this).val();
+            var user_id = $("#user_id").val();
+            var id_pendiente_pago = $(this).attr('data-id-pendiente-pago');
+            // alert(id_pendiente_pago);
+
+            $.ajax({
+                url: "/Asistentes/AsignarCurso",
+                type: "POST",
+                data: {
+                    id_producto,user_id,id_pendiente_pago
+                },
+                dataType: 'json',
+                beforeSend: function() {
+                    console.log("Procesando....");
+                },
+                success: function(respuesta) {
+                    console.log(respuesta)
+                    if (respuesta.status == 'success') {
+                       Swal.fire('Se asigno Correctamente','','success');
+                       setTimeout(function(){
+                            location.reload();
+                       },1500);
+                    } else {
+                        Swal.fire('Error al asignar el curso contacte a soprte','','error');
+                       setTimeout(function(){
+                            location.reload();
+                       },1500);
+                    }
+                },
+                error: function(respuesta) {
+                    console.log(respuesta);
+                }
+
+            });
+        });
 
 
         $('#generar_clave').on('click', function(event) {
