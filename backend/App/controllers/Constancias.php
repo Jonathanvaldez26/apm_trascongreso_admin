@@ -593,7 +593,7 @@ html;
         //$num_linea =utf8_decode("Línea: 39");
         //$num_linea2 =utf8_decode("Línea: 39");
         if($id_producto == 1){
-        $pdf->SetXY(15, 80);
+        $pdf->SetXY(17, 82);
         
         $pdf->SetFont('Arial', 'B', 30);
         #4D9A9B
@@ -608,12 +608,12 @@ html;
         $pdf->Multicell(275, 10, utf8_decode($attend).' "'.utf8_decode("$nombre_constancia").'"', 0, 'C');
         }
         //TIEMPO
-        $pdf->SetFont('Arial', 'B',9);
-        $pdf->SetXY(158, 176.9);
+        $pdf->SetFont('Arial', 'B',10);
+        $pdf->SetXY(144, 179.9);
         $pdf->Multicell(10, 10, utf8_decode($no_horas), 0, 'C');
         //FECHA
-        $pdf->SetFont('Arial', '',9);
-        $pdf->SetXY(14, 179.99);
+        $pdf->SetFont('Arial', 'B',10);
+        $pdf->SetXY(50, 179.9);
         $pdf->Multicell(275, 10, utf8_decode('June, 21 to 24, 2022'), 0, 'C');
         $pdf->Output();
         }
@@ -633,12 +633,12 @@ html;
         $pdf->Multicell(275, 10, utf8_decode($attend).' "'.utf8_decode("$nombre_constancia").'"', 0, 'C');
         }
         //TIEMPO
-        $pdf->SetFont('Arial', 'B',10);
-        $pdf->SetXY(157, 170.5);
+        $pdf->SetFont('Arial', 'B',9);
+        $pdf->SetXY(158, 176.9);
         $pdf->Multicell(10, 10, utf8_decode('5'), 0, 'C');
         //FECHA
-        $pdf->SetFont('Arial', '',10);
-        $pdf->SetXY(8, 179);
+        $pdf->SetFont('Arial', '',9);
+        $pdf->SetXY(14, 179.99);
         $pdf->Multicell(275, 10, utf8_decode('June, 21 to 24, 2022'), 0, 'C');
         $pdf->Output();
             
@@ -735,7 +735,7 @@ html;
         //$num_linea2 =utf8_decode("Línea: 39");
         
         if($id_producto == 1){
-            $pdf->SetXY(15, 80);
+            $pdf->SetXY(17, 82);
             
             $pdf->SetFont('Arial', 'B', 30);
             #4D9A9B
