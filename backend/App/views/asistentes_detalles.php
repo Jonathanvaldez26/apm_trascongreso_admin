@@ -150,6 +150,12 @@
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-6">
+                                        <label class="form-label">Nombre *</label>
+                                        <div class="input-group">
+                                            <input id="nombre" name="nombre" maxlength="29" class="form-control" type="text" placeholder="Alec" required="" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $detalles_registro['nombre'] ?>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
                                         <label class="form-label">Segundo Nombre </label>
                                         <div class="input-group">
                                             <input id="segundo_nombre" name="segundo_nombre" maxlength="49" class="form-control" type="text" placeholder="Alec" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $detalles_registro['segundo_nombre'] ?>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
@@ -261,8 +267,6 @@
         $("#update_detalles").on("submit", function(event) {
             event.preventDefault();
 
-            // alert("Hola");
-
             var formData = new FormData(document.getElementById("update_detalles"));
             for (var value of formData.values()) {
                 console.log(value);
@@ -277,11 +281,8 @@
                 processData: false,
                 beforeSend: function() {
                     console.log("Procesando....");
-
-
                 },
                 success: function(respuesta) {
-                    // alert("Successs");
 
                     if (respuesta == 'success') {
                         swal("!Se actualizaron tus datos correctamente!", "", "success").
