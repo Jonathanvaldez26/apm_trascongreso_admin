@@ -283,6 +283,7 @@
                     console.log("Procesando....");
                 },
                 success: function(respuesta) {
+                    console.log(respuesta);
 
                     if (respuesta == 'success') {
                         swal("!Se actualizaron tus datos correctamente!", "", "success").

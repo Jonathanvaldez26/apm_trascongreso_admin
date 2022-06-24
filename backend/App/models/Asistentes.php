@@ -314,9 +314,9 @@ sql;
     public static function update($data){
         $mysqli = Database::getInstance(true);
         $query=<<<sql
-      UPDATE utilerias_administradores 
-      SET name_user = :nombre, middle_name = :segundo_nombre, surname = :apellido_paterno, second_surname = :apellido_materno
-      WHERE usuario = :email;
+          UPDATE utilerias_administradores 
+          SET name_user = :nombre, middle_name = :segundo_nombre, surname = :apellido_paterno, second_surname = :apellido_materno
+          WHERE usuario = :email;
 sql;
         $parametros = array(
             ':id_registro'=>$data->_id_registro,
