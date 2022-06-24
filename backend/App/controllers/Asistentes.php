@@ -697,7 +697,7 @@ html;
                            class="btn bg-pink btn-icon-only morado-musa-text" title="Impresa" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Impresa" target="_blank"><i class="fas fa-print"> </i></button>
 
                            <button data-toggle="modal" data-target="#modal-constancia-{$value['id_registro_acceso']}" id="btn-constancia-digit-{$value['id_registro_acceso']}" data-id-producto="{$value_cursos_pagados['id_producto']}"
-                           class="btn bg-pink btn-icon-only morado-musa-text" title="Impresa" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Impresa" target="_blank"><i class="fas fa-print"> </i></button>
+                           class="btn bg-pink btn-icon-only morado-musa-text" title="Digital" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Digital" target="_blank"><i class="fas fa-print"> </i></button>
                           
                         
                         
@@ -995,14 +995,15 @@ html;
                               <!-- <form class="form_etiquetas" type="GET" target="_blank">-->
                                     <div class="row">
 
-                                        <div class="col-md-6">
-                                        
-                                            <label>Ingrese el  número de hrs, si es que lo requeire</label>
+                                        <div class="col-md-8">
+                                            <label style="color:red;">NOTA: Coloque la cantidad de horas que tendrá la constancia y presione el botón Obtener Constancia</label>
+                                            <hr>
+                                            <label>Ingrese el número de horas que se desea asignar a la constancia</label>
                                             <input type="number" id="no_horas{$datos['id_registro_acceso']}" name="no_horas{$datos['id_registro_acceso']}" class="form-control">
                                         </div>
 
                                         <div class="col-md-3 m-auto">
-                                            <a href="" class="btn_imprimir_etiquetas_{$datos['id_registro_acceso']}" target="_blank" class="btn btn-info mt-4" type="submit">Imprimir Constancia</a>
+                                        <a href="" class="btn bg-pink morado-musa-text btn_imprimir_etiquetas_{$datos['id_registro_acceso']}" target="_blank" title="Impresa" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Obtener" type="submit">Obtener Constancia</a>
                                         </div>
                                     </div>
                               <!-- </form> -->

@@ -609,7 +609,7 @@ html;
         }
         //TIEMPO
         $pdf->SetFont('Arial', 'B',10);
-        $pdf->SetXY(156, 170.5);
+        $pdf->SetXY(157, 170.5);
         $pdf->Multicell(10, 10, utf8_decode($no_horas), 0, 'C');
         //FECHA
         $pdf->SetFont('Arial', '',10);
@@ -634,7 +634,7 @@ html;
         }
         //TIEMPO
         $pdf->SetFont('Arial', 'B',10);
-        $pdf->SetXY(156, 170.5);
+        $pdf->SetXY(157, 170.5);
         $pdf->Multicell(10, 10, utf8_decode('5'), 0, 'C');
         //FECHA
         $pdf->SetFont('Arial', '',10);
@@ -754,7 +754,7 @@ html;
             // $pdf->Multicell(10, 10, utf8_decode(round($progreso['segundos']/3600)), 0, 'C');
             //TIEMPO
             $pdf->SetFont('Arial', 'B',10);
-            $pdf->SetXY(156, 170.5);
+            $pdf->SetXY(157, 170.5);
             $pdf->Multicell(10, 10, utf8_decode($no_horas), 0, 'C');
             $pdf->SetFont('Arial', '',10);
             $pdf->SetXY(13, 175);
@@ -781,7 +781,7 @@ html;
             // $pdf->Multicell(10, 10, utf8_decode(round($progreso['segundos']/3600)), 0, 'C');
             //TIEMPO
             $pdf->SetFont('Arial', 'B',10);
-            $pdf->SetXY(156, 170.5);
+            $pdf->SetXY(157, 170.5);
             $pdf->Multicell(10, 10, utf8_decode('5'), 0, 'C');
             //FECHA
             $pdf->SetFont('Arial', '',10);
