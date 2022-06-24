@@ -8,12 +8,8 @@ require_once dirname(__DIR__) . '/../public/librerias/phpqrcode/qrlib.php';
 
 use \Core\View;
 use \Core\MasterDom;
-use \App\controllers\Contenedor;
 use \Core\Controller;
-use \App\models\Colaboradores as ColaboradoresDao;
-use \App\models\Accidentes as AccidentesDao;
 use \App\models\General as GeneralDao;
-use \App\models\Pases as PasesDao;
 use \App\models\PruebasCovidUsuarios as PruebasCovidUsuariosDao;
 use \App\models\ComprobantesVacunacion as ComprobantesVacunacionDao;
 use \App\models\Asistentes as AsistentesDao;

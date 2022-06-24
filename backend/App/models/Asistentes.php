@@ -315,23 +315,14 @@ sql;
         $mysqli = Database::getInstance(true);
         $query=<<<sql
           UPDATE utilerias_administradores 
-          SET name_user = :nombre, middle_name = :segundo_nombre, surname = :apellido_paterno, second_surname = :apellido_materno
-          WHERE usuario = :email;
+          SET name_user = $data->_nombre, middle_name = $data->_segundo_nombre, surname = $data->_apellido_paterno, second_surname = $data->_apellido_materno
+          WHERE usuario = $data->_email;
 sql;
-        $parametros = array(
-            ':id_registro'=>$data->_id_registro,
-            ':nombre'=>$data->_nombre,
-            ':segundo_nombre'=>$data->_segundo_nombre,
-            ':apellido_paterno'=>$data->_apellido_paterno,
-            ':apellido_materno'=>$data->_apellido_materno,
-            ':email'=>$data->_email    
-        );
 
         $accion = new \stdClass();
         $accion->_sql= $query;
-        $accion->_parametros = $parametros;
         $accion->_id = $data->_administrador_id;
-        return $mysqli->update($query, $parametros);
+        return $mysqli->update($query);
     }
 
     public static function generateCodeOnTable($email,$id_tv){
