@@ -525,35 +525,44 @@ html;
             $attend = '';
             $progreso = $progresos_productos_congreso;
             $nombre_constancia = '';
+            $fecha = 'June, 21 to 24, 2022';
         } 
         else if ($id_producto == 2) {
             $attend = 'Trans-Congress Course I';
             $progreso = $progresos_productos;
+            $fecha = 'Tuesday 21st June, 2022';
         } else if ($id_producto == 3) {
             $attend = 'Trans-Congress Course II';
             $progreso = $progresos_productos;
+            $fecha = 'Tuesday 21st June, 2022';
         } else if ($id_producto == 4) {
             $attend = 'Trans-Congress Course III';
             $progreso = $progresos_productos;
+            $fecha = 'Tuesday 21st June, 2022';
         } else if ($id_producto == 5) {
             $attend = 'Trans-Congress Course IV';
             $progreso = $progresos_productos;
+            $fecha = 'Tuesday 21st June, 2022';
         } else if ($id_producto == 6) {
             $attend = 'Trans-Congress Course V';
             $progreso = $progresos_productos;
+            $fecha = 'Thursday 23 June, 2022';
         } 
         else if ($id_producto == 7) {
             $attend = 'Trans-Congress Course VI';
             // $nombre_imagen = 'constancia_transcongreso_7.png';
             $progreso = $progresos_productos;
+            $fecha = 'Thursday 23 June, 2022';
         } else if ($id_producto == 8) {
             $attend = 'Trans-Congress Course VII';
             // $nombre_imagen = 'constancia_transcongreso_8.png';
             $progreso = $progresos_productos;
+            $fecha = 'Thursday 23 June, 2022';
         } else if ($id_producto == 9) {
             $attend = 'Trans-Congress Course VIII';
             // $nombre_imagen = 'constancia_transcongreso_9.png';
             $progreso = $progresos_productos;
+            $fecha = 'Friday 24th, June, 2022';
         }
 
         $datos_user = GeneralDao::getUserRegisterByClave($clave,$id_producto)[0];
@@ -614,7 +623,7 @@ html;
         //FECHA
         $pdf->SetFont('Arial', '',10);
         $pdf->SetXY(13, 179.99);
-        $pdf->Multicell(275, 10, utf8_decode('21 to 24 June, 2022'), 0, 'C');
+        $pdf->Multicell(275, 10, utf8_decode($fecha), 0, 'C');
         $pdf->Output();
         }
         else{
@@ -634,12 +643,12 @@ html;
         }
         //TIEMPO
         $pdf->SetFont('Arial', 'B',10);
-        $pdf->SetXY(156, 170.5);
+        $pdf->SetXY(158, 177);
         $pdf->Multicell(10, 10, utf8_decode('5'), 0, 'C');
         //FECHA
         $pdf->SetFont('Arial', '',10);
-        $pdf->SetXY(13, 175);
-        $pdf->Multicell(275, 10, utf8_decode('June, 21 to 24, 2022'), 0, 'C');
+        $pdf->SetXY(13, 179.99);
+        $pdf->Multicell(275, 10, utf8_decode($fecha), 0, 'C');
         $pdf->Output();
             
         }
@@ -667,35 +676,44 @@ html;
             $attend = '';
             $progreso = $progresos_productos_congreso;
             $nombre_constancia = '';
+            $fecha = 'June, 21 to 24, 2022';
         } 
         else if ($id_producto == 2) {
             $attend = 'Trans-Congress Course I';
             $progreso = $progresos_productos;
+            $fecha = 'Tuesday 21st June, 2022';
         } else if ($id_producto == 3) {
             $attend = 'Trans-Congress Course II';
             $progreso = $progresos_productos;
+            $fecha = 'Tuesday 21st June, 2022';
         } else if ($id_producto == 4) {
             $attend = 'Trans-Congress Course III';
             $progreso = $progresos_productos;
+            $fecha = 'Tuesday 21st June, 2022';
         } else if ($id_producto == 5) {
             $attend = 'Trans-Congress Course IV';
             $progreso = $progresos_productos;
+            $fecha = 'Tuesday 21st June, 2022';
         } else if ($id_producto == 6) {
             $attend = 'Trans-Congress Course V';
             $progreso = $progresos_productos;
+            $fecha = 'Tuesday 21st June, 2022';
         } 
         else if ($id_producto == 7) {
             $attend = 'Trans-Congress Course VI';
             // $nombre_imagen = 'constancia_transcongreso_7.png';
             $progreso = $progresos_productos;
+            $fecha = 'Thursday 23 June, 2022';
         } else if ($id_producto == 8) {
             $attend = 'Trans-Congress Course VII';
             // $nombre_imagen = 'constancia_transcongreso_8.png';
             $progreso = $progresos_productos;
+            $fecha = 'Thursday 23 June, 2022';
         } else if ($id_producto == 9) {
             $attend = 'Trans-Congress Course VIII';
             // $nombre_imagen = 'constancia_transcongreso_9.png';
             $progreso = $progresos_productos;
+            $fecha = 'Friday 24th, June, 2022';
         }
 
         $datos_user = GeneralDao::getUserRegisterByClave($clave,$id_producto)[0];
@@ -758,7 +776,7 @@ html;
             $pdf->Multicell(10, 10, utf8_decode($no_horas), 0, 'C');
             $pdf->SetFont('Arial', '',10);
             $pdf->SetXY(13, 175);
-            $pdf->Multicell(275, 10, utf8_decode('June, 21 to 24, 2022'), 0, 'C');
+            $pdf->Multicell(275, 10, utf8_decode($fecha), 0, 'C');
             $pdf->Output();
             }
             else{
@@ -786,7 +804,7 @@ html;
             //FECHA
             $pdf->SetFont('Arial', '',10);
             $pdf->SetXY(13, 175);
-            $pdf->Multicell(275, 10, utf8_decode('June, 21 to 24, 2022'), 0, 'C');
+            $pdf->Multicell(275, 10, utf8_decode($fecha), 0, 'C');
             $pdf->Output();
                 
             }
