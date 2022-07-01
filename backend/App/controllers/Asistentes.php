@@ -46,8 +46,7 @@ class Asistentes extends Controller
         $search = $_POST['search'];       
 
         $all_ra = AsistentesDao::getAllRegistrosAcceso();
-        // $this->setTicketVirtual($all_ra);
-        // $this->setClaveRA($all_ra);
+
 
         $modal = '';
         foreach (GeneralDao::getAllColaboradoresByName($search) as $key => $value) {
