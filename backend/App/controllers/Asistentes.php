@@ -520,19 +520,15 @@ html;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $id_registro = $_POST['id_registro'];
-            $nombre = $_POST['nombre'];
             $segundo_nombre = $_POST['segundo_nombre'];
             $apellido_paterno = $_POST['apellido_paterno'];
             $apellido_materno = $_POST['apellido_materno'];
-            $email = $_POST['email'];
             $clave_socio = $_POST['clave_socio'];
 
             $documento->_id = $id_registro;
-            $documento->_nombre = $nombre;
             $documento->_segundo_nombre = $segundo_nombre;
             $documento->_apellido_paterno = $apellido_paterno;
             $documento->_apellido_materno = $apellido_materno;
-            $documento->_email = $email;
             $documento->_clave_socio = $clave_socio;
 
             $id = AsistentesDao::update($documento);
